@@ -1,0 +1,22 @@
+{
+  "name": "erp-auth-service",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "prod": "bun run src/index.ts"
+  },
+  "dependencies": {
+    "@hono/swagger-ui": "^0.5.1",
+    "@hono/zod-openapi": "^0.19.6",
+    "@hono/zod-validator": "^0.5.0",
+    "@scalar/hono-api-reference": "^0.9.1",
+    "dotenv": "^17.2.3",
+    "erp-shared-models": "github:alfiyazaidilogimetrix-crypto/ERP-shared-models#main",
+    "hono": "^4.7.10",
+    "hono-openapi": "^0.4.8",
+    "zod": "^3.25.28",
+    "zod-openapi": "^4.2.4"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
