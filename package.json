@@ -1,8 +1,14 @@
 {
   "name": "erp-auth-service",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "bun run --hot src/index.ts",
-    "prod": "bun run src/index.ts"
+    "prod": "bun run src/index.ts",
+    "build": "tsc"
   },
   "dependencies": {
     "@hono/swagger-ui": "^0.5.1",
@@ -17,6 +23,8 @@
     "zod-openapi": "^4.2.4"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.5"
   }
 }

@@ -1,0 +1,18 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var zod_openapi_1 = require("@hono/zod-openapi");
+var mail_1 = require("./mail/mail");
+var user_1 = require("./user/user");
+var role_1 = require("./role/role");
+var permission_1 = require("./permission/permission");
+var module_1 = require("./module/module");
+var demo_1 = require("./demo/demo");
+var routes = new zod_openapi_1.OpenAPIHono();
+routes.route('/user', user_1.default);
+routes.route('/mail', mail_1.default);
+// routes.route('/file', FILE);
+routes.route('/role', role_1.default);
+routes.route('/permission', permission_1.default);
+routes.route('/module', module_1.default);
+routes.route('/demo', demo_1.default);
+exports.default = routes;

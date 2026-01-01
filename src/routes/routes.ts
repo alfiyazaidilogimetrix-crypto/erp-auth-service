@@ -1,7 +1,7 @@
 import { OpenAPIHono } from '@hono/zod-openapi';
 import MAIL from './mail/mail';
 import USER from './user/user';
-import FILE from './file/file';
+// import FILE from './file/file';
 import ROLE from './role/role';
 import PERMISSION from './permission/permission';
 import MODULE from './module/module';

@@ -19,26 +19,10 @@ This service acts as an Authentication & Authorization provider. Other microserv
 
 ### 1. Installation
 
-In your consumer microservice, you can install it using a local file path (recommended for development):
-```sh
-bun add ../ERP-Auth-Service
-```
-Or via GitHub:
+In your consumer microservice:
 ```sh
 bun add github:alfiyazaidilogimetrix-crypto/ERP-Auth-Service#main
 ```
-
-### 2. Local Development (Bun Link)
-If you are developing locally and want changes in `ERP-Auth-Service` to reflect immediately in your other service:
-
-1. Inside `ERP-Auth-Service`:
-   ```sh
-   bun link
-   ```
-2. Inside your consumer microservice:
-   ```sh
-   bun link erp-auth-service
-   ```
 
 ### 2. Implementation
 

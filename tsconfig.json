@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "outDir": "./dist",
+    "declaration": true,
     "strict": true,
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
@@ -14,5 +16,7 @@
       "@config/*": ["./src/config/*"],
       "@prisma/*": ["./prisma/*"]
     }
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
