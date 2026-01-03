@@ -24,8 +24,6 @@ export interface AppEnv {
   EMAIL_API_KEY: string;
   EMAIL: string;
   BCC?: string;
-  E_COURT_API_KEY: string;
-  BASE_URL_ECOURT?: string;
 }
 
 // Type-safe environment loader with validation
@@ -44,9 +42,6 @@ export function loadEnv(): AppEnv {
     'OTP_JWT_SECRET',
     'OTP_JWT_EXPIRE',
     'EMAIL_API_KEY',
-    'EMAIL',
-    'E_COURT_API_KEY',
-    'BASE_URL_ECOURT',
   ];
 
   // Check for missing environment variables
@@ -74,8 +69,6 @@ export function loadEnv(): AppEnv {
     EMAIL_API_KEY: process.env.EMAIL_API_KEY!,
     EMAIL: process.env.EMAIL!,
     BCC: process.env.BCC!,
-    E_COURT_API_KEY: process.env.E_COURT_API_KEY!,
-    BASE_URL_ECOURT: process.env.BASE_URL_ECOURT!,
   };
 }
 

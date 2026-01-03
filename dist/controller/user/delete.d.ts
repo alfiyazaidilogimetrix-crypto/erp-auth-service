@@ -4,15 +4,15 @@ export declare const deleteUser: (userId: number, currentUserId: number) => Prom
 export declare const removeProfileImage: (userId: number) => Promise<{
     role: never;
     profileImage: never;
-    name: string;
     id: number;
+    name: string;
     email: string;
-    provider: import("erp-shared-models/src/generated/client/enums").Provider;
     emailVerified: boolean;
     fileId: number | null;
     original_password: string | null;
     mobileNumber: string | null;
     roleId: number | null;
+    provider: import("erp-shared-models/src/generated/client/enums").Provider;
     createdAt: Date;
     updatedAt: Date;
 }>;

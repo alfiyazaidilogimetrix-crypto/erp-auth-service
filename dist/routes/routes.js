@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var zod_openapi_1 = require("@hono/zod-openapi");
 var mail_1 = require("./mail/mail");
 var user_1 = require("./user/user");
+// import FILE from './file/file';
 var role_1 = require("./role/role");
 var permission_1 = require("./permission/permission");
 var module_1 = require("./module/module");

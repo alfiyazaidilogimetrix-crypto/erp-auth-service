@@ -1,15 +1,15 @@
 export declare const getUserProfile: (userId: number) => Promise<{
     role: never;
     profileImage: never;
-    name: string;
     id: number;
+    name: string;
     email: string;
-    provider: import("erp-shared-models/src/generated/client/enums").Provider;
     emailVerified: boolean;
     fileId: number | null;
     original_password: string | null;
     mobileNumber: string | null;
     roleId: number | null;
+    provider: import("erp-shared-models/src/generated/client/enums").Provider;
     createdAt: Date;
     updatedAt: Date;
 }>;
@@ -17,15 +17,15 @@ export declare const getAllUsers: (page?: number, limit?: number, roleId?: numbe
     users: {
         role: never;
         profileImage: never;
-        name: string;
         id: number;
+        name: string;
         email: string;
-        provider: import("erp-shared-models/src/generated/client/enums").Provider;
         emailVerified: boolean;
         fileId: number | null;
         original_password: string | null;
         mobileNumber: string | null;
         roleId: number | null;
+        provider: import("erp-shared-models/src/generated/client/enums").Provider;
         createdAt: Date;
         updatedAt: Date;
     }[];
@@ -39,15 +39,15 @@ export declare const getAllUsers: (page?: number, limit?: number, roleId?: numbe
 export declare const getUserById: (userId: number) => Promise<{
     role: never;
     profileImage: never;
-    name: string;
     id: number;
+    name: string;
     email: string;
-    provider: import("erp-shared-models/src/generated/client/enums").Provider;
     emailVerified: boolean;
     fileId: number | null;
     original_password: string | null;
     mobileNumber: string | null;
     roleId: number | null;
+    provider: import("erp-shared-models/src/generated/client/enums").Provider;
     createdAt: Date;
     updatedAt: Date;
 }>;

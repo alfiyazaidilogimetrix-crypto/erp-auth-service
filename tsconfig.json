@@ -15,7 +15,8 @@
       "@swagger/*": ["./src/swagger/*"],
       "@config/*": ["./src/config/*"],
       "@prisma/*": ["./prisma/*"]
-    }
+    },
+    "skipLibCheck": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]

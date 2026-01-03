@@ -418,8 +418,8 @@ export declare const getAllUsersDoc: {
             limit: number;
             roleId?: string | undefined;
         }, {
-            page?: string | undefined;
             roleId?: string | undefined;
+            page?: string | undefined;
             limit?: string | undefined;
         }>;
     };

@@ -18,9 +18,6 @@ function loadEnv() {
         'OTP_JWT_SECRET',
         'OTP_JWT_EXPIRE',
         'EMAIL_API_KEY',
-        'EMAIL',
-        'E_COURT_API_KEY',
-        'BASE_URL_ECOURT',
     ];
     // Check for missing environment variables
     var missingEnvs = requiredEnvs.filter(function (env) { return !process.env[env]; });
@@ -43,8 +40,6 @@ function loadEnv() {
         EMAIL_API_KEY: process.env.EMAIL_API_KEY,
         EMAIL: process.env.EMAIL,
         BCC: process.env.BCC,
-        E_COURT_API_KEY: process.env.E_COURT_API_KEY,
-        BASE_URL_ECOURT: process.env.BASE_URL_ECOURT,
     };
 }
 // Option 2: Global env instance

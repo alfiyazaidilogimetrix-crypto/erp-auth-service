@@ -17,6 +17,8 @@ app.use(
       'http://localhost:5173',
       'https://m1qgkrd1-4242.inc1.devtunnels.ms',
       'https://hdw8jq12-5173.inc1.devtunnels.ms',
+      'https://m1qgkrd1-4043.inc1.devtunnels.ms',
+      'https://hdw8jq12-5173.inc1.devtunnels.ms',
       'http://192.168.1.18',
       'https://192.168.1.18',
     ],

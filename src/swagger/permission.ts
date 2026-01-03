@@ -38,11 +38,7 @@ export const createPermissionDoc = createRoute({
       description: 'Permission created successfully',
       content: {
         'application/json': {
-          schema: z.object({
-            status: z.number(),
-            message: z.string(),
-            permission: permissionResponseSchema,
-          }),
+          schema: z.object({}),
         },
       },
     },
@@ -50,7 +46,7 @@ export const createPermissionDoc = createRoute({
       description: 'Bad request - validation error',
       content: {
         'application/json': {
-          schema: ErrorResponseSchema,
+          schema: z.object({}),
         },
       },
     },
@@ -58,7 +54,7 @@ export const createPermissionDoc = createRoute({
       description: 'Module not found',
       content: {
         'application/json': {
-          schema: ErrorResponseSchema,
+          schema: z.object({}),
         },
       },
     },
@@ -83,16 +79,7 @@ export const getPermissionsDoc = createRoute({
       description: 'Successfully retrieved permissions',
       content: {
         'application/json': {
-          schema: z.object({
-            status: z.number(),
-            permissions: z.array(permissionResponseSchema),
-            pagination: z.object({
-              page: z.number(),
-              limit: z.number(),
-              total: z.number(),
-              pages: z.number(),
-            }),
-          }),
+          schema: z.object({}),
         },
       },
     },
@@ -143,7 +130,7 @@ export const updatePermissionDoc = createRoute({
     body: {
       content: {
         'application/json': {
-          schema: updatePermissionSchema,
+          schema: z.object({}),
         },
       },
     },
@@ -153,11 +140,7 @@ export const updatePermissionDoc = createRoute({
       description: 'Permission updated successfully',
       content: {
         'application/json': {
-          schema: z.object({
-            status: z.number(),
-            message: z.string(),
-            permission: permissionResponseSchema,
-          }),
+          schema: z.object({}),
         },
       },
     },
@@ -165,7 +148,7 @@ export const updatePermissionDoc = createRoute({
       description: 'Permission not found',
       content: {
         'application/json': {
-          schema: ErrorResponseSchema,
+          schema: z.object({}),
         },
       },
     },
@@ -196,7 +179,7 @@ export const deletePermissionDoc = createRoute({
       description: 'Bad request - permission has roles assigned',
       content: {
         'application/json': {
-          schema: ErrorResponseSchema,
+          schema: z.object({}),
         },
       },
     },
@@ -204,7 +187,7 @@ export const deletePermissionDoc = createRoute({
       description: 'Permission not found',
       content: {
         'application/json': {
-          schema: ErrorResponseSchema,
+          schema: z.object({}),
         },
       },
     },

@@ -15,15 +15,15 @@ export declare const sendMailDoc: {
                         cc: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
                         html: z.ZodString;
                     }, "strip", z.ZodTypeAny, {
-                        html: string;
                         to: string;
                         subject: string;
+                        html: string;
                         from?: string | undefined;
                         cc?: string[] | undefined;
                     }, {
-                        html: string;
                         to: string;
                         subject: string;
+                        html: string;
                         from?: string | undefined;
                         cc?: string[] | undefined;
                     }>;

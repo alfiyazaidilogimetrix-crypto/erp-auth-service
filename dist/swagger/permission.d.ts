@@ -28,110 +28,7 @@ export declare const createPermissionDoc: {
             description: string;
             content: {
                 'application/json': {
-                    schema: z.ZodObject<{
-                        status: z.ZodNumber;
-                        message: z.ZodString;
-                        permission: z.ZodObject<{
-                            id: z.ZodNumber;
-                            action: z.ZodArray<z.ZodString, "many">;
-                            modules: z.ZodOptional<z.ZodArray<z.ZodObject<{
-                                id: z.ZodNumber;
-                                Name: z.ZodString;
-                                description: z.ZodNullable<z.ZodString>;
-                            }, "strip", z.ZodTypeAny, {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }, {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }>, "many">>;
-                            roles: z.ZodOptional<z.ZodArray<z.ZodObject<{
-                                id: z.ZodNumber;
-                                name: z.ZodString;
-                                description: z.ZodNullable<z.ZodString>;
-                            }, "strip", z.ZodTypeAny, {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }, {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }>, "many">>;
-                            createdAt: z.ZodString;
-                            updatedAt: z.ZodString;
-                        }, "strip", z.ZodTypeAny, {
-                            id: number;
-                            action: string[];
-                            createdAt: string;
-                            updatedAt: string;
-                            modules?: {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }[] | undefined;
-                            roles?: {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }[] | undefined;
-                        }, {
-                            id: number;
-                            action: string[];
-                            createdAt: string;
-                            updatedAt: string;
-                            modules?: {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }[] | undefined;
-                            roles?: {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }[] | undefined;
-                        }>;
-                    }, "strip", z.ZodTypeAny, {
-                        message: string;
-                        status: number;
-                        permission: {
-                            id: number;
-                            action: string[];
-                            createdAt: string;
-                            updatedAt: string;
-                            modules?: {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }[] | undefined;
-                            roles?: {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }[] | undefined;
-                        };
-                    }, {
-                        message: string;
-                        status: number;
-                        permission: {
-                            id: number;
-                            action: string[];
-                            createdAt: string;
-                            updatedAt: string;
-                            modules?: {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }[] | undefined;
-                            roles?: {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }[] | undefined;
-                        };
-                    }>;
+                    schema: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
                 };
             };
         };
@@ -139,19 +36,7 @@ export declare const createPermissionDoc: {
             description: string;
             content: {
                 'application/json': {
-                    schema: z.ZodObject<{
-                        status: z.ZodNumber;
-                        message: z.ZodString;
-                        error: z.ZodOptional<z.ZodString>;
-                    }, "strip", z.ZodTypeAny, {
-                        message: string;
-                        status: number;
-                        error?: string | undefined;
-                    }, {
-                        message: string;
-                        status: number;
-                        error?: string | undefined;
-                    }>;
+                    schema: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
                 };
             };
         };
@@ -159,19 +44,7 @@ export declare const createPermissionDoc: {
             description: string;
             content: {
                 'application/json': {
-                    schema: z.ZodObject<{
-                        status: z.ZodNumber;
-                        message: z.ZodString;
-                        error: z.ZodOptional<z.ZodString>;
-                    }, "strip", z.ZodTypeAny, {
-                        message: string;
-                        status: number;
-                        error?: string | undefined;
-                    }, {
-                        message: string;
-                        status: number;
-                        error?: string | undefined;
-                    }>;
+                    schema: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
                 };
             };
         };
@@ -205,135 +78,7 @@ export declare const getPermissionsDoc: {
             description: string;
             content: {
                 'application/json': {
-                    schema: z.ZodObject<{
-                        status: z.ZodNumber;
-                        permissions: z.ZodArray<z.ZodObject<{
-                            id: z.ZodNumber;
-                            action: z.ZodArray<z.ZodString, "many">;
-                            modules: z.ZodOptional<z.ZodArray<z.ZodObject<{
-                                id: z.ZodNumber;
-                                Name: z.ZodString;
-                                description: z.ZodNullable<z.ZodString>;
-                            }, "strip", z.ZodTypeAny, {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }, {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }>, "many">>;
-                            roles: z.ZodOptional<z.ZodArray<z.ZodObject<{
-                                id: z.ZodNumber;
-                                name: z.ZodString;
-                                description: z.ZodNullable<z.ZodString>;
-                            }, "strip", z.ZodTypeAny, {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }, {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }>, "many">>;
-                            createdAt: z.ZodString;
-                            updatedAt: z.ZodString;
-                        }, "strip", z.ZodTypeAny, {
-                            id: number;
-                            action: string[];
-                            createdAt: string;
-                            updatedAt: string;
-                            modules?: {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }[] | undefined;
-                            roles?: {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }[] | undefined;
-                        }, {
-                            id: number;
-                            action: string[];
-                            createdAt: string;
-                            updatedAt: string;
-                            modules?: {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }[] | undefined;
-                            roles?: {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }[] | undefined;
-                        }>, "many">;
-                        pagination: z.ZodObject<{
-                            page: z.ZodNumber;
-                            limit: z.ZodNumber;
-                            total: z.ZodNumber;
-                            pages: z.ZodNumber;
-                        }, "strip", z.ZodTypeAny, {
-                            total: number;
-                            page: number;
-                            limit: number;
-                            pages: number;
-                        }, {
-                            total: number;
-                            page: number;
-                            limit: number;
-                            pages: number;
-                        }>;
-                    }, "strip", z.ZodTypeAny, {
-                        status: number;
-                        permissions: {
-                            id: number;
-                            action: string[];
-                            createdAt: string;
-                            updatedAt: string;
-                            modules?: {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }[] | undefined;
-                            roles?: {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }[] | undefined;
-                        }[];
-                        pagination: {
-                            total: number;
-                            page: number;
-                            limit: number;
-                            pages: number;
-                        };
-                    }, {
-                        status: number;
-                        permissions: {
-                            id: number;
-                            action: string[];
-                            createdAt: string;
-                            updatedAt: string;
-                            modules?: {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }[] | undefined;
-                            roles?: {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }[] | undefined;
-                        }[];
-                        pagination: {
-                            total: number;
-                            page: number;
-                            limit: number;
-                            pages: number;
-                        };
-                    }>;
+                    schema: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
                 };
             };
         };
@@ -394,16 +139,7 @@ export declare const updatePermissionDoc: {
         body: {
             content: {
                 'application/json': {
-                    schema: z.ZodObject<{
-                        action: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-                        moduleIds: z.ZodDefault<z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>>;
-                    }, "strip", z.ZodTypeAny, {
-                        moduleIds: number[];
-                        action?: string[] | undefined;
-                    }, {
-                        action?: string[] | undefined;
-                        moduleIds?: number[] | undefined;
-                    }>;
+                    schema: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
                 };
             };
         };
@@ -413,110 +149,7 @@ export declare const updatePermissionDoc: {
             description: string;
             content: {
                 'application/json': {
-                    schema: z.ZodObject<{
-                        status: z.ZodNumber;
-                        message: z.ZodString;
-                        permission: z.ZodObject<{
-                            id: z.ZodNumber;
-                            action: z.ZodArray<z.ZodString, "many">;
-                            modules: z.ZodOptional<z.ZodArray<z.ZodObject<{
-                                id: z.ZodNumber;
-                                Name: z.ZodString;
-                                description: z.ZodNullable<z.ZodString>;
-                            }, "strip", z.ZodTypeAny, {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }, {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }>, "many">>;
-                            roles: z.ZodOptional<z.ZodArray<z.ZodObject<{
-                                id: z.ZodNumber;
-                                name: z.ZodString;
-                                description: z.ZodNullable<z.ZodString>;
-                            }, "strip", z.ZodTypeAny, {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }, {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }>, "many">>;
-                            createdAt: z.ZodString;
-                            updatedAt: z.ZodString;
-                        }, "strip", z.ZodTypeAny, {
-                            id: number;
-                            action: string[];
-                            createdAt: string;
-                            updatedAt: string;
-                            modules?: {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }[] | undefined;
-                            roles?: {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }[] | undefined;
-                        }, {
-                            id: number;
-                            action: string[];
-                            createdAt: string;
-                            updatedAt: string;
-                            modules?: {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }[] | undefined;
-                            roles?: {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }[] | undefined;
-                        }>;
-                    }, "strip", z.ZodTypeAny, {
-                        message: string;
-                        status: number;
-                        permission: {
-                            id: number;
-                            action: string[];
-                            createdAt: string;
-                            updatedAt: string;
-                            modules?: {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }[] | undefined;
-                            roles?: {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }[] | undefined;
-                        };
-                    }, {
-                        message: string;
-                        status: number;
-                        permission: {
-                            id: number;
-                            action: string[];
-                            createdAt: string;
-                            updatedAt: string;
-                            modules?: {
-                                id: number;
-                                description: string | null;
-                                Name: string;
-                            }[] | undefined;
-                            roles?: {
-                                name: string;
-                                id: number;
-                                description: string | null;
-                            }[] | undefined;
-                        };
-                    }>;
+                    schema: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
                 };
             };
         };
@@ -524,19 +157,7 @@ export declare const updatePermissionDoc: {
             description: string;
             content: {
                 'application/json': {
-                    schema: z.ZodObject<{
-                        status: z.ZodNumber;
-                        message: z.ZodString;
-                        error: z.ZodOptional<z.ZodString>;
-                    }, "strip", z.ZodTypeAny, {
-                        message: string;
-                        status: number;
-                        error?: string | undefined;
-                    }, {
-                        message: string;
-                        status: number;
-                        error?: string | undefined;
-                    }>;
+                    schema: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
                 };
             };
         };
@@ -581,19 +202,7 @@ export declare const deletePermissionDoc: {
             description: string;
             content: {
                 'application/json': {
-                    schema: z.ZodObject<{
-                        status: z.ZodNumber;
-                        message: z.ZodString;
-                        error: z.ZodOptional<z.ZodString>;
-                    }, "strip", z.ZodTypeAny, {
-                        message: string;
-                        status: number;
-                        error?: string | undefined;
-                    }, {
-                        message: string;
-                        status: number;
-                        error?: string | undefined;
-                    }>;
+                    schema: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
                 };
             };
         };
@@ -601,19 +210,7 @@ export declare const deletePermissionDoc: {
             description: string;
             content: {
                 'application/json': {
-                    schema: z.ZodObject<{
-                        status: z.ZodNumber;
-                        message: z.ZodString;
-                        error: z.ZodOptional<z.ZodString>;
-                    }, "strip", z.ZodTypeAny, {
-                        message: string;
-                        status: number;
-                        error?: string | undefined;
-                    }, {
-                        message: string;
-                        status: number;
-                        error?: string | undefined;
-                    }>;
+                    schema: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
                 };
             };
         };

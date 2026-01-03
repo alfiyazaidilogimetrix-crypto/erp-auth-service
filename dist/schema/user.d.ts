@@ -71,18 +71,18 @@ export declare const userResponseSchema: z.ZodObject<{
         size: z.ZodNumber;
         filePath: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        filename: string;
         id: number;
-        size: number;
+        filename: string;
         originalName: string;
         mimeType: string;
+        size: number;
         filePath: string;
     }, {
-        filename: string;
         id: number;
-        size: number;
+        filename: string;
         originalName: string;
         mimeType: string;
+        size: number;
         filePath: string;
     }>>>;
     mobileNumber: z.ZodOptional<z.ZodNullable<z.ZodString>>;
@@ -92,63 +92,63 @@ export declare const userResponseSchema: z.ZodObject<{
         name: z.ZodString;
         description: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     }, "strip", z.ZodTypeAny, {
-        name: string;
         id: number;
+        name: string;
         description?: string | null | undefined;
     }, {
-        name: string;
         id: number;
+        name: string;
         description?: string | null | undefined;
     }>>>;
     createdAt: z.ZodString;
     updatedAt: z.ZodString;
     provider: z.ZodEnum<["credentials", "google", "github"]>;
 }, "strip", z.ZodTypeAny, {
-    name: string;
     id: number;
+    name: string;
     email: string;
-    provider: "credentials" | "google" | "github";
     emailVerified: boolean;
+    provider: "credentials" | "google" | "github";
     createdAt: string;
     updatedAt: string;
-    role?: {
-        name: string;
-        id: number;
-        description?: string | null | undefined;
-    } | null | undefined;
     fileId?: number | null | undefined;
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
-    profileImage?: {
-        filename: string;
+    role?: {
         id: number;
-        size: number;
+        name: string;
+        description?: string | null | undefined;
+    } | null | undefined;
+    profileImage?: {
+        id: number;
+        filename: string;
         originalName: string;
         mimeType: string;
+        size: number;
         filePath: string;
     } | null | undefined;
 }, {
-    name: string;
     id: number;
+    name: string;
     email: string;
-    provider: "credentials" | "google" | "github";
     emailVerified: boolean;
+    provider: "credentials" | "google" | "github";
     createdAt: string;
     updatedAt: string;
-    role?: {
-        name: string;
-        id: number;
-        description?: string | null | undefined;
-    } | null | undefined;
     fileId?: number | null | undefined;
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
-    profileImage?: {
-        filename: string;
+    role?: {
         id: number;
-        size: number;
+        name: string;
+        description?: string | null | undefined;
+    } | null | undefined;
+    profileImage?: {
+        id: number;
+        filename: string;
         originalName: string;
         mimeType: string;
+        size: number;
         filePath: string;
     } | null | undefined;
 }>;

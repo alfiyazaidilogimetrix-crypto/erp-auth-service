@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -55,21 +66,27 @@ var user_1 = require("@jwt/user");
 var env_1 = require("@lib/env");
 var erp_shared_models_1 = require("erp-shared-models");
 var login = function (body) { return __awaiter(void 0, void 0, void 0, function () {
-    var user, passwordVerify, password, userWithoutPassword;
+    var user, passwordVerify, transformedUser, transformedRole, _, userWithoutPassword, _, userWithoutPassword;
     var _a;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0: return [4 /*yield*/, erp_shared_models_1.prisma.user.findUnique({
-                    where: {
-                        email: body.email,
-                    },
+                    where: { email: body.email },
                     include: {
                         profileImage: true,
-                        role: true,
+                        role: {
+                            include: {
+                                permissions: {
+                                    include: {
+                                        modules: true,
+                                    },
+                                },
+                            },
+                        },
                     },
                 })];
             case 1:
-                user = _b.sent();
+                user = (_b.sent());
                 if (!user) {
                     throw new http_exception_1.HTTPException(404, {
                         message: 'User with this email does not exist',
@@ -88,7 +105,15 @@ var login = function (body) { return __awaiter(void 0, void 0, void 0, function 
                         message: 'Account not verified. Please verify your email.',
                     });
                 }
-                password = user.password, userWithoutPassword = __rest(user, ["password"]);
+                if (user.role && user.role.permissions) {
+                    transformedRole = __assign(__assign({}, user.role), { permissions: transformPermissionsByModule(user.role.permissions) });
+                    _ = user.password, userWithoutPassword = __rest(user, ["password"]);
+                    transformedUser = __assign(__assign({}, userWithoutPassword), { role: transformedRole });
+                }
+                else {
+                    _ = user.password, userWithoutPassword = __rest(user, ["password"]);
+                    transformedUser = userWithoutPassword;
+                }
                 _a = {};
                 return [4 /*yield*/, (0, user_1.userGenerateToken)({
                         id: user.id,
@@ -104,9 +129,40 @@ var login = function (body) { return __awaiter(void 0, void 0, void 0, function 
                     })];
             case 4: return [2 /*return*/, (_a.refreshToken = _b.sent(),
                     _a.expireTime = (0, tools_1.getExpiryTime)(env_1.env.USER_JWT_EXPIRE),
-                    _a.user = userWithoutPassword,
+                    _a.user = transformedUser,
                     _a)];
         }
     });
 }); };
 exports.login = login;
+function transformPermissionsByModule(permissions) {
+    if (!permissions || !Array.isArray(permissions)) {
+        return [];
+    }
+    var moduleMap = new Map();
+    permissions.forEach(function (permission) {
+        if (permission.modules && Array.isArray(permission.modules)) {
+            permission.modules.forEach(function (module) {
+                var moduleName = module.Name;
+                if (!moduleMap.has(moduleName)) {
+                    moduleMap.set(moduleName, new Set());
+                }
+                // Add all actions from this permission
+                if (permission.action && Array.isArray(permission.action)) {
+                    permission.action.forEach(function (action) {
+                        moduleMap.get(moduleName).add(action);
+                    });
+                }
+            });
+        }
+    });
+    // Convert Map to Array
+    var result = [];
+    moduleMap.forEach(function (actions, moduleName) {
+        result.push({
+            module: moduleName,
+            action: Array.from(actions),
+        });
+    });
+    return result;
+}

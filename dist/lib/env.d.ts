@@ -14,8 +14,6 @@ export interface AppEnv {
     EMAIL_API_KEY: string;
     EMAIL: string;
     BCC?: string;
-    E_COURT_API_KEY: string;
-    BASE_URL_ECOURT?: string;
 }
 export declare function loadEnv(): AppEnv;
 export type HonoEnv = {

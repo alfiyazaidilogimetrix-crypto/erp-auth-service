@@ -34,11 +34,7 @@ exports.createPermissionDoc = (0, zod_openapi_1.createRoute)({
             description: 'Permission created successfully',
             content: {
                 'application/json': {
-                    schema: zod_openapi_1.z.object({
-                        status: zod_openapi_1.z.number(),
-                        message: zod_openapi_1.z.string(),
-                        permission: role_1.permissionResponseSchema,
-                    }),
+                    schema: zod_openapi_1.z.object({}),
                 },
             },
         },
@@ -46,7 +42,7 @@ exports.createPermissionDoc = (0, zod_openapi_1.createRoute)({
             description: 'Bad request - validation error',
             content: {
                 'application/json': {
-                    schema: ErrorResponseSchema,
+                    schema: zod_openapi_1.z.object({}),
                 },
             },
         },
@@ -54,7 +50,7 @@ exports.createPermissionDoc = (0, zod_openapi_1.createRoute)({
             description: 'Module not found',
             content: {
                 'application/json': {
-                    schema: ErrorResponseSchema,
+                    schema: zod_openapi_1.z.object({}),
                 },
             },
         },
@@ -78,16 +74,7 @@ exports.getPermissionsDoc = (0, zod_openapi_1.createRoute)({
             description: 'Successfully retrieved permissions',
             content: {
                 'application/json': {
-                    schema: zod_openapi_1.z.object({
-                        status: zod_openapi_1.z.number(),
-                        permissions: zod_openapi_1.z.array(role_1.permissionResponseSchema),
-                        pagination: zod_openapi_1.z.object({
-                            page: zod_openapi_1.z.number(),
-                            limit: zod_openapi_1.z.number(),
-                            total: zod_openapi_1.z.number(),
-                            pages: zod_openapi_1.z.number(),
-                        }),
-                    }),
+                    schema: zod_openapi_1.z.object({}),
                 },
             },
         },
@@ -136,7 +123,7 @@ exports.updatePermissionDoc = (0, zod_openapi_1.createRoute)({
         body: {
             content: {
                 'application/json': {
-                    schema: role_1.updatePermissionSchema,
+                    schema: zod_openapi_1.z.object({}),
                 },
             },
         },
@@ -146,11 +133,7 @@ exports.updatePermissionDoc = (0, zod_openapi_1.createRoute)({
             description: 'Permission updated successfully',
             content: {
                 'application/json': {
-                    schema: zod_openapi_1.z.object({
-                        status: zod_openapi_1.z.number(),
-                        message: zod_openapi_1.z.string(),
-                        permission: role_1.permissionResponseSchema,
-                    }),
+                    schema: zod_openapi_1.z.object({}),
                 },
             },
         },
@@ -158,7 +141,7 @@ exports.updatePermissionDoc = (0, zod_openapi_1.createRoute)({
             description: 'Permission not found',
             content: {
                 'application/json': {
-                    schema: ErrorResponseSchema,
+                    schema: zod_openapi_1.z.object({}),
                 },
             },
         },
@@ -188,7 +171,7 @@ exports.deletePermissionDoc = (0, zod_openapi_1.createRoute)({
             description: 'Bad request - permission has roles assigned',
             content: {
                 'application/json': {
-                    schema: ErrorResponseSchema,
+                    schema: zod_openapi_1.z.object({}),
                 },
             },
         },
@@ -196,7 +179,7 @@ exports.deletePermissionDoc = (0, zod_openapi_1.createRoute)({
             description: 'Permission not found',
             content: {
                 'application/json': {
-                    schema: ErrorResponseSchema,
+                    schema: zod_openapi_1.z.object({}),
                 },
             },
         },

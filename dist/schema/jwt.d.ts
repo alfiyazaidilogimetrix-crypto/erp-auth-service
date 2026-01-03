@@ -36,8 +36,8 @@ export declare const userPayloadSchema: z.ZodObject<{
             }[];
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
-        name: string;
         id: string;
+        name: string;
         permissions: {
             id: string;
             action: string[];
@@ -47,8 +47,8 @@ export declare const userPayloadSchema: z.ZodObject<{
             }[];
         }[];
     }, {
-        name: string;
         id: string;
+        name: string;
         permissions: {
             id: string;
             action: string[];
@@ -59,12 +59,13 @@ export declare const userPayloadSchema: z.ZodObject<{
         }[];
     }>>>;
 }, "strip", z.ZodTypeAny, {
-    name: string;
     id: number;
+    name: string;
     email: string;
+    roleId?: string | null | undefined;
     role?: {
-        name: string;
         id: string;
+        name: string;
         permissions: {
             id: string;
             action: string[];
@@ -74,14 +75,14 @@ export declare const userPayloadSchema: z.ZodObject<{
             }[];
         }[];
     } | null | undefined;
-    roleId?: string | null | undefined;
 }, {
-    name: string;
     id: number;
+    name: string;
     email: string;
+    roleId?: string | null | undefined;
     role?: {
-        name: string;
         id: string;
+        name: string;
         permissions: {
             id: string;
             action: string[];
@@ -91,6 +92,5 @@ export declare const userPayloadSchema: z.ZodObject<{
             }[];
         }[];
     } | null | undefined;
-    roleId?: string | null | undefined;
 }>;
 export type IUserPayload = z.infer<typeof userPayloadSchema>;

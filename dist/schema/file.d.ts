@@ -18,8 +18,8 @@ export declare const fileQuerySchema: z.ZodObject<{
     max_size: z.ZodOptional<z.ZodString>;
     include_content: z.ZodOptional<z.ZodEnum<["true", "false"]>>;
 }, "strip", z.ZodTypeAny, {
-    filename?: string | undefined;
     id?: string | undefined;
+    filename?: string | undefined;
     size?: string | undefined;
     original_name?: string | undefined;
     mime_type?: string | undefined;
@@ -27,10 +27,10 @@ export declare const fileQuerySchema: z.ZodObject<{
     mime_types?: string | undefined;
     min_size?: string | undefined;
     max_size?: string | undefined;
-    include_content?: "false" | "true" | undefined;
+    include_content?: "true" | "false" | undefined;
 }, {
-    filename?: string | undefined;
     id?: string | undefined;
+    filename?: string | undefined;
     size?: string | undefined;
     original_name?: string | undefined;
     mime_type?: string | undefined;
@@ -38,7 +38,7 @@ export declare const fileQuerySchema: z.ZodObject<{
     mime_types?: string | undefined;
     min_size?: string | undefined;
     max_size?: string | undefined;
-    include_content?: "false" | "true" | undefined;
+    include_content?: "true" | "false" | undefined;
 }>;
 export declare const fileUpdateSchema: z.ZodObject<{
     filename: z.ZodOptional<z.ZodString>;
@@ -73,22 +73,22 @@ export declare const fileResponseSchema: z.ZodObject<{
     createdAt: z.ZodString;
     updatedAt: z.ZodString;
 }, "strip", z.ZodTypeAny, {
-    filename: string;
     id: number;
-    size: number;
     createdAt: string;
     updatedAt: string;
+    filename: string;
     originalName: string;
     mimeType: string;
+    size: number;
     filePath: string;
 }, {
-    filename: string;
     id: number;
-    size: number;
     createdAt: string;
     updatedAt: string;
+    filename: string;
     originalName: string;
     mimeType: string;
+    size: number;
     filePath: string;
 }>;
 export type IFileQuery = z.infer<typeof fileQuerySchema>;
