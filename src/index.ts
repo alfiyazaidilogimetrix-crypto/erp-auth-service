@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { logger } from 'hono/logger';
 import { OpenAPIHono } from '@hono/zod-openapi';
 import { Scalar } from '@scalar/hono-api-reference';

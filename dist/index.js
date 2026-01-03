@@ -25,6 +25,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require("dotenv/config");
 var logger_1 = require("hono/logger");
 var zod_openapi_1 = require("@hono/zod-openapi");
 var hono_api_reference_1 = require("@scalar/hono-api-reference");

@@ -1,3 +1,4 @@
+import 'dotenv/config';
 export * from './middleware';
 export * from './middleware/types';
 declare const _default: {

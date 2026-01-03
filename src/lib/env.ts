@@ -42,6 +42,8 @@ export function loadEnv(): AppEnv {
     'OTP_JWT_SECRET',
     'OTP_JWT_EXPIRE',
     'EMAIL_API_KEY',
+    'EMAIL',
+    'BCC',
   ];
 
   // Check for missing environment variables
