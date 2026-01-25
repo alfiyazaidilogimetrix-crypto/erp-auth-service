@@ -22,7 +22,7 @@ export const authenticationMiddleware = createMiddleware<{
   console.log('Auth Middleware - Token:', token.substring(0, 10) + '...');
 
   try {
-    const payload = await verify(token, env.USER_JWT_SECRET);
+    const payload = await verify(token, env.USER_JWT_SECRET, 'HS256');
     console.log('Auth Middleware - Payload verified, ID:', payload?.id);
 
     if (!payload || !payload.id) {

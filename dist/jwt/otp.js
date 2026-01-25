@@ -55,7 +55,7 @@ var generateOtpJwt = function (payload) { return __awaiter(void 0, void 0, void 
     var token;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, jwt_1.sign)(__assign(__assign({}, payload), { exp: (0, tools_1.getExpiryTime)(env_1.env.OTP_JWT_EXPIRE) }), env_1.env.OTP_JWT_SECRET)];
+            case 0: return [4 /*yield*/, (0, jwt_1.sign)(__assign(__assign({}, payload), { exp: (0, tools_1.getExpiryTime)(env_1.env.OTP_JWT_EXPIRE) }), env_1.env.OTP_JWT_SECRET, 'HS256')];
             case 1:
                 token = _a.sent();
                 return [2 /*return*/, token];

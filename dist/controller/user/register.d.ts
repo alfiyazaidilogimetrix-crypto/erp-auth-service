@@ -1,8 +1,8 @@
 import { IUserRegister } from '@schema/user';
 export declare const register: (body: IUserRegister) => Promise<{
     user: {
-        role: never;
         profileImage: never;
+        role: never;
     } & {
         id: number;
         name: string;

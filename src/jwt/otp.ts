@@ -11,7 +11,8 @@ export const generateOtpJwt = async (payload: {
       ...payload,
       exp: getExpiryTime(env.OTP_JWT_EXPIRE as string),
     },
-    env.OTP_JWT_SECRET as string
+    env.OTP_JWT_SECRET as string,
+    'HS256'
   );
 
   return token;

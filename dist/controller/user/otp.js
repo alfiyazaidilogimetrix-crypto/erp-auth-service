@@ -78,7 +78,7 @@ var verifyOTPToken = function (body) { return __awaiter(void 0, void 0, void 0, 
     var payload;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, jwt_1.verify)(body.token, process.env.OTP_JWT_SECRET)];
+            case 0: return [4 /*yield*/, (0, jwt_1.verify)(body.token, process.env.OTP_JWT_SECRET, 'HS256')];
             case 1:
                 payload = _a.sent();
                 if (body.otp !== payload.otp)

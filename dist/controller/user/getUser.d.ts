@@ -1,6 +1,6 @@
 export declare const getUserProfile: (userId: number) => Promise<{
-    role: never;
     profileImage: never;
+    role: never;
     id: number;
     name: string;
     email: string;
@@ -15,8 +15,8 @@ export declare const getUserProfile: (userId: number) => Promise<{
 }>;
 export declare const getAllUsers: (page?: number, limit?: number, roleId?: number) => Promise<{
     users: {
-        role: never;
         profileImage: never;
+        role: never;
         id: number;
         name: string;
         email: string;
@@ -37,8 +37,8 @@ export declare const getAllUsers: (page?: number, limit?: number, roleId?: numbe
     };
 }>;
 export declare const getUserById: (userId: number) => Promise<{
-    role: never;
     profileImage: never;
+    role: never;
     id: number;
     name: string;
     email: string;

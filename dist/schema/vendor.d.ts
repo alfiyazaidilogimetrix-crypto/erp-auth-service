@@ -14,21 +14,21 @@ export declare const createVendorSchema: z.ZodObject<{
 }, "strip", z.ZodTypeAny, {
     status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
     vendor_name: string;
-    category?: string | null | undefined;
     address?: string | null | undefined;
     contact_number?: string | null | undefined;
     email_address?: string | null | undefined;
-    gst_number?: string | null | undefined;
     pan_number?: string | null | undefined;
+    gst_number?: string | null | undefined;
+    category?: string | null | undefined;
 }, {
     vendor_name: string;
     status?: "ACTIVE" | "INACTIVE" | "SUSPENDED" | undefined;
-    category?: string | null | undefined;
     address?: string | null | undefined;
     contact_number?: string | null | undefined;
     email_address?: string | null | undefined;
-    gst_number?: string | null | undefined;
     pan_number?: string | null | undefined;
+    gst_number?: string | null | undefined;
+    category?: string | null | undefined;
 }>;
 export declare const updateVendorSchema: z.ZodObject<{
     vendor_name: z.ZodOptional<z.ZodString>;
@@ -41,22 +41,22 @@ export declare const updateVendorSchema: z.ZodObject<{
     status: z.ZodOptional<z.ZodEnum<["ACTIVE", "INACTIVE", "SUSPENDED"]>>;
 }, "strip", z.ZodTypeAny, {
     status?: "ACTIVE" | "INACTIVE" | "SUSPENDED" | undefined;
-    category?: string | null | undefined;
     address?: string | null | undefined;
     vendor_name?: string | undefined;
     contact_number?: string | null | undefined;
     email_address?: string | null | undefined;
-    gst_number?: string | null | undefined;
     pan_number?: string | null | undefined;
+    gst_number?: string | null | undefined;
+    category?: string | null | undefined;
 }, {
     status?: "ACTIVE" | "INACTIVE" | "SUSPENDED" | undefined;
-    category?: string | null | undefined;
     address?: string | null | undefined;
     vendor_name?: string | undefined;
     contact_number?: string | null | undefined;
     email_address?: string | null | undefined;
-    gst_number?: string | null | undefined;
     pan_number?: string | null | undefined;
+    gst_number?: string | null | undefined;
+    category?: string | null | undefined;
 }>;
 export declare const vendorResponseSchema: z.ZodObject<{
     id: z.ZodNumber;
@@ -75,25 +75,25 @@ export declare const vendorResponseSchema: z.ZodObject<{
     status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
     created_at: string;
     updated_at: string;
-    category: string | null;
     address: string | null;
     vendor_name: string;
     contact_number: string | null;
     email_address: string | null;
-    gst_number: string | null;
     pan_number: string | null;
+    gst_number: string | null;
+    category: string | null;
 }, {
     id: number;
     status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
     created_at: string;
     updated_at: string;
-    category: string | null;
     address: string | null;
     vendor_name: string;
     contact_number: string | null;
     email_address: string | null;
-    gst_number: string | null;
     pan_number: string | null;
+    gst_number: string | null;
+    category: string | null;
 }>;
 export declare const vendorListResponseSchema: z.ZodArray<z.ZodObject<{
     id: z.ZodNumber;
@@ -112,25 +112,25 @@ export declare const vendorListResponseSchema: z.ZodArray<z.ZodObject<{
     status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
     created_at: string;
     updated_at: string;
-    category: string | null;
     address: string | null;
     vendor_name: string;
     contact_number: string | null;
     email_address: string | null;
-    gst_number: string | null;
     pan_number: string | null;
+    gst_number: string | null;
+    category: string | null;
 }, {
     id: number;
     status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
     created_at: string;
     updated_at: string;
-    category: string | null;
     address: string | null;
     vendor_name: string;
     contact_number: string | null;
     email_address: string | null;
-    gst_number: string | null;
     pan_number: string | null;
+    gst_number: string | null;
+    category: string | null;
 }>, "many">;
 export declare const vendorFilterSchema: z.ZodObject<{
     status: z.ZodOptional<z.ZodEnum<["ACTIVE", "INACTIVE", "SUSPENDED"]>>;
@@ -143,15 +143,15 @@ export declare const vendorFilterSchema: z.ZodObject<{
     status?: "ACTIVE" | "INACTIVE" | "SUSPENDED" | undefined;
     start_date?: string | undefined;
     end_date?: string | undefined;
-    category?: string | undefined;
     search?: string | undefined;
+    category?: string | undefined;
     has_gst?: boolean | undefined;
 }, {
     status?: "ACTIVE" | "INACTIVE" | "SUSPENDED" | undefined;
     start_date?: string | undefined;
     end_date?: string | undefined;
-    category?: string | undefined;
     search?: string | undefined;
+    category?: string | undefined;
     has_gst?: boolean | undefined;
 }>;
 export declare const vendorQueryParamsSchema: z.ZodObject<{
@@ -174,20 +174,20 @@ export declare const vendorQueryParamsSchema: z.ZodObject<{
     status?: "ACTIVE" | "INACTIVE" | "SUSPENDED" | undefined;
     start_date?: string | undefined;
     end_date?: string | undefined;
-    category?: string | undefined;
-    include?: "pos" | "all" | "supplies" | "stats" | undefined;
+    include?: "all" | "supplies" | "pos" | "stats" | undefined;
     search?: string | undefined;
+    category?: string | undefined;
     has_gst?: boolean | undefined;
 }, {
     sort?: "status" | "created_at" | "updated_at" | "vendor_name" | undefined;
     status?: "ACTIVE" | "INACTIVE" | "SUSPENDED" | undefined;
     start_date?: string | undefined;
     end_date?: string | undefined;
-    category?: string | undefined;
-    include?: "pos" | "all" | "supplies" | "stats" | undefined;
+    include?: "all" | "supplies" | "pos" | "stats" | undefined;
     search?: string | undefined;
     page?: string | undefined;
     limit?: string | undefined;
+    category?: string | undefined;
     has_gst?: boolean | undefined;
     order?: "asc" | "desc" | undefined;
 }>;
@@ -210,25 +210,25 @@ export declare const vendorPaginationResponseSchema: z.ZodObject<{
         status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
         created_at: string;
         updated_at: string;
-        category: string | null;
         address: string | null;
         vendor_name: string;
         contact_number: string | null;
         email_address: string | null;
-        gst_number: string | null;
         pan_number: string | null;
+        gst_number: string | null;
+        category: string | null;
     }, {
         id: number;
         status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
         created_at: string;
         updated_at: string;
-        category: string | null;
         address: string | null;
         vendor_name: string;
         contact_number: string | null;
         email_address: string | null;
-        gst_number: string | null;
         pan_number: string | null;
+        gst_number: string | null;
+        category: string | null;
     }>, "many">;
     pagination: z.ZodObject<{
         total: z.ZodNumber;
@@ -258,13 +258,13 @@ export declare const vendorPaginationResponseSchema: z.ZodObject<{
         status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
         created_at: string;
         updated_at: string;
-        category: string | null;
         address: string | null;
         vendor_name: string;
         contact_number: string | null;
         email_address: string | null;
-        gst_number: string | null;
         pan_number: string | null;
+        gst_number: string | null;
+        category: string | null;
     }[];
     pagination: {
         page: number;
@@ -281,13 +281,13 @@ export declare const vendorPaginationResponseSchema: z.ZodObject<{
         status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
         created_at: string;
         updated_at: string;
-        category: string | null;
         address: string | null;
         vendor_name: string;
         contact_number: string | null;
         email_address: string | null;
-        gst_number: string | null;
         pan_number: string | null;
+        gst_number: string | null;
+        category: string | null;
     }[];
     pagination: {
         page: number;

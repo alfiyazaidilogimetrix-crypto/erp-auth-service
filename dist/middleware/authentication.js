@@ -60,7 +60,7 @@ exports.authenticationMiddleware = (0, factory_1.createMiddleware)(function (c, 
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 5, , 6]);
-                return [4 /*yield*/, (0, jwt_1.verify)(token, env_1.env.USER_JWT_SECRET)];
+                return [4 /*yield*/, (0, jwt_1.verify)(token, env_1.env.USER_JWT_SECRET, 'HS256')];
             case 2:
                 payload = _a.sent();
                 console.log('Auth Middleware - Payload verified, ID:', payload === null || payload === void 0 ? void 0 : payload.id);

@@ -114,11 +114,6 @@ export declare const userResponseSchema: z.ZodObject<{
     fileId?: number | null | undefined;
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
-    role?: {
-        id: number;
-        name: string;
-        description?: string | null | undefined;
-    } | null | undefined;
     profileImage?: {
         id: number;
         filename: string;
@@ -126,6 +121,11 @@ export declare const userResponseSchema: z.ZodObject<{
         mimeType: string;
         size: number;
         filePath: string;
+    } | null | undefined;
+    role?: {
+        id: number;
+        name: string;
+        description?: string | null | undefined;
     } | null | undefined;
 }, {
     id: number;
@@ -138,11 +138,6 @@ export declare const userResponseSchema: z.ZodObject<{
     fileId?: number | null | undefined;
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
-    role?: {
-        id: number;
-        name: string;
-        description?: string | null | undefined;
-    } | null | undefined;
     profileImage?: {
         id: number;
         filename: string;
@@ -150,6 +145,11 @@ export declare const userResponseSchema: z.ZodObject<{
         mimeType: string;
         size: number;
         filePath: string;
+    } | null | undefined;
+    role?: {
+        id: number;
+        name: string;
+        description?: string | null | undefined;
     } | null | undefined;
 }>;
 export declare const verifyOtpSchema: z.ZodObject<{

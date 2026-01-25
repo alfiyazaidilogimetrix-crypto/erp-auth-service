@@ -22,6 +22,9 @@ app.use(
       'https://hdw8jq12-5173.inc1.devtunnels.ms',
       'http://192.168.1.18',
       'https://192.168.1.18',
+      'https://s-p-erp.vercel.app',
+      'https://hdw8jq12-5173.inc1.devtunnels.ms',
+      'https://hdw8jq12-5174.inc1.devtunnels.ms',
     ],
     allowHeaders: ['Content-Type', 'Authorization'],
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
@@ -56,7 +59,7 @@ app.onError((err, c) => {
 
 app.doc('/doc', {
   info: {
-    title: 'Template API',
+    title: 'ERP AUTH SERVICE',
     version: 'v1',
   },
   openapi: '3.1.0',

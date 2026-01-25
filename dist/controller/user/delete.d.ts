@@ -2,8 +2,8 @@ export declare const deleteUser: (userId: number, currentUserId: number) => Prom
     message: string;
 }>;
 export declare const removeProfileImage: (userId: number) => Promise<{
-    role: never;
     profileImage: never;
+    role: never;
     id: number;
     name: string;
     email: string;

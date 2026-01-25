@@ -1,7 +1,7 @@
 import { IUpdateUserProfile, IUpdateUserPassword } from '@schema/user';
 export declare const updateUserProfile: (userId: number, body: IUpdateUserProfile) => Promise<{
-    role: never;
     profileImage: never;
+    role: never;
     id: number;
     name: string;
     email: string;
@@ -18,8 +18,8 @@ export declare const updateUserPassword: (userId: number, body: IUpdateUserPassw
     message: string;
 }>;
 export declare const updateUserById: (userId: number, body: IUpdateUserProfile) => Promise<{
-    role: never;
     profileImage: never;
+    role: never;
     id: number;
     name: string;
     email: string;
@@ -34,8 +34,8 @@ export declare const updateUserById: (userId: number, body: IUpdateUserProfile) 
 }>;
 export declare const uploadProfileImage: (userId: number, fileId: number) => Promise<{
     user: {
-        role: never;
         profileImage: never;
+        role: never;
         id: number;
         name: string;
         email: string;

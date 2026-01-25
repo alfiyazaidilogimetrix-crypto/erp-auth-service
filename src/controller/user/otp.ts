@@ -33,6 +33,7 @@ export const verifyOTPToken = async (body: IVerifyOtp) => {
   const payload = await verify(
     body.token,
     process.env.OTP_JWT_SECRET as string,
+    'HS256',
   );
 
   if (body.otp !== payload.otp)

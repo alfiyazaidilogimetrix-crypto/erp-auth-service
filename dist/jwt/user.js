@@ -1,4 +1,8 @@
 "use strict";
+// import { env } from '@lib/env';
+// import { getExpiryTime } from '@lib/tools';
+// import { IUserPayload } from '@schema/jwt';
+// import { jwt, sign } from 'hono/jwt';
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -48,14 +52,43 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userGuard = exports.userRefreshToken = exports.userGenerateToken = void 0;
+// export const userGenerateToken = async (payload: IUserPayload) => {
+//   const token = await sign(
+//     {
+//       ...payload,
+//       exp: getExpiryTime(env.USER_JWT_EXPIRE),
+//     },
+//     env.USER_JWT_SECRET,
+//   );
+//   return token;
+// };
+// export const userRefreshToken = async (payload: {
+//   id: string;
+//   name: string;
+//   email: string;
+// }) => {
+//   const token = await sign(
+//     {
+//       ...payload,
+//       exp: getExpiryTime(env.USER_JWT_REFRESH_EXPIRE),
+//     },
+//     env.USER_JWT_REFRESH_SECRET as string,
+//   );
+//   return token;
+// };
+// export const userGuard = jwt({
+//   secret: env.USER_JWT_SECRET,
+//   alg: 'HS256',
+// });
 var env_1 = require("@lib/env");
 var tools_1 = require("@lib/tools");
 var jwt_1 = require("hono/jwt");
+var ALGORITHM = 'HS256';
 var userGenerateToken = function (payload) { return __awaiter(void 0, void 0, void 0, function () {
     var token;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, jwt_1.sign)(__assign(__assign({}, payload), { exp: (0, tools_1.getExpiryTime)(env_1.env.USER_JWT_EXPIRE) }), env_1.env.USER_JWT_SECRET)];
+            case 0: return [4 /*yield*/, (0, jwt_1.sign)(__assign(__assign({}, payload), { exp: (0, tools_1.getExpiryTime)(env_1.env.USER_JWT_EXPIRE) }), env_1.env.USER_JWT_SECRET, ALGORITHM)];
             case 1:
                 token = _a.sent();
                 return [2 /*return*/, token];
@@ -67,7 +100,7 @@ var userRefreshToken = function (payload) { return __awaiter(void 0, void 0, voi
     var token;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, jwt_1.sign)(__assign(__assign({}, payload), { exp: (0, tools_1.getExpiryTime)(env_1.env.USER_JWT_REFRESH_EXPIRE) }), env_1.env.USER_JWT_REFRESH_SECRET)];
+            case 0: return [4 /*yield*/, (0, jwt_1.sign)(__assign(__assign({}, payload), { exp: (0, tools_1.getExpiryTime)(env_1.env.USER_JWT_REFRESH_EXPIRE) }), env_1.env.USER_JWT_REFRESH_SECRET, ALGORITHM)];
             case 1:
                 token = _a.sent();
                 return [2 /*return*/, token];
@@ -77,5 +110,5 @@ var userRefreshToken = function (payload) { return __awaiter(void 0, void 0, voi
 exports.userRefreshToken = userRefreshToken;
 exports.userGuard = (0, jwt_1.jwt)({
     secret: env_1.env.USER_JWT_SECRET,
-    alg: 'HS256',
+    alg: ALGORITHM,
 });
