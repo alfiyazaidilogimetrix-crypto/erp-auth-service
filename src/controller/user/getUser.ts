@@ -54,7 +54,7 @@ export const getAllUsers = async (
     prisma.user.count({ where }),
   ]);
 
-  const usersWithoutPasswords = users.map(({ password, ...user }) => user);
+  const usersWithoutPasswords = users.map(({ password: _password, ...user }: typeof users[number]) => user);
 
   return {
     users: usersWithoutPasswords,
