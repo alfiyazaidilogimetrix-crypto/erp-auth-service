@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  erp-auth-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: erp-auth-service:latest
+    container_name: erp-auth-service
+    ports:
+      - "4043:4043"
+    environment:
+      # Database Configuration
+      - DATABASE_URL=${DATABASE_URL}
+      - PORT=4043
+      
+      # User JWT Configuration
+      - USER_JWT_SECRET=${USER_JWT_SECRET}
+      - USER_JWT_REFRESH_SECRET=${USER_JWT_REFRESH_SECRET}
+      - USER_JWT_EXPIRE=${USER_JWT_EXPIRE:-15m}
+      - USER_JWT_REFRESH_EXPIRE=${USER_JWT_REFRESH_EXPIRE:-7d}
+      
+      # Admin JWT Configuration
+      - ADMIN_JWT_SECRET=${ADMIN_JWT_SECRET}
+      - ADMIN_JWT_REFRESH_SECRET=${ADMIN_JWT_REFRESH_SECRET}
+      - ADMIN_JWT_EXPIRE=${ADMIN_JWT_EXPIRE:-15m}
+      - ADMIN_JWT_REFRESH_EXPIRE=${ADMIN_JWT_REFRESH_EXPIRE:-7d}
+      
+      # OTP JWT Configuration
+      - OTP_JWT_SECRET=${OTP_JWT_SECRET}
+      - OTP_JWT_EXPIRE=${OTP_JWT_EXPIRE:-5m}
+      
+      # Email Configuration
+      - EMAIL_API_KEY=${EMAIL_API_KEY}
+      - EMAIL=${EMAIL}
+      - BCC=${BCC}
+    
+    # Option 1: Use env_file to load from .env
+    env_file:
+      - .env
+    
+    restart: unless-stopped
+    
+    # Uncomment if you need to connect to a separate database service
+    # depends_on:
+    #   - postgres
+    
+    networks:
+      - erp-network
+
+networks:
+  erp-network:
+    driver: bridge
+
+# Uncomment if you need a PostgreSQL database
+# services:
+#   postgres:
+#     image: postgres:15-alpine
+#     container_name: erp-postgres
+#     environment:
+#       POSTGRES_USER: ${POSTGRES_USER:-erp_user}
+#       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-erp_password}
+#       POSTGRES_DB: ${POSTGRES_DB:-erp_db}
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+#     networks:
+#       - erp-network
+# 
+# volumes:
+#   postgres_data:

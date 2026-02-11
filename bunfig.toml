@@ -1,0 +1,18 @@
+[run]
+# Install preload scripts to resolve TypeScript path aliases
+preload = []
+
+[install]
+# Optional: Configure package installation behavior
+# auto = "disable"
+
+# TypeScript path mapping for Bun runtime
+[test]
+preload = []
+
+# Configure module resolution
+[module]
+# This section is not officially documented but kept for potential future use
+
+# Note: Bun automatically reads tsconfig.json paths
+# But we may need to ensure the working directory is correct

@@ -1,36 +1,52 @@
-# use the official Bun image
-# see all versions at https://hub.docker.com/r/oven/bun/tags
+# Use the official Bun image
+# See all versions at https://hub.docker.com/r/oven/bun/tags
 FROM oven/bun:latest AS base
 WORKDIR /usr/src/app
 
-# Install OpenSSL in the base image
-RUN apt-get update -y && apt-get install -y openssl
+# Install OpenSSL and git (needed for GitHub dependencies)
+RUN apt-get update -y && apt-get install -y openssl git
 
-# install dependencies into temp directory
-# this will cache them and speed up future builds
+# Install dependencies with fresh erp-shared-models
 FROM base AS install
 RUN mkdir -p /temp/dev
-COPY package.json bun.lock /temp/dev/
-RUN cd /temp/dev && bun install --frozen-lockfile  
+COPY package.json bun.lock* /temp/dev/
 
-# install with --production (exclude devDependencies)
+# Remove erp-shared-models first to ensure fresh install
+RUN cd /temp/dev && \
+    bun remove erp-shared-models || true && \
+    bun add github:alfiyazaidilogimetrix-crypto/erp-shared-models#main && \
+    bun install
+
+# Install production dependencies with fresh erp-shared-models
 RUN mkdir -p /temp/prod
-COPY package.json bun.lock /temp/prod/
-RUN cd /temp/prod && bun install --frozen-lockfile --production
+COPY package.json bun.lock* /temp/prod/
+RUN cd /temp/prod && \
+    bun remove erp-shared-models || true && \
+    bun add github:alfiyazaidilogimetrix-crypto/erp-shared-models#main && \
+    bun install --production
 
+# Build stage - build TypeScript and prepare for linking
 FROM base AS prerelease
 COPY --from=install /temp/dev/node_modules node_modules
 COPY . .
-RUN bun run prisma:build
 
-# copy production dependencies and source code into final image
+# Build the TypeScript project
+RUN bun run build
+
+# Run bun link to make this package available for linking
+RUN bun link
+
+# Copy production dependencies and source code into final image
 FROM base AS release
 COPY --from=install /temp/prod/node_modules node_modules
-COPY --from=prerelease /usr/src/app/prisma/src prisma/src
-COPY --from=prerelease /usr/src/app/src/.env .
-COPY --from=prerelease /usr/src/app/src/index.ts .
-COPY --from=prerelease /usr/src/app/src/package.json .
+COPY --from=prerelease /usr/src/app/dist ./dist
+COPY --from=prerelease /usr/src/app/src ./src
+COPY --from=prerelease /usr/src/app/tsconfig.json ./tsconfig.json
+COPY --from=prerelease /usr/src/app/bunfig.toml* ./
+COPY --from=prerelease /usr/src/app/.env* ./
+COPY package.json .
 
-# run the app
+# Run the application
 USER bun
-ENTRYPOINT [ "bun", "run", "index.ts" ]
+EXPOSE 4043
+CMD ["bun", "run", "prod"]
