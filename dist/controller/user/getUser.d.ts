@@ -1,6 +1,37 @@
 export declare const getUserProfile: (userId: number) => Promise<{
-    profileImage: never;
-    role: never;
+    profileImage: {
+        id: number;
+        createdAt: Date;
+        updatedAt: Date;
+        filename: string;
+        originalName: string;
+        mimeType: string;
+        size: number;
+        filePath: string;
+        fileContent: import("@prisma/client/runtime/client").Bytes;
+    } | null;
+    role: ({
+        permissions: ({
+            modules: {
+                id: number;
+                createdAt: Date;
+                updatedAt: Date;
+                description: string | null;
+                Name: string;
+            }[];
+        } & {
+            id: number;
+            createdAt: Date;
+            updatedAt: Date;
+            action: string[];
+        })[];
+    } & {
+        id: number;
+        name: string;
+        createdAt: Date;
+        updatedAt: Date;
+        description: string | null;
+    }) | null;
     id: number;
     name: string;
     email: string;
@@ -15,8 +46,24 @@ export declare const getUserProfile: (userId: number) => Promise<{
 }>;
 export declare const getAllUsers: (page?: number, limit?: number, roleId?: number) => Promise<{
     users: {
-        profileImage: never;
-        role: never;
+        profileImage: {
+            id: number;
+            createdAt: Date;
+            updatedAt: Date;
+            filename: string;
+            originalName: string;
+            mimeType: string;
+            size: number;
+            filePath: string;
+            fileContent: import("@prisma/client/runtime/client").Bytes;
+        } | null;
+        role: {
+            id: number;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+            description: string | null;
+        } | null;
         id: number;
         name: string;
         email: string;
@@ -37,8 +84,24 @@ export declare const getAllUsers: (page?: number, limit?: number, roleId?: numbe
     };
 }>;
 export declare const getUserById: (userId: number) => Promise<{
-    profileImage: never;
-    role: never;
+    profileImage: {
+        id: number;
+        createdAt: Date;
+        updatedAt: Date;
+        filename: string;
+        originalName: string;
+        mimeType: string;
+        size: number;
+        filePath: string;
+        fileContent: import("@prisma/client/runtime/client").Bytes;
+    } | null;
+    role: {
+        id: number;
+        name: string;
+        createdAt: Date;
+        updatedAt: Date;
+        description: string | null;
+    } | null;
     id: number;
     name: string;
     email: string;

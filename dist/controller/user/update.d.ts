@@ -1,7 +1,23 @@
 import { IUpdateUserProfile, IUpdateUserPassword } from '@schema/user';
 export declare const updateUserProfile: (userId: number, body: IUpdateUserProfile) => Promise<{
-    profileImage: never;
-    role: never;
+    profileImage: {
+        id: number;
+        createdAt: Date;
+        updatedAt: Date;
+        filename: string;
+        originalName: string;
+        mimeType: string;
+        size: number;
+        filePath: string;
+        fileContent: import("@prisma/client/runtime/client").Bytes;
+    } | null;
+    role: {
+        id: number;
+        name: string;
+        createdAt: Date;
+        updatedAt: Date;
+        description: string | null;
+    } | null;
     id: number;
     name: string;
     email: string;
@@ -18,8 +34,24 @@ export declare const updateUserPassword: (userId: number, body: IUpdateUserPassw
     message: string;
 }>;
 export declare const updateUserById: (userId: number, body: IUpdateUserProfile) => Promise<{
-    profileImage: never;
-    role: never;
+    profileImage: {
+        id: number;
+        createdAt: Date;
+        updatedAt: Date;
+        filename: string;
+        originalName: string;
+        mimeType: string;
+        size: number;
+        filePath: string;
+        fileContent: import("@prisma/client/runtime/client").Bytes;
+    } | null;
+    role: {
+        id: number;
+        name: string;
+        createdAt: Date;
+        updatedAt: Date;
+        description: string | null;
+    } | null;
     id: number;
     name: string;
     email: string;
@@ -34,8 +66,24 @@ export declare const updateUserById: (userId: number, body: IUpdateUserProfile) 
 }>;
 export declare const uploadProfileImage: (userId: number, fileId: number) => Promise<{
     user: {
-        profileImage: never;
-        role: never;
+        profileImage: {
+            id: number;
+            createdAt: Date;
+            updatedAt: Date;
+            filename: string;
+            originalName: string;
+            mimeType: string;
+            size: number;
+            filePath: string;
+            fileContent: import("@prisma/client/runtime/client").Bytes;
+        } | null;
+        role: {
+            id: number;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+            description: string | null;
+        } | null;
         id: number;
         name: string;
         email: string;
@@ -48,5 +96,15 @@ export declare const uploadProfileImage: (userId: number, fileId: number) => Pro
         createdAt: Date;
         updatedAt: Date;
     };
-    file: any;
+    file: {
+        id: number;
+        createdAt: Date;
+        updatedAt: Date;
+        filename: string;
+        originalName: string;
+        mimeType: string;
+        size: number;
+        filePath: string;
+        fileContent: import("@prisma/client/runtime/client").Bytes;
+    };
 }>;

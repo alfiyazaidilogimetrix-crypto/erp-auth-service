@@ -1,8 +1,24 @@
 import { IUserRegister } from '@schema/user';
 export declare const register: (body: IUserRegister) => Promise<{
     user: {
-        profileImage: never;
-        role: never;
+        profileImage: {
+            id: number;
+            createdAt: Date;
+            updatedAt: Date;
+            filename: string;
+            originalName: string;
+            mimeType: string;
+            size: number;
+            filePath: string;
+            fileContent: import("@prisma/client/runtime/client").Bytes;
+        } | null;
+        role: {
+            id: number;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+            description: string | null;
+        } | null;
     } & {
         id: number;
         name: string;

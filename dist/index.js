@@ -49,7 +49,12 @@ app.use('/api/*', (0, cors_1.cors)({
         'https://hdw8jq12-5173.inc1.devtunnels.ms',
         'https://hdw8jq12-5174.inc1.devtunnels.ms',
     ],
-    allowHeaders: ['Content-Type', 'Authorization'],
+    allowHeaders: [
+        'Content-Type',
+        'Authorization',
+        'x-module',
+        'action-perform',
+    ],
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     credentials: true,
 }));

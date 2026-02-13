@@ -2,8 +2,24 @@ export declare const deleteUser: (userId: number, currentUserId: number) => Prom
     message: string;
 }>;
 export declare const removeProfileImage: (userId: number) => Promise<{
-    profileImage: never;
-    role: never;
+    profileImage: {
+        id: number;
+        createdAt: Date;
+        updatedAt: Date;
+        filename: string;
+        originalName: string;
+        mimeType: string;
+        size: number;
+        filePath: string;
+        fileContent: import("@prisma/client/runtime/client").Bytes;
+    } | null;
+    role: {
+        id: number;
+        name: string;
+        createdAt: Date;
+        updatedAt: Date;
+        description: string | null;
+    } | null;
     id: number;
     name: string;
     email: string;

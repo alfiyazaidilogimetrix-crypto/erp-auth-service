@@ -121,7 +121,7 @@ var getAllUsers = function () {
                 case 1:
                     _a = _b.sent(), users = _a[0], total = _a[1];
                     usersWithoutPasswords = users.map(function (_a) {
-                        var password = _a.password, user = __rest(_a, ["password"]);
+                        var _password = _a.password, user = __rest(_a, ["password"]);
                         return user;
                     });
                     return [2 /*return*/, {
