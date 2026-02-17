@@ -9,7 +9,7 @@ RUN apt-get update -y && apt-get install -y openssl git
 # Install dependencies with fresh erp-shared-models
 FROM base AS install
 RUN mkdir -p /temp/dev
-COPY package.json bun.lock* /temp/dev/
+COPY erp-auth-service/package.json erp-auth-service/bun.lock* /temp/dev/
 
 # Remove erp-shared-models first to ensure fresh install
 RUN cd /temp/dev && \
@@ -19,7 +19,7 @@ RUN cd /temp/dev && \
 
 # Install production dependencies with fresh erp-shared-models
 RUN mkdir -p /temp/prod
-COPY package.json bun.lock* /temp/prod/
+COPY erp-auth-service/package.json erp-auth-service/bun.lock* /temp/prod/
 RUN cd /temp/prod && \
     bun remove erp-shared-models || true && \
     bun add github:alfiyazaidilogimetrix-crypto/erp-shared-models#main && \
@@ -28,7 +28,7 @@ RUN cd /temp/prod && \
 # Build stage - build TypeScript and prepare for linking
 FROM base AS prerelease
 COPY --from=install /temp/dev/node_modules node_modules
-COPY . .
+COPY erp-auth-service/. .
 
 # Build the TypeScript project
 RUN bun run build
@@ -44,7 +44,7 @@ COPY --from=prerelease /usr/src/app/src ./src
 COPY --from=prerelease /usr/src/app/tsconfig.json ./tsconfig.json
 COPY --from=prerelease /usr/src/app/bunfig.toml* ./
 COPY --from=prerelease /usr/src/app/.env* ./
-COPY package.json .
+COPY erp-auth-service/package.json .
 
 # Run the application
 USER bun
