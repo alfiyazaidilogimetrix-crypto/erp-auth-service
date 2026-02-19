@@ -7,19 +7,54 @@ import {
   userRegisterSchema,
   verifyOtpSchema,
   userResponseSchema,
+  bulkCreateUserSchema,
 } from '@schema/user';
 import { fileResponseSchema } from '@schema/file';
 
-// Common Response Schemas
-const ErrorResponseSchema = z.object({
-  status: z.number(),
-  message: z.string(),
-  error: z.string().optional(),
+const securityHeaders = z.object({
+  Authorization: z.string().openapi({ example: 'Bearer <token>' }),
 });
 
-const SuccessResponseSchema = z.object({
-  status: z.number(),
-  message: z.string(),
+export const bulkCreateUserDoc = createRoute({
+  tags: ['User'],
+  method: 'post',
+  path: '/bulk-excel',
+  summary: 'Bulk create users from Excel',
+  description: 'Create multiple user accounts from parsed Excel data',
+  request: {
+    headers: securityHeaders,
+    body: {
+      content: {
+        'application/json': {
+          schema: bulkCreateUserSchema,
+        },
+      },
+    },
+  },
+  responses: {
+    200: {
+      description: 'Bulk creation completed',
+      content: {
+        'application/json': {
+          schema: z.object({
+            status: z.number(),
+            message: z.string(),
+            data: z.object({
+              success: z.number(),
+              failed: z.number(),
+              data: z.array(z.any()),
+              errors: z.array(
+                z.object({
+                  row: z.number(),
+                  message: z.string(),
+                })
+              ),
+            }),
+          }),
+        },
+      },
+    },
+  },
 });
 
 // User Routes

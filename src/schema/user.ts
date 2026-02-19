@@ -221,6 +221,32 @@ export const resetPasswordSchema = z
     },
   });
 
+export const bulkCreateUserSchema = z
+  .object({
+    users: z.array(
+      z.object({
+        'username': z.string().min(1, 'Username is required'),
+        'email': z.string().email('Valid email is required'),
+        'password': z.string().min(6, 'Password must be at least 6 characters'),
+        'Mobile Number': z.string().optional().nullable(),
+        'Role': z.string().optional().nullable(),
+      })
+    ),
+  })
+  .openapi({
+    example: {
+      users: [
+        {
+          'username': 'johndoe',
+          'email': 'john@example.com',
+          'password': 'password123',
+          'Mobile Number': '1234567890',
+          'Role': 'Site Engineer',
+        },
+      ],
+    },
+  });
+
 export type IVerifyOtp = z.infer<typeof verifyOtpSchema>;
 export type IResendOtp = z.infer<typeof resendOtpSchema>;
 export type IUserRegister = z.infer<typeof userRegisterSchema>;
@@ -230,5 +256,6 @@ export type IUpdateUserPassword = z.infer<typeof updateUserPasswordSchema>;
 export type IUserResponse = z.infer<typeof userResponseSchema>;
 export type ICreateUserByAdmin = z.infer<typeof createUserByAdminSchema>;
 export type IUpdateUserByAdmin = z.infer<typeof updateUserByAdminSchema>;
+export type IBulkCreateUser = z.infer<typeof bulkCreateUserSchema>;
 export type IForgotPassword = z.infer<typeof forgotPasswordSchema>;
 export type IResetPassword = z.infer<typeof resetPasswordSchema>;

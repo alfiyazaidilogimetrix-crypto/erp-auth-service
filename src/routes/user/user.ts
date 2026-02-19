@@ -15,16 +15,19 @@ import {
   getUserByIdDoc,
   updateUserByIdDoc,
   deleteUserDoc,
+  bulkCreateUserDoc,
 } from '@swagger/user';
 import {
   IUserLogin,
   IUserRegister,
   IUpdateUserProfile,
   IUpdateUserPassword,
+  IBulkCreateUser,
 } from '@schema/user';
 import { register } from '@controller/user/register';
 import { login } from '@controller/user/login';
 import { resendOTPToken, verifyOTPToken } from '@controller/user/otp';
+import { bulkCreateUserFromExcel } from '@controller/user/excel';
 import {
   updateUserProfile,
   updateUserPassword,
@@ -41,6 +44,19 @@ import { userGuard } from '@jwt/user';
 import { IUserPayload } from '@schema/jwt';
 
 const user = new OpenAPIHono();
+
+user.openapi(
+  bulkCreateUserDoc,
+  async (c: any) => {
+    const body: IBulkCreateUser = await c.req.json();
+    const result = await bulkCreateUserFromExcel(body);
+    return c.json({
+      status: 200,
+      message: 'Bulk user creation completed',
+      data: result,
+    });
+  }
+);
 user.use(getUserProfileDoc.path, userGuard);
 user.use(updateUserProfileDoc.path, userGuard);
 user.use(updateUserPasswordDoc.path, userGuard);
