@@ -27,6 +27,7 @@ app.use(
       'https://hdw8jq12-5174.inc1.devtunnels.ms',
       'https://s-p-erp.vercel.app',
       'http://192.168.1.24',
+      'http://46.202.162.203:9090',
     ],
     allowHeaders: [
       'Content-Type',
