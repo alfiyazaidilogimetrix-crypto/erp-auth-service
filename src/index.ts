@@ -28,7 +28,9 @@ app.use(
       'https://s-p-erp.vercel.app',
       'http://192.168.1.24',
       'http://46.202.162.203:9090',
-      'https://jnndxrmz-5173.inc1.devtunnels.ms'
+      'https://jnndxrmz-5173.inc1.devtunnels.ms',
+      'https://xc9xrc7c-5173.inc1.devtunnels.ms'
+
     ],
     allowHeaders: [
       'Content-Type',
