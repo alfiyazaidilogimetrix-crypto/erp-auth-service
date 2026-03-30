@@ -20,6 +20,8 @@ export const createPermission = async (body: ICreatePermission) => {
   const permission = await prisma.permission.create({
     data: {
       action: body.action,
+      title: body.title,
+      description: body.description,
       modules: {
         connect: body.moduleIds?.map((id) => ({ id })) || [],
       },

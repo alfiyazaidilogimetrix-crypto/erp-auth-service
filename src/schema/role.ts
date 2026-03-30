@@ -109,12 +109,16 @@ export const roleResponseSchema = z
 export const createPermissionSchema = z
   .object({
     action: z.array(z.string().min(1, 'Action is required')),
+    title: z.string().min(1).max(100).optional(),
+    description: z.string().max(500).optional().nullable(),
     moduleIds: z.array(z.number()).optional().default([]),
   })
   .openapi({
     required: ['action'],
     example: {
       action: ['create', 'read', 'update', 'delete'],
+      title: 'Permission Title',
+      description: 'Permission Description',
       moduleIds: [1, 2, 3],
     },
   });
@@ -122,11 +126,15 @@ export const createPermissionSchema = z
 export const updatePermissionSchema = z
   .object({
     action: z.array(z.string().min(1)).optional(),
+    title: z.string().min(1).max(100).optional(),
+    description: z.string().max(500).optional().nullable(),
     moduleIds: z.array(z.number()).optional().default([]),
   })
   .openapi({
     example: {
       action: ['create', 'read', 'update', 'delete', 'manage'],
+      title: 'Permission Title',
+      description: 'Permission Description',
       moduleIds: [1, 2, 3, 4],
     },
   });
@@ -188,12 +196,14 @@ export const permissionResponseSchema = z
 export const createModuleSchema = z
   .object({
     Name: z.string().min(1, 'Name is required').max(100),
+    title: z.string().min(1, 'Title is required').max(100),
     description: z.string().max(500).optional().nullable(),
   })
   .openapi({
     required: ['Name'],
     example: {
       Name: 'users',
+      title: 'Users',
       description: 'User management module',
     },
   });
@@ -201,11 +211,13 @@ export const createModuleSchema = z
 export const updateModuleSchema = z
   .object({
     Name: z.string().min(1).max(100).optional(),
+    title: z.string().min(1).max(100).optional(),
     description: z.string().max(500).optional().nullable(),
   })
   .openapi({
     example: {
       Name: 'user_management',
+      title: 'User Management',
       description: 'Complete user management system',
     },
   });

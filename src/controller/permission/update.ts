@@ -31,10 +31,12 @@ export const updatePermission = async (id: number, body: IUpdatePermission) => {
     where: { id },
     data: {
       action: body.action,
+      title: body.title,
+      description: body.description,
       modules: body.moduleIds
         ? {
-            set: body.moduleIds.map((id) => ({ id })),
-          }
+          set: body.moduleIds.map((id) => ({ id })),
+        }
         : undefined,
     },
     include: {
