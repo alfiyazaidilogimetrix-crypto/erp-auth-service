@@ -42,6 +42,9 @@ interface IUserWithRelations {
   original_password: string | null;
   mobileNumber: string | null;
   roleId: number | null;
+  company_id: number | null;
+  head_office_id: number | null;
+  branch_office_id: number | null;
   createdAt: Date;
   updatedAt: Date;
   provider: string;

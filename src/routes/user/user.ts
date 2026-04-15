@@ -1,4 +1,5 @@
 import { OpenAPIHono } from '@hono/zod-openapi';
+import { setCookie } from 'hono/cookie';
 import { HTTPException } from 'hono/http-exception';
 import { IResendOtp, IVerifyOtp } from '@schema/otp';
 import { prisma } from 'erp-shared-models';
@@ -79,9 +80,21 @@ user.openapi(userRegisterDoc, async (c) => {
   });
 });
 
-user.openapi(userLoginDoc, async (c) => {
+user.openapi(userLoginDoc, async (c: any) => {
   const body: IUserLogin = await c.req.json();
   const data = await login(body);
+
+  // Set organizational cookies if they exist
+  if (data.user?.company_id) {
+    setCookie(c, 'company_id', String(data.user.company_id), { path: '/', httpOnly: false, sameSite: 'Lax', maxAge: 60 * 60 * 24 * 7 });
+  }
+  if (data.user?.head_office_id) {
+    setCookie(c, 'head_office_id', String(data.user.head_office_id), { path: '/', httpOnly: false, sameSite: 'Lax', maxAge: 60 * 60 * 24 * 7 });
+  }
+  if (data.user?.branch_office_id) {
+    setCookie(c, 'branch_office_id', String(data.user.branch_office_id), { path: '/', httpOnly: false, sameSite: 'Lax', maxAge: 60 * 60 * 24 * 7 });
+  }
+
   return c.json({
     status: 200,
     message: 'You are logged in successfully',

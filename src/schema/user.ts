@@ -11,6 +11,9 @@ export const userRegisterSchema = z
     fileId: z.number().int().positive().optional().nullable(),
     mobileNumber: z.string().max(20).optional().nullable(),
     roleId: z.number().optional().nullable(),
+    company_id: z.number().int().positive().optional().nullable(),
+    head_office_id: z.number().int().positive().optional().nullable(),
+    branch_office_id: z.number().int().positive().optional().nullable(),
   })
   .openapi({
     required: ['name', 'email', 'password'],
@@ -42,6 +45,9 @@ export const updateUserProfileSchema = z
     fileId: z.number().int().positive().optional().nullable(),
     mobileNumber: z.string().max(20).optional().nullable(),
     roleId: z.number().optional().nullable(),
+    company_id: z.number().int().positive().optional().nullable(),
+    head_office_id: z.number().int().positive().optional().nullable(),
+    branch_office_id: z.number().int().positive().optional().nullable(),
   })
   .openapi({
     example: {
@@ -96,6 +102,9 @@ export const userResponseSchema = z
       })
       .optional()
       .nullable(),
+    company_id: z.number().nullable().optional(),
+    head_office_id: z.number().nullable().optional(),
+    branch_office_id: z.number().nullable().optional(),
     createdAt: z.string().datetime(),
     updatedAt: z.string().datetime(),
     provider: z.enum(['credentials', 'google', 'github']), // Expanded based on common providers
@@ -161,6 +170,9 @@ export const createUserByAdminSchema = z
     fileId: z.number().int().positive().optional().nullable(),
     mobileNumber: z.string().max(20).optional().nullable(),
     roleId: z.number().optional().nullable(),
+    company_id: z.number().int().positive().optional().nullable(),
+    head_office_id: z.number().int().positive().optional().nullable(),
+    branch_office_id: z.number().int().positive().optional().nullable(),
   })
   .openapi({
     required: ['name', 'email'],
@@ -181,6 +193,9 @@ export const updateUserByAdminSchema = z
     mobileNumber: z.string().max(20).optional().nullable(),
     roleId: z.number().optional().nullable(),
     emailVerified: z.boolean().optional(),
+    company_id: z.number().int().positive().optional().nullable(),
+    head_office_id: z.number().int().positive().optional().nullable(),
+    branch_office_id: z.number().int().positive().optional().nullable(),
   })
   .openapi({
     example: {
