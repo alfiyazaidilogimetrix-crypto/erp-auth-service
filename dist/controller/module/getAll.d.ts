@@ -10,6 +10,8 @@ export declare const getModules: (page?: number, limit?: number) => Promise<{
             id: number;
             createdAt: Date;
             updatedAt: Date;
+            description: string | null;
+            title: string | null;
             action: string[];
         })[];
     } & {
@@ -37,6 +39,8 @@ export declare const getModuleById: (id: number) => Promise<{
         id: number;
         createdAt: Date;
         updatedAt: Date;
+        description: string | null;
+        title: string | null;
         action: string[];
     })[];
 } & {

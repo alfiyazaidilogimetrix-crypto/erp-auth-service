@@ -10,7 +10,7 @@ export declare const register: (body: IUserRegister) => Promise<{
             mimeType: string;
             size: number;
             filePath: string;
-            fileContent: import("@prisma/client/runtime/client").Bytes;
+            fileContent: import("erp-shared-models/src/generated/client/runtime/client").Bytes;
         } | null;
         role: {
             id: number;
@@ -29,7 +29,10 @@ export declare const register: (body: IUserRegister) => Promise<{
         original_password: string | null;
         mobileNumber: string | null;
         roleId: number | null;
-        provider: import("erp-shared-models/src/generated/client/enums").Provider;
+        company_id: number | null;
+        head_office_id: number | null;
+        branch_office_id: number | null;
+        provider: import("erp-shared-models/src/generated/client").$Enums.Provider;
         createdAt: Date;
         updatedAt: Date;
     };

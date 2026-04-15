@@ -16,5 +16,7 @@ export declare const updatePermission: (id: number, body: IUpdatePermission) => 
     id: number;
     createdAt: Date;
     updatedAt: Date;
+    description: string | null;
+    title: string | null;
     action: string[];
 }>;

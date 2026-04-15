@@ -10,6 +10,8 @@ export declare const updateModule: (id: number, body: IUpdateModule) => Promise<
         id: number;
         createdAt: Date;
         updatedAt: Date;
+        description: string | null;
+        title: string | null;
         action: string[];
     })[];
 } & {

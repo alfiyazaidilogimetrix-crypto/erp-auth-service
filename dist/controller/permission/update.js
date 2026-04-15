@@ -69,6 +69,8 @@ var updatePermission = function (id, body) { return __awaiter(void 0, void 0, vo
                     where: { id: id },
                     data: {
                         action: body.action,
+                        title: body.title,
+                        description: body.description,
                         modules: body.moduleIds
                             ? {
                                 set: body.moduleIds.map(function (id) { return ({ id: id }); }),

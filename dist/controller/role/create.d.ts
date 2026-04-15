@@ -1,5 +1,10 @@
 import { ICreateRole, IAssignRoleToUser } from '@schema/role';
 export declare const createRole: (body: ICreateRole) => Promise<{
+    users: {
+        id: number;
+        name: string;
+        email: string;
+    }[];
     permissions: ({
         modules: {
             id: number;
@@ -12,13 +17,10 @@ export declare const createRole: (body: ICreateRole) => Promise<{
         id: number;
         createdAt: Date;
         updatedAt: Date;
+        description: string | null;
+        title: string | null;
         action: string[];
     })[];
-    users: {
-        id: number;
-        name: string;
-        email: string;
-    }[];
 } & {
     id: number;
     name: string;

@@ -14,8 +14,8 @@ export declare const createVendorSchema: z.ZodObject<{
 }, "strip", z.ZodTypeAny, {
     status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
     vendor_name: string;
-    address?: string | null | undefined;
     contact_number?: string | null | undefined;
+    address?: string | null | undefined;
     email_address?: string | null | undefined;
     pan_number?: string | null | undefined;
     gst_number?: string | null | undefined;
@@ -23,8 +23,8 @@ export declare const createVendorSchema: z.ZodObject<{
 }, {
     vendor_name: string;
     status?: "ACTIVE" | "INACTIVE" | "SUSPENDED" | undefined;
-    address?: string | null | undefined;
     contact_number?: string | null | undefined;
+    address?: string | null | undefined;
     email_address?: string | null | undefined;
     pan_number?: string | null | undefined;
     gst_number?: string | null | undefined;
@@ -41,18 +41,18 @@ export declare const updateVendorSchema: z.ZodObject<{
     status: z.ZodOptional<z.ZodEnum<["ACTIVE", "INACTIVE", "SUSPENDED"]>>;
 }, "strip", z.ZodTypeAny, {
     status?: "ACTIVE" | "INACTIVE" | "SUSPENDED" | undefined;
+    contact_number?: string | null | undefined;
     address?: string | null | undefined;
     vendor_name?: string | undefined;
-    contact_number?: string | null | undefined;
     email_address?: string | null | undefined;
     pan_number?: string | null | undefined;
     gst_number?: string | null | undefined;
     category?: string | null | undefined;
 }, {
     status?: "ACTIVE" | "INACTIVE" | "SUSPENDED" | undefined;
+    contact_number?: string | null | undefined;
     address?: string | null | undefined;
     vendor_name?: string | undefined;
-    contact_number?: string | null | undefined;
     email_address?: string | null | undefined;
     pan_number?: string | null | undefined;
     gst_number?: string | null | undefined;
@@ -75,9 +75,9 @@ export declare const vendorResponseSchema: z.ZodObject<{
     status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
     created_at: string;
     updated_at: string;
+    contact_number: string | null;
     address: string | null;
     vendor_name: string;
-    contact_number: string | null;
     email_address: string | null;
     pan_number: string | null;
     gst_number: string | null;
@@ -87,9 +87,9 @@ export declare const vendorResponseSchema: z.ZodObject<{
     status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
     created_at: string;
     updated_at: string;
+    contact_number: string | null;
     address: string | null;
     vendor_name: string;
-    contact_number: string | null;
     email_address: string | null;
     pan_number: string | null;
     gst_number: string | null;
@@ -112,9 +112,9 @@ export declare const vendorListResponseSchema: z.ZodArray<z.ZodObject<{
     status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
     created_at: string;
     updated_at: string;
+    contact_number: string | null;
     address: string | null;
     vendor_name: string;
-    contact_number: string | null;
     email_address: string | null;
     pan_number: string | null;
     gst_number: string | null;
@@ -124,9 +124,9 @@ export declare const vendorListResponseSchema: z.ZodArray<z.ZodObject<{
     status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
     created_at: string;
     updated_at: string;
+    contact_number: string | null;
     address: string | null;
     vendor_name: string;
-    contact_number: string | null;
     email_address: string | null;
     pan_number: string | null;
     gst_number: string | null;
@@ -174,7 +174,7 @@ export declare const vendorQueryParamsSchema: z.ZodObject<{
     status?: "ACTIVE" | "INACTIVE" | "SUSPENDED" | undefined;
     start_date?: string | undefined;
     end_date?: string | undefined;
-    include?: "all" | "supplies" | "pos" | "stats" | undefined;
+    include?: "all" | "pos" | "supplies" | "stats" | undefined;
     search?: string | undefined;
     category?: string | undefined;
     has_gst?: boolean | undefined;
@@ -183,7 +183,7 @@ export declare const vendorQueryParamsSchema: z.ZodObject<{
     status?: "ACTIVE" | "INACTIVE" | "SUSPENDED" | undefined;
     start_date?: string | undefined;
     end_date?: string | undefined;
-    include?: "all" | "supplies" | "pos" | "stats" | undefined;
+    include?: "all" | "pos" | "supplies" | "stats" | undefined;
     search?: string | undefined;
     page?: string | undefined;
     limit?: string | undefined;
@@ -210,9 +210,9 @@ export declare const vendorPaginationResponseSchema: z.ZodObject<{
         status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
         created_at: string;
         updated_at: string;
+        contact_number: string | null;
         address: string | null;
         vendor_name: string;
-        contact_number: string | null;
         email_address: string | null;
         pan_number: string | null;
         gst_number: string | null;
@@ -222,9 +222,9 @@ export declare const vendorPaginationResponseSchema: z.ZodObject<{
         status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
         created_at: string;
         updated_at: string;
+        contact_number: string | null;
         address: string | null;
         vendor_name: string;
-        contact_number: string | null;
         email_address: string | null;
         pan_number: string | null;
         gst_number: string | null;
@@ -258,14 +258,15 @@ export declare const vendorPaginationResponseSchema: z.ZodObject<{
         status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
         created_at: string;
         updated_at: string;
+        contact_number: string | null;
         address: string | null;
         vendor_name: string;
-        contact_number: string | null;
         email_address: string | null;
         pan_number: string | null;
         gst_number: string | null;
         category: string | null;
     }[];
+    success: boolean;
     pagination: {
         page: number;
         limit: number;
@@ -274,16 +275,15 @@ export declare const vendorPaginationResponseSchema: z.ZodObject<{
         hasNext: boolean;
         hasPrev: boolean;
     };
-    success: boolean;
 }, {
     data: {
         id: number;
         status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
         created_at: string;
         updated_at: string;
+        contact_number: string | null;
         address: string | null;
         vendor_name: string;
-        contact_number: string | null;
         email_address: string | null;
         pan_number: string | null;
         gst_number: string | null;
@@ -314,13 +314,13 @@ export declare const vendorStatsResponseSchema: z.ZodObject<{
         po_count: z.ZodNumber;
         total_amount: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        vendor_id: number;
         total_amount: string;
+        vendor_id: number;
         vendor_name: string;
         po_count: number;
     }, {
-        vendor_id: number;
         total_amount: string;
+        vendor_id: number;
         vendor_name: string;
         po_count: number;
     }>, "many">;
@@ -334,8 +334,8 @@ export declare const vendorStatsResponseSchema: z.ZodObject<{
     recent_vendors_count: number;
     vendors_without_gst: number;
     top_vendors_by_po: {
-        vendor_id: number;
         total_amount: string;
+        vendor_id: number;
         vendor_name: string;
         po_count: number;
     }[];
@@ -348,8 +348,8 @@ export declare const vendorStatsResponseSchema: z.ZodObject<{
     recent_vendors_count: number;
     vendors_without_gst: number;
     top_vendors_by_po: {
-        vendor_id: number;
         total_amount: string;
+        vendor_id: number;
         vendor_name: string;
         po_count: number;
     }[];

@@ -1,5 +1,10 @@
 import { IUpdateRole } from '@schema/role';
 export declare const updateRole: (id: number, body: IUpdateRole) => Promise<{
+    users: {
+        id: number;
+        name: string;
+        email: string;
+    }[];
     permissions: ({
         modules: {
             id: number;
@@ -12,13 +17,10 @@ export declare const updateRole: (id: number, body: IUpdateRole) => Promise<{
         id: number;
         createdAt: Date;
         updatedAt: Date;
+        description: string | null;
+        title: string | null;
         action: string[];
     })[];
-    users: {
-        id: number;
-        name: string;
-        email: string;
-    }[];
 } & {
     id: number;
     name: string;

@@ -101,23 +101,31 @@ exports.roleResponseSchema = zod_openapi_1.z
 exports.createPermissionSchema = zod_openapi_1.z
     .object({
     action: zod_openapi_1.z.array(zod_openapi_1.z.string().min(1, 'Action is required')),
+    title: zod_openapi_1.z.string().min(1).max(100).optional(),
+    description: zod_openapi_1.z.string().max(500).optional().nullable(),
     moduleIds: zod_openapi_1.z.array(zod_openapi_1.z.number()).optional().default([]),
 })
     .openapi({
     required: ['action'],
     example: {
         action: ['create', 'read', 'update', 'delete'],
+        title: 'Permission Title',
+        description: 'Permission Description',
         moduleIds: [1, 2, 3],
     },
 });
 exports.updatePermissionSchema = zod_openapi_1.z
     .object({
     action: zod_openapi_1.z.array(zod_openapi_1.z.string().min(1)).optional(),
+    title: zod_openapi_1.z.string().min(1).max(100).optional(),
+    description: zod_openapi_1.z.string().max(500).optional().nullable(),
     moduleIds: zod_openapi_1.z.array(zod_openapi_1.z.number()).optional().default([]),
 })
     .openapi({
     example: {
         action: ['create', 'read', 'update', 'delete', 'manage'],
+        title: 'Permission Title',
+        description: 'Permission Description',
         moduleIds: [1, 2, 3, 4],
     },
 });
@@ -173,23 +181,27 @@ exports.permissionResponseSchema = zod_openapi_1.z
 exports.createModuleSchema = zod_openapi_1.z
     .object({
     Name: zod_openapi_1.z.string().min(1, 'Name is required').max(100),
+    title: zod_openapi_1.z.string().min(1, 'Title is required').max(100),
     description: zod_openapi_1.z.string().max(500).optional().nullable(),
 })
     .openapi({
     required: ['Name'],
     example: {
         Name: 'users',
+        title: 'Users',
         description: 'User management module',
     },
 });
 exports.updateModuleSchema = zod_openapi_1.z
     .object({
     Name: zod_openapi_1.z.string().min(1).max(100).optional(),
+    title: zod_openapi_1.z.string().min(1).max(100).optional(),
     description: zod_openapi_1.z.string().max(500).optional().nullable(),
 })
     .openapi({
     example: {
         Name: 'user_management',
+        title: 'User Management',
         description: 'Complete user management system',
     },
 });

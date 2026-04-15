@@ -6,6 +6,9 @@ export declare const userRegisterSchema: z.ZodObject<{
     fileId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
     mobileNumber: z.ZodNullable<z.ZodOptional<z.ZodString>>;
     roleId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+    company_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+    head_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+    branch_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
 }, "strip", z.ZodTypeAny, {
     name: string;
     email: string;
@@ -13,6 +16,9 @@ export declare const userRegisterSchema: z.ZodObject<{
     fileId?: number | null | undefined;
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
+    company_id?: number | null | undefined;
+    head_office_id?: number | null | undefined;
+    branch_office_id?: number | null | undefined;
 }, {
     name: string;
     email: string;
@@ -20,6 +26,9 @@ export declare const userRegisterSchema: z.ZodObject<{
     fileId?: number | null | undefined;
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
+    company_id?: number | null | undefined;
+    head_office_id?: number | null | undefined;
+    branch_office_id?: number | null | undefined;
 }>;
 export declare const userLoginSchema: z.ZodObject<{
     email: z.ZodString;
@@ -36,16 +45,25 @@ export declare const updateUserProfileSchema: z.ZodObject<{
     fileId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
     mobileNumber: z.ZodNullable<z.ZodOptional<z.ZodString>>;
     roleId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+    company_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+    head_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+    branch_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
 }, "strip", z.ZodTypeAny, {
     name?: string | undefined;
     fileId?: number | null | undefined;
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
+    company_id?: number | null | undefined;
+    head_office_id?: number | null | undefined;
+    branch_office_id?: number | null | undefined;
 }, {
     name?: string | undefined;
     fileId?: number | null | undefined;
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
+    company_id?: number | null | undefined;
+    head_office_id?: number | null | undefined;
+    branch_office_id?: number | null | undefined;
 }>;
 export declare const updateUserPasswordSchema: z.ZodObject<{
     currentPassword: z.ZodString;
@@ -100,6 +118,9 @@ export declare const userResponseSchema: z.ZodObject<{
         name: string;
         description?: string | null | undefined;
     }>>>;
+    company_id: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+    head_office_id: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+    branch_office_id: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
     createdAt: z.ZodString;
     updatedAt: z.ZodString;
     provider: z.ZodEnum<["credentials", "google", "github"]>;
@@ -114,6 +135,9 @@ export declare const userResponseSchema: z.ZodObject<{
     fileId?: number | null | undefined;
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
+    company_id?: number | null | undefined;
+    head_office_id?: number | null | undefined;
+    branch_office_id?: number | null | undefined;
     profileImage?: {
         id: number;
         filename: string;
@@ -138,6 +162,9 @@ export declare const userResponseSchema: z.ZodObject<{
     fileId?: number | null | undefined;
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
+    company_id?: number | null | undefined;
+    head_office_id?: number | null | undefined;
+    branch_office_id?: number | null | undefined;
     profileImage?: {
         id: number;
         filename: string;
@@ -175,18 +202,27 @@ export declare const createUserByAdminSchema: z.ZodObject<{
     fileId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
     mobileNumber: z.ZodNullable<z.ZodOptional<z.ZodString>>;
     roleId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+    company_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+    head_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+    branch_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
 }, "strip", z.ZodTypeAny, {
     name: string;
     email: string;
     fileId?: number | null | undefined;
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
+    company_id?: number | null | undefined;
+    head_office_id?: number | null | undefined;
+    branch_office_id?: number | null | undefined;
 }, {
     name: string;
     email: string;
     fileId?: number | null | undefined;
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
+    company_id?: number | null | undefined;
+    head_office_id?: number | null | undefined;
+    branch_office_id?: number | null | undefined;
 }>;
 export declare const updateUserByAdminSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
@@ -195,6 +231,9 @@ export declare const updateUserByAdminSchema: z.ZodObject<{
     mobileNumber: z.ZodNullable<z.ZodOptional<z.ZodString>>;
     roleId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
     emailVerified: z.ZodOptional<z.ZodBoolean>;
+    company_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+    head_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+    branch_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
 }, "strip", z.ZodTypeAny, {
     name?: string | undefined;
     email?: string | undefined;
@@ -202,6 +241,9 @@ export declare const updateUserByAdminSchema: z.ZodObject<{
     fileId?: number | null | undefined;
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
+    company_id?: number | null | undefined;
+    head_office_id?: number | null | undefined;
+    branch_office_id?: number | null | undefined;
 }, {
     name?: string | undefined;
     email?: string | undefined;
@@ -209,6 +251,9 @@ export declare const updateUserByAdminSchema: z.ZodObject<{
     fileId?: number | null | undefined;
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
+    company_id?: number | null | undefined;
+    head_office_id?: number | null | undefined;
+    branch_office_id?: number | null | undefined;
 }>;
 export declare const forgotPasswordSchema: z.ZodObject<{
     email: z.ZodString;
@@ -227,6 +272,43 @@ export declare const resetPasswordSchema: z.ZodObject<{
     token: string;
     newPassword: string;
 }>;
+export declare const bulkCreateUserSchema: z.ZodObject<{
+    users: z.ZodArray<z.ZodObject<{
+        username: z.ZodString;
+        email: z.ZodString;
+        password: z.ZodString;
+        'Mobile Number': z.ZodNullable<z.ZodOptional<z.ZodString>>;
+        Role: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    }, "strip", z.ZodTypeAny, {
+        email: string;
+        password: string;
+        username: string;
+        'Mobile Number'?: string | null | undefined;
+        Role?: string | null | undefined;
+    }, {
+        email: string;
+        password: string;
+        username: string;
+        'Mobile Number'?: string | null | undefined;
+        Role?: string | null | undefined;
+    }>, "many">;
+}, "strip", z.ZodTypeAny, {
+    users: {
+        email: string;
+        password: string;
+        username: string;
+        'Mobile Number'?: string | null | undefined;
+        Role?: string | null | undefined;
+    }[];
+}, {
+    users: {
+        email: string;
+        password: string;
+        username: string;
+        'Mobile Number'?: string | null | undefined;
+        Role?: string | null | undefined;
+    }[];
+}>;
 export type IVerifyOtp = z.infer<typeof verifyOtpSchema>;
 export type IResendOtp = z.infer<typeof resendOtpSchema>;
 export type IUserRegister = z.infer<typeof userRegisterSchema>;
@@ -236,5 +318,6 @@ export type IUpdateUserPassword = z.infer<typeof updateUserPasswordSchema>;
 export type IUserResponse = z.infer<typeof userResponseSchema>;
 export type ICreateUserByAdmin = z.infer<typeof createUserByAdminSchema>;
 export type IUpdateUserByAdmin = z.infer<typeof updateUserByAdminSchema>;
+export type IBulkCreateUser = z.infer<typeof bulkCreateUserSchema>;
 export type IForgotPassword = z.infer<typeof forgotPasswordSchema>;
 export type IResetPassword = z.infer<typeof resetPasswordSchema>;

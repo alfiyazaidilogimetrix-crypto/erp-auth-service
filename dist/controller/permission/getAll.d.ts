@@ -16,6 +16,8 @@ export declare const getPermissions: (page?: number, limit?: number, moduleId?: 
         id: number;
         createdAt: Date;
         updatedAt: Date;
+        description: string | null;
+        title: string | null;
         action: string[];
     })[];
     pagination: {
@@ -42,5 +44,7 @@ export declare const getPermissionById: (id: number) => Promise<{
     id: number;
     createdAt: Date;
     updatedAt: Date;
+    description: string | null;
+    title: string | null;
     action: string[];
 }>;

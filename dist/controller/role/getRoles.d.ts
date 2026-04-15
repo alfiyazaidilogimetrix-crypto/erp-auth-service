@@ -1,5 +1,10 @@
 export declare const getRoles: (page?: number, limit?: number) => Promise<{
     roles: ({
+        users: {
+            id: number;
+            name: string;
+            email: string;
+        }[];
         permissions: ({
             modules: {
                 id: number;
@@ -12,13 +17,10 @@ export declare const getRoles: (page?: number, limit?: number) => Promise<{
             id: number;
             createdAt: Date;
             updatedAt: Date;
+            description: string | null;
+            title: string | null;
             action: string[];
         })[];
-        users: {
-            id: number;
-            name: string;
-            email: string;
-        }[];
     } & {
         id: number;
         name: string;
@@ -34,6 +36,11 @@ export declare const getRoles: (page?: number, limit?: number) => Promise<{
     };
 }>;
 export declare const getRoleById: (id: number) => Promise<{
+    users: {
+        id: number;
+        name: string;
+        email: string;
+    }[];
     permissions: ({
         modules: {
             id: number;
@@ -46,13 +53,10 @@ export declare const getRoleById: (id: number) => Promise<{
         id: number;
         createdAt: Date;
         updatedAt: Date;
+        description: string | null;
+        title: string | null;
         action: string[];
     })[];
-    users: {
-        id: number;
-        name: string;
-        email: string;
-    }[];
 } & {
     id: number;
     name: string;

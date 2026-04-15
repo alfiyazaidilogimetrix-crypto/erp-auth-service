@@ -93,6 +93,11 @@ export declare const roleResponseSchema: z.ZodObject<{
     createdAt: string;
     updatedAt: string;
     description: string | null;
+    users?: {
+        id: number;
+        name: string;
+        email: string;
+    }[] | undefined;
     permissions?: {
         id: number;
         action: string[];
@@ -101,11 +106,6 @@ export declare const roleResponseSchema: z.ZodObject<{
             description: string | null;
             Name: string;
         }[];
-    }[] | undefined;
-    users?: {
-        id: number;
-        name: string;
-        email: string;
     }[] | undefined;
 }, {
     id: number;
@@ -113,6 +113,11 @@ export declare const roleResponseSchema: z.ZodObject<{
     createdAt: string;
     updatedAt: string;
     description: string | null;
+    users?: {
+        id: number;
+        name: string;
+        email: string;
+    }[] | undefined;
     permissions?: {
         id: number;
         action: string[];
@@ -122,29 +127,36 @@ export declare const roleResponseSchema: z.ZodObject<{
             Name: string;
         }[];
     }[] | undefined;
-    users?: {
-        id: number;
-        name: string;
-        email: string;
-    }[] | undefined;
 }>;
 export declare const createPermissionSchema: z.ZodObject<{
     action: z.ZodArray<z.ZodString, "many">;
+    title: z.ZodOptional<z.ZodString>;
+    description: z.ZodNullable<z.ZodOptional<z.ZodString>>;
     moduleIds: z.ZodDefault<z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>>;
 }, "strip", z.ZodTypeAny, {
     action: string[];
     moduleIds: number[];
+    description?: string | null | undefined;
+    title?: string | undefined;
 }, {
     action: string[];
+    description?: string | null | undefined;
+    title?: string | undefined;
     moduleIds?: number[] | undefined;
 }>;
 export declare const updatePermissionSchema: z.ZodObject<{
     action: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+    title: z.ZodOptional<z.ZodString>;
+    description: z.ZodNullable<z.ZodOptional<z.ZodString>>;
     moduleIds: z.ZodDefault<z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>>;
 }, "strip", z.ZodTypeAny, {
     moduleIds: number[];
+    description?: string | null | undefined;
+    title?: string | undefined;
     action?: string[] | undefined;
 }, {
+    description?: string | null | undefined;
+    title?: string | undefined;
     action?: string[] | undefined;
     moduleIds?: number[] | undefined;
 }>;
@@ -212,22 +224,28 @@ export declare const permissionResponseSchema: z.ZodObject<{
 }>;
 export declare const createModuleSchema: z.ZodObject<{
     Name: z.ZodString;
+    title: z.ZodString;
     description: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 }, "strip", z.ZodTypeAny, {
+    title: string;
     Name: string;
     description?: string | null | undefined;
 }, {
+    title: string;
     Name: string;
     description?: string | null | undefined;
 }>;
 export declare const updateModuleSchema: z.ZodObject<{
     Name: z.ZodOptional<z.ZodString>;
+    title: z.ZodOptional<z.ZodString>;
     description: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 }, "strip", z.ZodTypeAny, {
     description?: string | null | undefined;
+    title?: string | undefined;
     Name?: string | undefined;
 }, {
     description?: string | null | undefined;
+    title?: string | undefined;
     Name?: string | undefined;
 }>;
 export declare const moduleResponseSchema: z.ZodObject<{

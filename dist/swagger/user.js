@@ -1,17 +1,49 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteUserDoc = exports.updateUserByIdDoc = exports.getUserByIdDoc = exports.getAllUsersDoc = exports.userResendOtpDoc = exports.userVerifyDoc = exports.removeProfileImageDoc = exports.updateUserPasswordDoc = exports.updateUserProfileDoc = exports.getUserProfileDoc = exports.userLoginDoc = exports.userRegisterDoc = void 0;
+exports.deleteUserDoc = exports.updateUserByIdDoc = exports.getUserByIdDoc = exports.getAllUsersDoc = exports.userResendOtpDoc = exports.userVerifyDoc = exports.removeProfileImageDoc = exports.updateUserPasswordDoc = exports.updateUserProfileDoc = exports.getUserProfileDoc = exports.userLoginDoc = exports.userRegisterDoc = exports.bulkCreateUserDoc = void 0;
 var zod_openapi_1 = require("@hono/zod-openapi");
 var user_1 = require("@schema/user");
-// Common Response Schemas
-var ErrorResponseSchema = zod_openapi_1.z.object({
-    status: zod_openapi_1.z.number(),
-    message: zod_openapi_1.z.string(),
-    error: zod_openapi_1.z.string().optional(),
+var securityHeaders = zod_openapi_1.z.object({
+    Authorization: zod_openapi_1.z.string().openapi({ example: 'Bearer <token>' }),
 });
-var SuccessResponseSchema = zod_openapi_1.z.object({
-    status: zod_openapi_1.z.number(),
-    message: zod_openapi_1.z.string(),
+exports.bulkCreateUserDoc = (0, zod_openapi_1.createRoute)({
+    tags: ['User'],
+    method: 'post',
+    path: '/bulk-excel',
+    summary: 'Bulk create users from Excel',
+    description: 'Create multiple user accounts from parsed Excel data',
+    request: {
+        headers: securityHeaders,
+        body: {
+            content: {
+                'application/json': {
+                    schema: user_1.bulkCreateUserSchema,
+                },
+            },
+        },
+    },
+    responses: {
+        200: {
+            description: 'Bulk creation completed',
+            content: {
+                'application/json': {
+                    schema: zod_openapi_1.z.object({
+                        status: zod_openapi_1.z.number(),
+                        message: zod_openapi_1.z.string(),
+                        data: zod_openapi_1.z.object({
+                            success: zod_openapi_1.z.number(),
+                            failed: zod_openapi_1.z.number(),
+                            data: zod_openapi_1.z.array(zod_openapi_1.z.any()),
+                            errors: zod_openapi_1.z.array(zod_openapi_1.z.object({
+                                row: zod_openapi_1.z.number(),
+                                message: zod_openapi_1.z.string(),
+                            })),
+                        }),
+                    }),
+                },
+            },
+        },
+    },
 });
 // User Routes
 exports.userRegisterDoc = (0, zod_openapi_1.createRoute)({

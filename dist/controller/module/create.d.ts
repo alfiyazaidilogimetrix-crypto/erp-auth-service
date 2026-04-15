@@ -10,6 +10,8 @@ export declare const createModule: (body: ICreateModule) => Promise<{
         id: number;
         createdAt: Date;
         updatedAt: Date;
+        description: string | null;
+        title: string | null;
         action: string[];
     })[];
 } & {

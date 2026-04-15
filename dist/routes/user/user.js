@@ -59,17 +59,37 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var zod_openapi_1 = require("@hono/zod-openapi");
+var cookie_1 = require("hono/cookie");
 var http_exception_1 = require("hono/http-exception");
 var erp_shared_models_1 = require("erp-shared-models");
 var user_1 = require("@swagger/user");
 var register_1 = require("@controller/user/register");
 var login_1 = require("@controller/user/login");
 var otp_1 = require("@controller/user/otp");
+var excel_1 = require("@controller/user/excel");
 var update_1 = require("@controller/user/update");
 var getUser_1 = require("@controller/user/getUser");
 var delete_1 = require("@controller/user/delete");
 var user_2 = require("@jwt/user");
 var user = new zod_openapi_1.OpenAPIHono();
+user.openapi(user_1.bulkCreateUserDoc, function (c) { return __awaiter(void 0, void 0, void 0, function () {
+    var body, result;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, c.req.json()];
+            case 1:
+                body = _a.sent();
+                return [4 /*yield*/, (0, excel_1.bulkCreateUserFromExcel)(body)];
+            case 2:
+                result = _a.sent();
+                return [2 /*return*/, c.json({
+                        status: 200,
+                        message: 'Bulk user creation completed',
+                        data: result,
+                    })];
+        }
+    });
+}); });
 user.use(user_1.getUserProfileDoc.path, user_2.userGuard);
 user.use(user_1.updateUserProfileDoc.path, user_2.userGuard);
 user.use(user_1.updateUserPasswordDoc.path, user_2.userGuard);
@@ -100,14 +120,25 @@ user.openapi(user_1.userRegisterDoc, function (c) { return __awaiter(void 0, voi
 }); });
 user.openapi(user_1.userLoginDoc, function (c) { return __awaiter(void 0, void 0, void 0, function () {
     var body, data;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var _a, _b, _c;
+    return __generator(this, function (_d) {
+        switch (_d.label) {
             case 0: return [4 /*yield*/, c.req.json()];
             case 1:
-                body = _a.sent();
+                body = _d.sent();
                 return [4 /*yield*/, (0, login_1.login)(body)];
             case 2:
-                data = _a.sent();
+                data = _d.sent();
+                // Set organizational cookies if they exist
+                if ((_a = data.user) === null || _a === void 0 ? void 0 : _a.company_id) {
+                    (0, cookie_1.setCookie)(c, 'company_id', String(data.user.company_id), { path: '/', httpOnly: false, sameSite: 'Lax', maxAge: 60 * 60 * 24 * 7 });
+                }
+                if ((_b = data.user) === null || _b === void 0 ? void 0 : _b.head_office_id) {
+                    (0, cookie_1.setCookie)(c, 'head_office_id', String(data.user.head_office_id), { path: '/', httpOnly: false, sameSite: 'Lax', maxAge: 60 * 60 * 24 * 7 });
+                }
+                if ((_c = data.user) === null || _c === void 0 ? void 0 : _c.branch_office_id) {
+                    (0, cookie_1.setCookie)(c, 'branch_office_id', String(data.user.branch_office_id), { path: '/', httpOnly: false, sameSite: 'Lax', maxAge: 60 * 60 * 24 * 7 });
+                }
                 return [2 /*return*/, c.json(__assign({ status: 200, message: 'You are logged in successfully' }, data))];
         }
     });

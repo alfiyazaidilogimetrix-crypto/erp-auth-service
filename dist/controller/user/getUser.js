@@ -76,6 +76,9 @@ var getUserProfile = function (userId) { return __awaiter(void 0, void 0, void 0
                                 },
                             },
                         },
+                        company: true,
+                        headOffice: true,
+                        branchOffice: true,
                     },
                 })];
             case 1:
@@ -113,6 +116,9 @@ var getAllUsers = function () {
                                 include: {
                                     profileImage: true,
                                     role: true,
+                                    company: true,
+                                    headOffice: true,
+                                    branchOffice: true,
                                 },
                                 orderBy: { createdAt: 'desc' },
                             }),
@@ -147,6 +153,9 @@ var getUserById = function (userId) { return __awaiter(void 0, void 0, void 0, f
                     include: {
                         profileImage: true,
                         role: true,
+                        company: true,
+                        headOffice: true,
+                        branchOffice: true,
                     },
                 })];
             case 1:

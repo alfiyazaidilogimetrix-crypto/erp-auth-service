@@ -1,4 +1,133 @@
 import { z } from '@hono/zod-openapi';
+export declare const bulkCreateUserDoc: {
+    tags: string[];
+    method: "post";
+    path: "/bulk-excel";
+    summary: string;
+    description: string;
+    request: {
+        headers: z.ZodObject<{
+            Authorization: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            Authorization: string;
+        }, {
+            Authorization: string;
+        }>;
+        body: {
+            content: {
+                'application/json': {
+                    schema: z.ZodObject<{
+                        users: z.ZodArray<z.ZodObject<{
+                            username: z.ZodString;
+                            email: z.ZodString;
+                            password: z.ZodString;
+                            'Mobile Number': z.ZodNullable<z.ZodOptional<z.ZodString>>;
+                            Role: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+                        }, "strip", z.ZodTypeAny, {
+                            email: string;
+                            password: string;
+                            username: string;
+                            'Mobile Number'?: string | null | undefined;
+                            Role?: string | null | undefined;
+                        }, {
+                            email: string;
+                            password: string;
+                            username: string;
+                            'Mobile Number'?: string | null | undefined;
+                            Role?: string | null | undefined;
+                        }>, "many">;
+                    }, "strip", z.ZodTypeAny, {
+                        users: {
+                            email: string;
+                            password: string;
+                            username: string;
+                            'Mobile Number'?: string | null | undefined;
+                            Role?: string | null | undefined;
+                        }[];
+                    }, {
+                        users: {
+                            email: string;
+                            password: string;
+                            username: string;
+                            'Mobile Number'?: string | null | undefined;
+                            Role?: string | null | undefined;
+                        }[];
+                    }>;
+                };
+            };
+        };
+    };
+    responses: {
+        200: {
+            description: string;
+            content: {
+                'application/json': {
+                    schema: z.ZodObject<{
+                        status: z.ZodNumber;
+                        message: z.ZodString;
+                        data: z.ZodObject<{
+                            success: z.ZodNumber;
+                            failed: z.ZodNumber;
+                            data: z.ZodArray<z.ZodAny, "many">;
+                            errors: z.ZodArray<z.ZodObject<{
+                                row: z.ZodNumber;
+                                message: z.ZodString;
+                            }, "strip", z.ZodTypeAny, {
+                                message: string;
+                                row: number;
+                            }, {
+                                message: string;
+                                row: number;
+                            }>, "many">;
+                        }, "strip", z.ZodTypeAny, {
+                            data: any[];
+                            success: number;
+                            failed: number;
+                            errors: {
+                                message: string;
+                                row: number;
+                            }[];
+                        }, {
+                            data: any[];
+                            success: number;
+                            failed: number;
+                            errors: {
+                                message: string;
+                                row: number;
+                            }[];
+                        }>;
+                    }, "strip", z.ZodTypeAny, {
+                        message: string;
+                        status: number;
+                        data: {
+                            data: any[];
+                            success: number;
+                            failed: number;
+                            errors: {
+                                message: string;
+                                row: number;
+                            }[];
+                        };
+                    }, {
+                        message: string;
+                        status: number;
+                        data: {
+                            data: any[];
+                            success: number;
+                            failed: number;
+                            errors: {
+                                message: string;
+                                row: number;
+                            }[];
+                        };
+                    }>;
+                };
+            };
+        };
+    };
+} & {
+    getRoutingPath(): "/bulk-excel";
+};
 export declare const userRegisterDoc: {
     tags: string[];
     method: "post";
@@ -16,6 +145,9 @@ export declare const userRegisterDoc: {
                         fileId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
                         mobileNumber: z.ZodNullable<z.ZodOptional<z.ZodString>>;
                         roleId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+                        company_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+                        head_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+                        branch_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
                     }, "strip", z.ZodTypeAny, {
                         name: string;
                         email: string;
@@ -23,6 +155,9 @@ export declare const userRegisterDoc: {
                         fileId?: number | null | undefined;
                         mobileNumber?: string | null | undefined;
                         roleId?: number | null | undefined;
+                        company_id?: number | null | undefined;
+                        head_office_id?: number | null | undefined;
+                        branch_office_id?: number | null | undefined;
                     }, {
                         name: string;
                         email: string;
@@ -30,6 +165,9 @@ export declare const userRegisterDoc: {
                         fileId?: number | null | undefined;
                         mobileNumber?: string | null | undefined;
                         roleId?: number | null | undefined;
+                        company_id?: number | null | undefined;
+                        head_office_id?: number | null | undefined;
+                        branch_office_id?: number | null | undefined;
                     }>;
                 };
             };
@@ -175,16 +313,25 @@ export declare const updateUserProfileDoc: {
                         fileId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
                         mobileNumber: z.ZodNullable<z.ZodOptional<z.ZodString>>;
                         roleId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+                        company_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+                        head_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+                        branch_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
                     }, "strip", z.ZodTypeAny, {
                         name?: string | undefined;
                         fileId?: number | null | undefined;
                         mobileNumber?: string | null | undefined;
                         roleId?: number | null | undefined;
+                        company_id?: number | null | undefined;
+                        head_office_id?: number | null | undefined;
+                        branch_office_id?: number | null | undefined;
                     }, {
                         name?: string | undefined;
                         fileId?: number | null | undefined;
                         mobileNumber?: string | null | undefined;
                         roleId?: number | null | undefined;
+                        company_id?: number | null | undefined;
+                        head_office_id?: number | null | undefined;
+                        branch_office_id?: number | null | undefined;
                     }>;
                 };
             };
@@ -510,16 +657,25 @@ export declare const updateUserByIdDoc: {
                         fileId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
                         mobileNumber: z.ZodNullable<z.ZodOptional<z.ZodString>>;
                         roleId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+                        company_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+                        head_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+                        branch_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
                     }, "strip", z.ZodTypeAny, {
                         name?: string | undefined;
                         fileId?: number | null | undefined;
                         mobileNumber?: string | null | undefined;
                         roleId?: number | null | undefined;
+                        company_id?: number | null | undefined;
+                        head_office_id?: number | null | undefined;
+                        branch_office_id?: number | null | undefined;
                     }, {
                         name?: string | undefined;
                         fileId?: number | null | undefined;
                         mobileNumber?: string | null | undefined;
                         roleId?: number | null | undefined;
+                        company_id?: number | null | undefined;
+                        head_office_id?: number | null | undefined;
+                        branch_office_id?: number | null | undefined;
                     }>;
                 };
             };

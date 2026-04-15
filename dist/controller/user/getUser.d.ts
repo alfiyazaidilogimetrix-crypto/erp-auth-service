@@ -8,7 +8,7 @@ export declare const getUserProfile: (userId: number) => Promise<{
         mimeType: string;
         size: number;
         filePath: string;
-        fileContent: import("@prisma/client/runtime/client").Bytes;
+        fileContent: import("erp-shared-models/src/generated/client/runtime/client").Bytes;
     } | null;
     role: ({
         permissions: ({
@@ -23,6 +23,8 @@ export declare const getUserProfile: (userId: number) => Promise<{
             id: number;
             createdAt: Date;
             updatedAt: Date;
+            description: string | null;
+            title: string | null;
             action: string[];
         })[];
     } & {
@@ -32,6 +34,57 @@ export declare const getUserProfile: (userId: number) => Promise<{
         updatedAt: Date;
         description: string | null;
     }) | null;
+    company: {
+        id: number;
+        district: string;
+        state: string;
+        pincode: string;
+        created_at: Date;
+        updated_at: Date;
+        user_id: number;
+        address: string;
+        company_name: string;
+        company_mail_id: string;
+        company_phone_number: string;
+        company_gst_number: string;
+        business_type: string;
+        owner_id: number | null;
+    } | null;
+    headOffice: {
+        id: number;
+        company_id: number;
+        state: string;
+        pincode: string;
+        created_at: Date;
+        updated_at: Date;
+        address: string;
+        office_name: string;
+        office_id: string;
+        city: string;
+        phone_number: string;
+        mail_id: string;
+        office_incharge_name: string | null;
+        office_incharge_phone_number: string | null;
+        office_incharge_mail_id: string | null;
+    } | null;
+    branchOffice: {
+        id: number;
+        company_id: number;
+        head_office_id: number;
+        state: string;
+        pincode: string;
+        created_at: Date;
+        updated_at: Date;
+        address: string;
+        office_name: string;
+        office_id: string;
+        city: string;
+        phone_number: string;
+        mail_id: string;
+        office_incharge_name: string | null;
+        office_incharge_phone_number: string | null;
+        office_incharge_mail_id: string | null;
+    } | null;
     id: number;
     name: string;
     email: string;
@@ -40,7 +93,10 @@ export declare const getUserProfile: (userId: number) => Promise<{
     original_password: string | null;
     mobileNumber: string | null;
     roleId: number | null;
-    provider: import("erp-shared-models/src/generated/client/enums").Provider;
+    company_id: number | null;
+    head_office_id: number | null;
+    branch_office_id: number | null;
+    provider: import("erp-shared-models/src/generated/client").$Enums.Provider;
     createdAt: Date;
     updatedAt: Date;
 }>;
@@ -55,7 +111,7 @@ export declare const getAllUsers: (page?: number, limit?: number, roleId?: numbe
             mimeType: string;
             size: number;
             filePath: string;
-            fileContent: import("@prisma/client/runtime/client").Bytes;
+            fileContent: import("erp-shared-models/src/generated/client/runtime/client").Bytes;
         } | null;
         role: {
             id: number;
@@ -63,6 +119,57 @@ export declare const getAllUsers: (page?: number, limit?: number, roleId?: numbe
             createdAt: Date;
             updatedAt: Date;
             description: string | null;
+        } | null;
+        company: {
+            id: number;
+            district: string;
+            state: string;
+            pincode: string;
+            created_at: Date;
+            updated_at: Date;
+            user_id: number;
+            address: string;
+            company_name: string;
+            company_mail_id: string;
+            company_phone_number: string;
+            company_gst_number: string;
+            business_type: string;
+            owner_id: number | null;
+        } | null;
+        headOffice: {
+            id: number;
+            company_id: number;
+            state: string;
+            pincode: string;
+            created_at: Date;
+            updated_at: Date;
+            address: string;
+            office_name: string;
+            office_id: string;
+            city: string;
+            phone_number: string;
+            mail_id: string;
+            office_incharge_name: string | null;
+            office_incharge_phone_number: string | null;
+            office_incharge_mail_id: string | null;
+        } | null;
+        branchOffice: {
+            id: number;
+            company_id: number;
+            head_office_id: number;
+            state: string;
+            pincode: string;
+            created_at: Date;
+            updated_at: Date;
+            address: string;
+            office_name: string;
+            office_id: string;
+            city: string;
+            phone_number: string;
+            mail_id: string;
+            office_incharge_name: string | null;
+            office_incharge_phone_number: string | null;
+            office_incharge_mail_id: string | null;
         } | null;
         id: number;
         name: string;
@@ -72,7 +179,10 @@ export declare const getAllUsers: (page?: number, limit?: number, roleId?: numbe
         original_password: string | null;
         mobileNumber: string | null;
         roleId: number | null;
-        provider: import("erp-shared-models/src/generated/client/enums").Provider;
+        company_id: number | null;
+        head_office_id: number | null;
+        branch_office_id: number | null;
+        provider: import("erp-shared-models/src/generated/client").$Enums.Provider;
         createdAt: Date;
         updatedAt: Date;
     }[];
@@ -93,7 +203,7 @@ export declare const getUserById: (userId: number) => Promise<{
         mimeType: string;
         size: number;
         filePath: string;
-        fileContent: import("@prisma/client/runtime/client").Bytes;
+        fileContent: import("erp-shared-models/src/generated/client/runtime/client").Bytes;
     } | null;
     role: {
         id: number;
@@ -101,6 +211,57 @@ export declare const getUserById: (userId: number) => Promise<{
         createdAt: Date;
         updatedAt: Date;
         description: string | null;
+    } | null;
+    company: {
+        id: number;
+        district: string;
+        state: string;
+        pincode: string;
+        created_at: Date;
+        updated_at: Date;
+        user_id: number;
+        address: string;
+        company_name: string;
+        company_mail_id: string;
+        company_phone_number: string;
+        company_gst_number: string;
+        business_type: string;
+        owner_id: number | null;
+    } | null;
+    headOffice: {
+        id: number;
+        company_id: number;
+        state: string;
+        pincode: string;
+        created_at: Date;
+        updated_at: Date;
+        address: string;
+        office_name: string;
+        office_id: string;
+        city: string;
+        phone_number: string;
+        mail_id: string;
+        office_incharge_name: string | null;
+        office_incharge_phone_number: string | null;
+        office_incharge_mail_id: string | null;
+    } | null;
+    branchOffice: {
+        id: number;
+        company_id: number;
+        head_office_id: number;
+        state: string;
+        pincode: string;
+        created_at: Date;
+        updated_at: Date;
+        address: string;
+        office_name: string;
+        office_id: string;
+        city: string;
+        phone_number: string;
+        mail_id: string;
+        office_incharge_name: string | null;
+        office_incharge_phone_number: string | null;
+        office_incharge_mail_id: string | null;
     } | null;
     id: number;
     name: string;
@@ -110,7 +271,10 @@ export declare const getUserById: (userId: number) => Promise<{
     original_password: string | null;
     mobileNumber: string | null;
     roleId: number | null;
-    provider: import("erp-shared-models/src/generated/client/enums").Provider;
+    company_id: number | null;
+    head_office_id: number | null;
+    branch_office_id: number | null;
+    provider: import("erp-shared-models/src/generated/client").$Enums.Provider;
     createdAt: Date;
     updatedAt: Date;
 }>;

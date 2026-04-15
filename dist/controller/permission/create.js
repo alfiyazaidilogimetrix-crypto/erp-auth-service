@@ -60,6 +60,8 @@ var createPermission = function (body) { return __awaiter(void 0, void 0, void 0
             case 2: return [4 /*yield*/, erp_shared_models_1.prisma.permission.create({
                     data: {
                         action: body.action,
+                        title: body.title,
+                        description: body.description,
                         modules: {
                             connect: ((_a = body.moduleIds) === null || _a === void 0 ? void 0 : _a.map(function (id) { return ({ id: id }); })) || [],
                         },

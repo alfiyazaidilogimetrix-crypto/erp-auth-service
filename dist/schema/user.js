@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.resetPasswordSchema = exports.forgotPasswordSchema = exports.updateUserByAdminSchema = exports.createUserByAdminSchema = exports.resendOtpSchema = exports.verifyOtpSchema = exports.userResponseSchema = exports.updateUserPasswordSchema = exports.updateUserProfileSchema = exports.userLoginSchema = exports.userRegisterSchema = void 0;
+exports.bulkCreateUserSchema = exports.resetPasswordSchema = exports.forgotPasswordSchema = exports.updateUserByAdminSchema = exports.createUserByAdminSchema = exports.resendOtpSchema = exports.verifyOtpSchema = exports.userResponseSchema = exports.updateUserPasswordSchema = exports.updateUserProfileSchema = exports.userLoginSchema = exports.userRegisterSchema = void 0;
 var zod_openapi_1 = require("@hono/zod-openapi");
 exports.userRegisterSchema = zod_openapi_1.z
     .object({
@@ -13,6 +13,9 @@ exports.userRegisterSchema = zod_openapi_1.z
     fileId: zod_openapi_1.z.number().int().positive().optional().nullable(),
     mobileNumber: zod_openapi_1.z.string().max(20).optional().nullable(),
     roleId: zod_openapi_1.z.number().optional().nullable(),
+    company_id: zod_openapi_1.z.number().int().positive().optional().nullable(),
+    head_office_id: zod_openapi_1.z.number().int().positive().optional().nullable(),
+    branch_office_id: zod_openapi_1.z.number().int().positive().optional().nullable(),
 })
     .openapi({
     required: ['name', 'email', 'password'],
@@ -42,6 +45,9 @@ exports.updateUserProfileSchema = zod_openapi_1.z
     fileId: zod_openapi_1.z.number().int().positive().optional().nullable(),
     mobileNumber: zod_openapi_1.z.string().max(20).optional().nullable(),
     roleId: zod_openapi_1.z.number().optional().nullable(),
+    company_id: zod_openapi_1.z.number().int().positive().optional().nullable(),
+    head_office_id: zod_openapi_1.z.number().int().positive().optional().nullable(),
+    branch_office_id: zod_openapi_1.z.number().int().positive().optional().nullable(),
 })
     .openapi({
     example: {
@@ -94,6 +100,9 @@ exports.userResponseSchema = zod_openapi_1.z
     })
         .optional()
         .nullable(),
+    company_id: zod_openapi_1.z.number().nullable().optional(),
+    head_office_id: zod_openapi_1.z.number().nullable().optional(),
+    branch_office_id: zod_openapi_1.z.number().nullable().optional(),
     createdAt: zod_openapi_1.z.string().datetime(),
     updatedAt: zod_openapi_1.z.string().datetime(),
     provider: zod_openapi_1.z.enum(['credentials', 'google', 'github']), // Expanded based on common providers
@@ -156,6 +165,9 @@ exports.createUserByAdminSchema = zod_openapi_1.z
     fileId: zod_openapi_1.z.number().int().positive().optional().nullable(),
     mobileNumber: zod_openapi_1.z.string().max(20).optional().nullable(),
     roleId: zod_openapi_1.z.number().optional().nullable(),
+    company_id: zod_openapi_1.z.number().int().positive().optional().nullable(),
+    head_office_id: zod_openapi_1.z.number().int().positive().optional().nullable(),
+    branch_office_id: zod_openapi_1.z.number().int().positive().optional().nullable(),
 })
     .openapi({
     required: ['name', 'email'],
@@ -175,6 +187,9 @@ exports.updateUserByAdminSchema = zod_openapi_1.z
     mobileNumber: zod_openapi_1.z.string().max(20).optional().nullable(),
     roleId: zod_openapi_1.z.number().optional().nullable(),
     emailVerified: zod_openapi_1.z.boolean().optional(),
+    company_id: zod_openapi_1.z.number().int().positive().optional().nullable(),
+    head_office_id: zod_openapi_1.z.number().int().positive().optional().nullable(),
+    branch_office_id: zod_openapi_1.z.number().int().positive().optional().nullable(),
 })
     .openapi({
     example: {
@@ -210,5 +225,28 @@ exports.resetPasswordSchema = zod_openapi_1.z
     example: {
         token: 'reset_token_abc123',
         newPassword: 'NewSecurePassword123',
+    },
+});
+exports.bulkCreateUserSchema = zod_openapi_1.z
+    .object({
+    users: zod_openapi_1.z.array(zod_openapi_1.z.object({
+        'username': zod_openapi_1.z.string().min(1, 'Username is required'),
+        'email': zod_openapi_1.z.string().email('Valid email is required'),
+        'password': zod_openapi_1.z.string().min(6, 'Password must be at least 6 characters'),
+        'Mobile Number': zod_openapi_1.z.string().optional().nullable(),
+        'Role': zod_openapi_1.z.string().optional().nullable(),
+    })),
+})
+    .openapi({
+    example: {
+        users: [
+            {
+                'username': 'johndoe',
+                'email': 'john@example.com',
+                'password': 'password123',
+                'Mobile Number': '1234567890',
+                'Role': 'Site Engineer',
+            },
+        ],
     },
 });

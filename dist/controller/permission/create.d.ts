@@ -16,5 +16,7 @@ export declare const createPermission: (body: ICreatePermission) => Promise<{
     id: number;
     createdAt: Date;
     updatedAt: Date;
+    description: string | null;
+    title: string | null;
     action: string[];
 }>;

@@ -18,7 +18,7 @@ import { ICreateCompany, IUpdateCompany } from '@schema/company';
 const company = new OpenAPIHono();
 
 // Create a new company
-company.openapi(createCompanyDoc, async (c) => {
+company.openapi(createCompanyDoc, async (c: any) => {
   const body: ICreateCompany = await c.req.json();
   const company = await createCompany(body);
   return c.json({
@@ -51,7 +51,7 @@ company.openapi(getCompanyByIdDoc, async (c) => {
 });
 
 // Update company
-company.openapi(updateCompanyDoc, async (c) => {
+company.openapi(updateCompanyDoc, async (c: any) => {
   const { id } = c.req.param();
   const body: IUpdateCompany = await c.req.json();
   const company = await updateCompany(parseInt(id), body);

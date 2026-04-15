@@ -147,9 +147,6 @@ export const updateCompanyDoc = createRoute({
       content: {
         'application/json': {
           schema: z.object({
-            status: z.number(),
-            message: z.string(),
-            company: companyResponseSchema,
           }),
         },
       },
@@ -158,7 +155,8 @@ export const updateCompanyDoc = createRoute({
       description: 'Company not found',
       content: {
         'application/json': {
-          schema: ErrorResponseSchema,
+          schema: z.object({
+          }),
         },
       },
     },

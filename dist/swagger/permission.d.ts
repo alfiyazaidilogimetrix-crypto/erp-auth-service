@@ -11,12 +11,18 @@ export declare const createPermissionDoc: {
                 'application/json': {
                     schema: z.ZodObject<{
                         action: z.ZodArray<z.ZodString, "many">;
+                        title: z.ZodOptional<z.ZodString>;
+                        description: z.ZodNullable<z.ZodOptional<z.ZodString>>;
                         moduleIds: z.ZodDefault<z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>>;
                     }, "strip", z.ZodTypeAny, {
                         action: string[];
                         moduleIds: number[];
+                        description?: string | null | undefined;
+                        title?: string | undefined;
                     }, {
                         action: string[];
+                        description?: string | null | undefined;
+                        title?: string | undefined;
                         moduleIds?: number[] | undefined;
                     }>;
                 };

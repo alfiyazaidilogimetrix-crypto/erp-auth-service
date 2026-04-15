@@ -9,7 +9,7 @@ export declare const updateUserProfile: (userId: number, body: IUpdateUserProfil
         mimeType: string;
         size: number;
         filePath: string;
-        fileContent: import("@prisma/client/runtime/client").Bytes;
+        fileContent: import("erp-shared-models/src/generated/client/runtime/client").Bytes;
     } | null;
     role: {
         id: number;
@@ -26,7 +26,10 @@ export declare const updateUserProfile: (userId: number, body: IUpdateUserProfil
     original_password: string | null;
     mobileNumber: string | null;
     roleId: number | null;
-    provider: import("erp-shared-models/src/generated/client/enums").Provider;
+    company_id: number | null;
+    head_office_id: number | null;
+    branch_office_id: number | null;
+    provider: import("erp-shared-models/src/generated/client").$Enums.Provider;
     createdAt: Date;
     updatedAt: Date;
 }>;
@@ -43,7 +46,7 @@ export declare const updateUserById: (userId: number, body: IUpdateUserProfile) 
         mimeType: string;
         size: number;
         filePath: string;
-        fileContent: import("@prisma/client/runtime/client").Bytes;
+        fileContent: import("erp-shared-models/src/generated/client/runtime/client").Bytes;
     } | null;
     role: {
         id: number;
@@ -60,7 +63,10 @@ export declare const updateUserById: (userId: number, body: IUpdateUserProfile) 
     original_password: string | null;
     mobileNumber: string | null;
     roleId: number | null;
-    provider: import("erp-shared-models/src/generated/client/enums").Provider;
+    company_id: number | null;
+    head_office_id: number | null;
+    branch_office_id: number | null;
+    provider: import("erp-shared-models/src/generated/client").$Enums.Provider;
     createdAt: Date;
     updatedAt: Date;
 }>;
@@ -75,7 +81,7 @@ export declare const uploadProfileImage: (userId: number, fileId: number) => Pro
             mimeType: string;
             size: number;
             filePath: string;
-            fileContent: import("@prisma/client/runtime/client").Bytes;
+            fileContent: import("erp-shared-models/src/generated/client/runtime/client").Bytes;
         } | null;
         role: {
             id: number;
@@ -92,7 +98,10 @@ export declare const uploadProfileImage: (userId: number, fileId: number) => Pro
         original_password: string | null;
         mobileNumber: string | null;
         roleId: number | null;
-        provider: import("erp-shared-models/src/generated/client/enums").Provider;
+        company_id: number | null;
+        head_office_id: number | null;
+        branch_office_id: number | null;
+        provider: import("erp-shared-models/src/generated/client").$Enums.Provider;
         createdAt: Date;
         updatedAt: Date;
     };
@@ -105,6 +114,6 @@ export declare const uploadProfileImage: (userId: number, fileId: number) => Pro
         mimeType: string;
         size: number;
         filePath: string;
-        fileContent: import("@prisma/client/runtime/client").Bytes;
+        fileContent: import("erp-shared-models/src/generated/client/runtime/client").Bytes;
     };
 }>;
