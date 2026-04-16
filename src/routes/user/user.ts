@@ -88,12 +88,7 @@ user.openapi(userLoginDoc, async (c: any) => {
   if (data.user?.company_id) {
     setCookie(c, 'company_id', String(data.user.company_id), { path: '/', httpOnly: false, sameSite: 'Lax', maxAge: 60 * 60 * 24 * 7 });
   }
-  if (data.user?.head_office_id) {
-    setCookie(c, 'head_office_id', String(data.user.head_office_id), { path: '/', httpOnly: false, sameSite: 'Lax', maxAge: 60 * 60 * 24 * 7 });
-  }
-  if (data.user?.branch_office_id) {
-    setCookie(c, 'branch_office_id', String(data.user.branch_office_id), { path: '/', httpOnly: false, sameSite: 'Lax', maxAge: 60 * 60 * 24 * 7 });
-  }
+
 
   return c.json({
     status: 200,

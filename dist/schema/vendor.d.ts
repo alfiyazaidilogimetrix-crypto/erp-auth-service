@@ -71,8 +71,8 @@ export declare const vendorResponseSchema: z.ZodObject<{
     created_at: z.ZodString;
     updated_at: z.ZodString;
 }, "strip", z.ZodTypeAny, {
-    id: number;
     status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
+    id: number;
     created_at: string;
     updated_at: string;
     contact_number: string | null;
@@ -83,8 +83,8 @@ export declare const vendorResponseSchema: z.ZodObject<{
     gst_number: string | null;
     category: string | null;
 }, {
-    id: number;
     status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
+    id: number;
     created_at: string;
     updated_at: string;
     contact_number: string | null;
@@ -108,8 +108,8 @@ export declare const vendorListResponseSchema: z.ZodArray<z.ZodObject<{
     created_at: z.ZodString;
     updated_at: z.ZodString;
 }, "strip", z.ZodTypeAny, {
-    id: number;
     status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
+    id: number;
     created_at: string;
     updated_at: string;
     contact_number: string | null;
@@ -120,8 +120,8 @@ export declare const vendorListResponseSchema: z.ZodArray<z.ZodObject<{
     gst_number: string | null;
     category: string | null;
 }, {
-    id: number;
     status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
+    id: number;
     created_at: string;
     updated_at: string;
     contact_number: string | null;
@@ -206,8 +206,8 @@ export declare const vendorPaginationResponseSchema: z.ZodObject<{
         created_at: z.ZodString;
         updated_at: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        id: number;
         status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
+        id: number;
         created_at: string;
         updated_at: string;
         contact_number: string | null;
@@ -218,8 +218,8 @@ export declare const vendorPaginationResponseSchema: z.ZodObject<{
         gst_number: string | null;
         category: string | null;
     }, {
-        id: number;
         status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
+        id: number;
         created_at: string;
         updated_at: string;
         contact_number: string | null;
@@ -254,8 +254,8 @@ export declare const vendorPaginationResponseSchema: z.ZodObject<{
     }>;
 }, "strip", z.ZodTypeAny, {
     data: {
-        id: number;
         status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
+        id: number;
         created_at: string;
         updated_at: string;
         contact_number: string | null;
@@ -277,8 +277,8 @@ export declare const vendorPaginationResponseSchema: z.ZodObject<{
     };
 }, {
     data: {
-        id: number;
         status: "ACTIVE" | "INACTIVE" | "SUSPENDED";
+        id: number;
         created_at: string;
         updated_at: string;
         contact_number: string | null;

@@ -7,6 +7,7 @@ export declare const getBranchOffices: (page?: number, limit?: number, company_i
             pincode: string;
             created_at: Date;
             updated_at: Date;
+            file_id: number | null;
             user_id: number;
             address: string;
             company_name: string;
@@ -36,9 +37,9 @@ export declare const getBranchOffices: (page?: number, limit?: number, company_i
     } & {
         id: number;
         company_id: number;
-        head_office_id: number;
         state: string;
         pincode: string;
+        head_office_id: number;
         created_at: Date;
         updated_at: Date;
         address: string;
@@ -58,9 +59,9 @@ export declare const getBranchOffices: (page?: number, limit?: number, company_i
 export declare const getBranchOfficeById: (id: number) => Promise<{
     id: number;
     company_id: number;
-    head_office_id: number;
     state: string;
     pincode: string;
+    head_office_id: number;
     created_at: Date;
     updated_at: Date;
     address: string;

@@ -27,12 +27,12 @@ export declare const updateRoleSchema: z.ZodObject<{
     description: z.ZodNullable<z.ZodOptional<z.ZodString>>;
     permissionIds: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 }, "strip", z.ZodTypeAny, {
-    name?: string | undefined;
     description?: string | null | undefined;
+    name?: string | undefined;
     permissionIds?: number[] | undefined;
 }, {
-    name?: string | undefined;
     description?: string | null | undefined;
+    name?: string | undefined;
     permissionIds?: number[] | undefined;
 }>;
 export declare const roleResponseSchema: z.ZodObject<{
@@ -47,28 +47,28 @@ export declare const roleResponseSchema: z.ZodObject<{
             Name: z.ZodString;
             description: z.ZodNullable<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            id: number;
             description: string | null;
+            id: number;
             Name: string;
         }, {
-            id: number;
             description: string | null;
+            id: number;
             Name: string;
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
         id: number;
         action: string[];
         modules: {
-            id: number;
             description: string | null;
+            id: number;
             Name: string;
         }[];
     }, {
         id: number;
         action: string[];
         modules: {
-            id: number;
             description: string | null;
+            id: number;
             Name: string;
         }[];
     }>, "many">>;
@@ -88,11 +88,11 @@ export declare const roleResponseSchema: z.ZodObject<{
     createdAt: z.ZodString;
     updatedAt: z.ZodString;
 }, "strip", z.ZodTypeAny, {
+    description: string | null;
     id: number;
     name: string;
     createdAt: string;
     updatedAt: string;
-    description: string | null;
     users?: {
         id: number;
         name: string;
@@ -102,17 +102,17 @@ export declare const roleResponseSchema: z.ZodObject<{
         id: number;
         action: string[];
         modules: {
-            id: number;
             description: string | null;
+            id: number;
             Name: string;
         }[];
     }[] | undefined;
 }, {
+    description: string | null;
     id: number;
     name: string;
     createdAt: string;
     updatedAt: string;
-    description: string | null;
     users?: {
         id: number;
         name: string;
@@ -122,8 +122,8 @@ export declare const roleResponseSchema: z.ZodObject<{
         id: number;
         action: string[];
         modules: {
-            id: number;
             description: string | null;
+            id: number;
             Name: string;
         }[];
     }[] | undefined;
@@ -168,12 +168,12 @@ export declare const permissionResponseSchema: z.ZodObject<{
         Name: z.ZodString;
         description: z.ZodNullable<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        id: number;
         description: string | null;
+        id: number;
         Name: string;
     }, {
-        id: number;
         description: string | null;
+        id: number;
         Name: string;
     }>, "many">>;
     roles: z.ZodOptional<z.ZodArray<z.ZodObject<{
@@ -181,13 +181,13 @@ export declare const permissionResponseSchema: z.ZodObject<{
         name: z.ZodString;
         description: z.ZodNullable<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
+        description: string | null;
         id: number;
         name: string;
-        description: string | null;
     }, {
+        description: string | null;
         id: number;
         name: string;
-        description: string | null;
     }>, "many">>;
     createdAt: z.ZodString;
     updatedAt: z.ZodString;
@@ -197,14 +197,14 @@ export declare const permissionResponseSchema: z.ZodObject<{
     updatedAt: string;
     action: string[];
     modules?: {
-        id: number;
         description: string | null;
+        id: number;
         Name: string;
     }[] | undefined;
     roles?: {
+        description: string | null;
         id: number;
         name: string;
-        description: string | null;
     }[] | undefined;
 }, {
     id: number;
@@ -212,40 +212,34 @@ export declare const permissionResponseSchema: z.ZodObject<{
     updatedAt: string;
     action: string[];
     modules?: {
-        id: number;
         description: string | null;
+        id: number;
         Name: string;
     }[] | undefined;
     roles?: {
+        description: string | null;
         id: number;
         name: string;
-        description: string | null;
     }[] | undefined;
 }>;
 export declare const createModuleSchema: z.ZodObject<{
     Name: z.ZodString;
-    title: z.ZodString;
     description: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 }, "strip", z.ZodTypeAny, {
-    title: string;
     Name: string;
     description?: string | null | undefined;
 }, {
-    title: string;
     Name: string;
     description?: string | null | undefined;
 }>;
 export declare const updateModuleSchema: z.ZodObject<{
     Name: z.ZodOptional<z.ZodString>;
-    title: z.ZodOptional<z.ZodString>;
     description: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 }, "strip", z.ZodTypeAny, {
     description?: string | null | undefined;
-    title?: string | undefined;
     Name?: string | undefined;
 }, {
     description?: string | null | undefined;
-    title?: string | undefined;
     Name?: string | undefined;
 }>;
 export declare const moduleResponseSchema: z.ZodObject<{
@@ -260,12 +254,12 @@ export declare const moduleResponseSchema: z.ZodObject<{
             Name: z.ZodString;
             description: z.ZodNullable<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            id: number;
             description: string | null;
+            id: number;
             Name: string;
         }, {
-            id: number;
             description: string | null;
+            id: number;
             Name: string;
         }>, "many">>;
         roles: z.ZodOptional<z.ZodArray<z.ZodObject<{
@@ -273,13 +267,13 @@ export declare const moduleResponseSchema: z.ZodObject<{
             name: z.ZodString;
             description: z.ZodNullable<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
+            description: string | null;
             id: number;
             name: string;
-            description: string | null;
         }, {
+            description: string | null;
             id: number;
             name: string;
-            description: string | null;
         }>, "many">>;
         createdAt: z.ZodString;
         updatedAt: z.ZodString;
@@ -289,14 +283,14 @@ export declare const moduleResponseSchema: z.ZodObject<{
         updatedAt: string;
         action: string[];
         modules?: {
-            id: number;
             description: string | null;
+            id: number;
             Name: string;
         }[] | undefined;
         roles?: {
+            description: string | null;
             id: number;
             name: string;
-            description: string | null;
         }[] | undefined;
     }, {
         id: number;
@@ -304,23 +298,23 @@ export declare const moduleResponseSchema: z.ZodObject<{
         updatedAt: string;
         action: string[];
         modules?: {
-            id: number;
             description: string | null;
+            id: number;
             Name: string;
         }[] | undefined;
         roles?: {
+            description: string | null;
             id: number;
             name: string;
-            description: string | null;
         }[] | undefined;
     }>, "many">>;
     createdAt: z.ZodString;
     updatedAt: z.ZodString;
 }, "strip", z.ZodTypeAny, {
+    description: string | null;
     id: number;
     createdAt: string;
     updatedAt: string;
-    description: string | null;
     Name: string;
     permissions?: {
         id: number;
@@ -328,21 +322,21 @@ export declare const moduleResponseSchema: z.ZodObject<{
         updatedAt: string;
         action: string[];
         modules?: {
-            id: number;
             description: string | null;
+            id: number;
             Name: string;
         }[] | undefined;
         roles?: {
+            description: string | null;
             id: number;
             name: string;
-            description: string | null;
         }[] | undefined;
     }[] | undefined;
 }, {
+    description: string | null;
     id: number;
     createdAt: string;
     updatedAt: string;
-    description: string | null;
     Name: string;
     permissions?: {
         id: number;
@@ -350,14 +344,14 @@ export declare const moduleResponseSchema: z.ZodObject<{
         updatedAt: string;
         action: string[];
         modules?: {
-            id: number;
             description: string | null;
+            id: number;
             Name: string;
         }[] | undefined;
         roles?: {
+            description: string | null;
             id: number;
             name: string;
-            description: string | null;
         }[] | undefined;
     }[] | undefined;
 }>;

@@ -34,11 +34,11 @@ export declare const legalProofSchema: z.ZodArray<z.ZodObject<{
     file_ids: z.ZodArray<z.ZodNumber, "many">;
     file_type: z.ZodString;
 }, "strip", z.ZodTypeAny, {
-    file_ids: number[];
     file_type: string;
+    file_ids: number[];
 }, {
-    file_ids: number[];
     file_type: string;
+    file_ids: number[];
 }>, "many">;
 export declare const createCompanySchema: z.ZodObject<{
     company_name: z.ZodString;
@@ -86,11 +86,11 @@ export declare const createCompanySchema: z.ZodObject<{
         file_ids: z.ZodArray<z.ZodNumber, "many">;
         file_type: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        file_ids: number[];
         file_type: string;
+        file_ids: number[];
     }, {
-        file_ids: number[];
         file_type: string;
+        file_ids: number[];
     }>, "many">>;
 }, "strip", z.ZodTypeAny, {
     district: string;
@@ -115,8 +115,8 @@ export declare const createCompanySchema: z.ZodObject<{
         owner_mail_id: string;
     } | undefined;
     legal_proof?: {
-        file_ids: number[];
         file_type: string;
+        file_ids: number[];
     }[] | undefined;
 }, {
     district: string;
@@ -141,8 +141,8 @@ export declare const createCompanySchema: z.ZodObject<{
         owner_mail_id: string;
     } | undefined;
     legal_proof?: {
-        file_ids: number[];
         file_type: string;
+        file_ids: number[];
     }[] | undefined;
 }>;
 export declare const updateCompanySchema: z.ZodObject<{
@@ -190,11 +190,11 @@ export declare const updateCompanySchema: z.ZodObject<{
         file_ids: z.ZodArray<z.ZodNumber, "many">;
         file_type: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        file_ids: number[];
         file_type: string;
+        file_ids: number[];
     }, {
-        file_ids: number[];
         file_type: string;
+        file_ids: number[];
     }>, "many">>;
 }, "strip", z.ZodTypeAny, {
     district?: string | undefined;
@@ -218,8 +218,8 @@ export declare const updateCompanySchema: z.ZodObject<{
         owner_mail_id?: string | undefined;
     } | undefined;
     legal_proof?: {
-        file_ids: number[];
         file_type: string;
+        file_ids: number[];
     }[] | undefined;
 }, {
     district?: string | undefined;
@@ -243,8 +243,8 @@ export declare const updateCompanySchema: z.ZodObject<{
         owner_mail_id?: string | undefined;
     } | undefined;
     legal_proof?: {
-        file_ids: number[];
         file_type: string;
+        file_ids: number[];
     }[] | undefined;
 }>;
 export declare const companyResponseSchema: z.ZodObject<{

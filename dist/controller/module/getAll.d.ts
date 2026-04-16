@@ -2,23 +2,23 @@ export declare const getModules: (page?: number, limit?: number) => Promise<{
     modules: ({
         permissions: ({
             roles: {
+                description: string | null;
                 id: number;
                 name: string;
-                description: string | null;
             }[];
         } & {
+            description: string | null;
+            title: string | null;
             id: number;
             createdAt: Date;
             updatedAt: Date;
-            description: string | null;
-            title: string | null;
             action: string[];
         })[];
     } & {
+        description: string | null;
         id: number;
         createdAt: Date;
         updatedAt: Date;
-        description: string | null;
         Name: string;
     })[];
     pagination: {
@@ -31,22 +31,22 @@ export declare const getModules: (page?: number, limit?: number) => Promise<{
 export declare const getModuleById: (id: number) => Promise<{
     permissions: ({
         roles: {
+            description: string | null;
             id: number;
             name: string;
-            description: string | null;
         }[];
     } & {
+        description: string | null;
+        title: string | null;
         id: number;
         createdAt: Date;
         updatedAt: Date;
-        description: string | null;
-        title: string | null;
         action: string[];
     })[];
 } & {
+    description: string | null;
     id: number;
     createdAt: Date;
     updatedAt: Date;
-    description: string | null;
     Name: string;
 }>;

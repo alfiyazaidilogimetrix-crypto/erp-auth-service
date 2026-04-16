@@ -2,9 +2,9 @@ import { ICreateBranchOffice } from '@schema/branchOffice';
 export declare const createBranchOffice: (body: ICreateBranchOffice) => Promise<{
     id: number;
     company_id: number;
-    head_office_id: number;
     state: string;
     pincode: string;
+    head_office_id: number;
     created_at: Date;
     updated_at: Date;
     address: string;

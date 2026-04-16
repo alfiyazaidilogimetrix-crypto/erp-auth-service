@@ -7,26 +7,26 @@ export declare const getRoles: (page?: number, limit?: number) => Promise<{
         }[];
         permissions: ({
             modules: {
+                description: string | null;
                 id: number;
                 createdAt: Date;
                 updatedAt: Date;
-                description: string | null;
                 Name: string;
             }[];
         } & {
+            description: string | null;
+            title: string | null;
             id: number;
             createdAt: Date;
             updatedAt: Date;
-            description: string | null;
-            title: string | null;
             action: string[];
         })[];
     } & {
+        description: string | null;
         id: number;
         name: string;
         createdAt: Date;
         updatedAt: Date;
-        description: string | null;
     })[];
     pagination: {
         page: number;
@@ -43,24 +43,24 @@ export declare const getRoleById: (id: number) => Promise<{
     }[];
     permissions: ({
         modules: {
+            description: string | null;
             id: number;
             createdAt: Date;
             updatedAt: Date;
-            description: string | null;
             Name: string;
         }[];
     } & {
+        description: string | null;
+        title: string | null;
         id: number;
         createdAt: Date;
         updatedAt: Date;
-        description: string | null;
-        title: string | null;
         action: string[];
     })[];
 } & {
+    description: string | null;
     id: number;
     name: string;
     createdAt: Date;
     updatedAt: Date;
-    description: string | null;
 }>;

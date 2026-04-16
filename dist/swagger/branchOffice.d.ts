@@ -25,9 +25,9 @@ export declare const createBranchOfficeDoc: {
                         office_incharge_mail_id: z.ZodNullable<z.ZodOptional<z.ZodString>>;
                     }, "strip", z.ZodTypeAny, {
                         company_id: number;
-                        head_office_id: number;
                         state: string;
                         pincode: string;
+                        head_office_id: number;
                         address: string;
                         office_name: string;
                         office_id: string;
@@ -39,9 +39,9 @@ export declare const createBranchOfficeDoc: {
                         office_incharge_mail_id?: string | null | undefined;
                     }, {
                         company_id: number;
-                        head_office_id: number;
                         state: string;
                         pincode: string;
+                        head_office_id: number;
                         address: string;
                         office_name: string;
                         office_id: string;
@@ -84,9 +84,9 @@ export declare const createBranchOfficeDoc: {
                         }, "strip", z.ZodTypeAny, {
                             id: number;
                             company_id: number;
-                            head_office_id: number;
                             state: string;
                             pincode: string;
+                            head_office_id: number;
                             created_at: string;
                             updated_at: string;
                             address: string;
@@ -101,9 +101,9 @@ export declare const createBranchOfficeDoc: {
                         }, {
                             id: number;
                             company_id: number;
-                            head_office_id: number;
                             state: string;
                             pincode: string;
+                            head_office_id: number;
                             created_at: string;
                             updated_at: string;
                             address: string;
@@ -122,9 +122,9 @@ export declare const createBranchOfficeDoc: {
                         branchOffice: {
                             id: number;
                             company_id: number;
-                            head_office_id: number;
                             state: string;
                             pincode: string;
+                            head_office_id: number;
                             created_at: string;
                             updated_at: string;
                             address: string;
@@ -143,9 +143,9 @@ export declare const createBranchOfficeDoc: {
                         branchOffice: {
                             id: number;
                             company_id: number;
-                            head_office_id: number;
                             state: string;
                             pincode: string;
+                            head_office_id: number;
                             created_at: string;
                             updated_at: string;
                             address: string;
@@ -238,9 +238,9 @@ export declare const getBranchOfficesDoc: {
                         }, "strip", z.ZodTypeAny, {
                             id: number;
                             company_id: number;
-                            head_office_id: number;
                             state: string;
                             pincode: string;
+                            head_office_id: number;
                             created_at: string;
                             updated_at: string;
                             address: string;
@@ -255,9 +255,9 @@ export declare const getBranchOfficesDoc: {
                         }, {
                             id: number;
                             company_id: number;
-                            head_office_id: number;
                             state: string;
                             pincode: string;
+                            head_office_id: number;
                             created_at: string;
                             updated_at: string;
                             address: string;
@@ -281,9 +281,9 @@ export declare const getBranchOfficesDoc: {
                         branchOffices: {
                             id: number;
                             company_id: number;
-                            head_office_id: number;
                             state: string;
                             pincode: string;
+                            head_office_id: number;
                             created_at: string;
                             updated_at: string;
                             address: string;
@@ -305,9 +305,9 @@ export declare const getBranchOfficesDoc: {
                         branchOffices: {
                             id: number;
                             company_id: number;
-                            head_office_id: number;
                             state: string;
                             pincode: string;
+                            head_office_id: number;
                             created_at: string;
                             updated_at: string;
                             address: string;
@@ -372,9 +372,9 @@ export declare const getBranchOfficeByIdDoc: {
                         }, "strip", z.ZodTypeAny, {
                             id: number;
                             company_id: number;
-                            head_office_id: number;
                             state: string;
                             pincode: string;
+                            head_office_id: number;
                             created_at: string;
                             updated_at: string;
                             address: string;
@@ -389,9 +389,9 @@ export declare const getBranchOfficeByIdDoc: {
                         }, {
                             id: number;
                             company_id: number;
-                            head_office_id: number;
                             state: string;
                             pincode: string;
+                            head_office_id: number;
                             created_at: string;
                             updated_at: string;
                             address: string;
@@ -410,9 +410,9 @@ export declare const getBranchOfficeByIdDoc: {
                         branchOffice: {
                             id: number;
                             company_id: number;
-                            head_office_id: number;
                             state: string;
                             pincode: string;
+                            head_office_id: number;
                             created_at: string;
                             updated_at: string;
                             address: string;
@@ -431,9 +431,9 @@ export declare const getBranchOfficeByIdDoc: {
                         branchOffice: {
                             id: number;
                             company_id: number;
-                            head_office_id: number;
                             state: string;
                             pincode: string;
+                            head_office_id: number;
                             created_at: string;
                             updated_at: string;
                             address: string;
@@ -507,9 +507,9 @@ export declare const updateBranchOfficeDoc: {
                         office_incharge_mail_id: z.ZodNullable<z.ZodOptional<z.ZodString>>;
                     }, "strip", z.ZodTypeAny, {
                         company_id?: number | undefined;
-                        head_office_id?: number | undefined;
                         state?: string | undefined;
                         pincode?: string | undefined;
+                        head_office_id?: number | undefined;
                         address?: string | undefined;
                         office_name?: string | undefined;
                         office_id?: string | undefined;
@@ -521,9 +521,9 @@ export declare const updateBranchOfficeDoc: {
                         office_incharge_mail_id?: string | null | undefined;
                     }, {
                         company_id?: number | undefined;
-                        head_office_id?: number | undefined;
                         state?: string | undefined;
                         pincode?: string | undefined;
+                        head_office_id?: number | undefined;
                         address?: string | undefined;
                         office_name?: string | undefined;
                         office_id?: string | undefined;
@@ -566,9 +566,9 @@ export declare const updateBranchOfficeDoc: {
                         }, "strip", z.ZodTypeAny, {
                             id: number;
                             company_id: number;
-                            head_office_id: number;
                             state: string;
                             pincode: string;
+                            head_office_id: number;
                             created_at: string;
                             updated_at: string;
                             address: string;
@@ -583,9 +583,9 @@ export declare const updateBranchOfficeDoc: {
                         }, {
                             id: number;
                             company_id: number;
-                            head_office_id: number;
                             state: string;
                             pincode: string;
+                            head_office_id: number;
                             created_at: string;
                             updated_at: string;
                             address: string;
@@ -604,9 +604,9 @@ export declare const updateBranchOfficeDoc: {
                         branchOffice: {
                             id: number;
                             company_id: number;
-                            head_office_id: number;
                             state: string;
                             pincode: string;
+                            head_office_id: number;
                             created_at: string;
                             updated_at: string;
                             address: string;
@@ -625,9 +625,9 @@ export declare const updateBranchOfficeDoc: {
                         branchOffice: {
                             id: number;
                             company_id: number;
-                            head_office_id: number;
                             state: string;
                             pincode: string;
+                            head_office_id: number;
                             created_at: string;
                             updated_at: string;
                             address: string;

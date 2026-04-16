@@ -41,6 +41,7 @@ export declare const getCompanies: (page?: number, limit?: number) => Promise<{
         pincode: string;
         created_at: Date;
         updated_at: Date;
+        file_id: number | null;
         user_id: number;
         address: string;
         company_name: string;
@@ -96,6 +97,7 @@ export declare const getCompanyById: (id: number) => Promise<{
     pincode: string;
     created_at: Date;
     updated_at: Date;
+    file_id: number | null;
     user_id: number;
     address: string;
     company_name: string;

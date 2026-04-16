@@ -8,6 +8,7 @@ export const updateUserProfile = async (
   userId: number,
   body: IUpdateUserProfile,
 ) => {
+  const { office, ...userData } = body;
   const user = await prisma.user.findUnique({
     where: { id: userId },
   });
@@ -20,16 +21,43 @@ export const updateUserProfile = async (
 
   const updatedUser = await prisma.user.update({
     where: { id: userId },
-    data: body,
+    data: userData,
     include: {
       profileImage: true,
       role: true,
     },
   });
 
+  if (office) {
+    // Delete existing assignments (cascades to userBranchOffice)
+    await prisma.userHeadOffice.deleteMany({
+      where: { userId },
+    });
+
+    // Create new assignments
+    for (const off of office) {
+      const userHO = await prisma.userHeadOffice.create({
+        data: {
+          userId,
+          headOfficeId: off.head_office,
+        },
+      });
+
+      if (off.branch_offices && off.branch_offices.length > 0) {
+        await prisma.userBranchOffice.createMany({
+          data: off.branch_offices.map((boId) => ({
+            userHeadOfficeId: userHO.id,
+            branchOfficeId: boId,
+          })),
+        });
+      }
+    }
+  }
+
   const { password, ...userWithoutPassword } = updatedUser;
   return userWithoutPassword;
 };
+
 
 export const updateUserPassword = async (
   userId: number,
@@ -71,6 +99,7 @@ export const updateUserById = async (
   userId: number,
   body: IUpdateUserProfile,
 ) => {
+  const { office, ...userData } = body;
   const user = await prisma.user.findUnique({
     where: { id: userId },
   });
@@ -83,16 +112,43 @@ export const updateUserById = async (
 
   const updatedUser = await prisma.user.update({
     where: { id: userId },
-    data: body,
+    data: userData,
     include: {
       profileImage: true,
       role: true,
     },
   });
 
+  if (office) {
+    // Delete existing assignments (cascades to userBranchOffice)
+    await prisma.userHeadOffice.deleteMany({
+      where: { userId },
+    });
+
+    // Create new assignments
+    for (const off of office) {
+      const userHO = await prisma.userHeadOffice.create({
+        data: {
+          userId,
+          headOfficeId: off.head_office,
+        },
+      });
+
+      if (off.branch_offices && off.branch_offices.length > 0) {
+        await prisma.userBranchOffice.createMany({
+          data: off.branch_offices.map((boId) => ({
+            userHeadOfficeId: userHO.id,
+            branchOfficeId: boId,
+          })),
+        });
+      }
+    }
+  }
+
   const { password, ...userWithoutPassword } = updatedUser;
   return userWithoutPassword;
 };
+
 
 export const uploadProfileImage = async (userId: number, fileId: number) => {
   const user = await prisma.user.findUnique({

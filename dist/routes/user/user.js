@@ -120,24 +120,18 @@ user.openapi(user_1.userRegisterDoc, function (c) { return __awaiter(void 0, voi
 }); });
 user.openapi(user_1.userLoginDoc, function (c) { return __awaiter(void 0, void 0, void 0, function () {
     var body, data;
-    var _a, _b, _c;
-    return __generator(this, function (_d) {
-        switch (_d.label) {
+    var _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0: return [4 /*yield*/, c.req.json()];
             case 1:
-                body = _d.sent();
+                body = _b.sent();
                 return [4 /*yield*/, (0, login_1.login)(body)];
             case 2:
-                data = _d.sent();
+                data = _b.sent();
                 // Set organizational cookies if they exist
                 if ((_a = data.user) === null || _a === void 0 ? void 0 : _a.company_id) {
                     (0, cookie_1.setCookie)(c, 'company_id', String(data.user.company_id), { path: '/', httpOnly: false, sameSite: 'Lax', maxAge: 60 * 60 * 24 * 7 });
-                }
-                if ((_b = data.user) === null || _b === void 0 ? void 0 : _b.head_office_id) {
-                    (0, cookie_1.setCookie)(c, 'head_office_id', String(data.user.head_office_id), { path: '/', httpOnly: false, sameSite: 'Lax', maxAge: 60 * 60 * 24 * 7 });
-                }
-                if ((_c = data.user) === null || _c === void 0 ? void 0 : _c.branch_office_id) {
-                    (0, cookie_1.setCookie)(c, 'branch_office_id', String(data.user.branch_office_id), { path: '/', httpOnly: false, sameSite: 'Lax', maxAge: 60 * 60 * 24 * 7 });
                 }
                 return [2 /*return*/, c.json(__assign({ status: 200, message: 'You are logged in successfully' }, data))];
         }

@@ -7,6 +7,7 @@ export declare const getHeadOffices: (page?: number, limit?: number, company_id?
             pincode: string;
             created_at: Date;
             updated_at: Date;
+            file_id: number | null;
             user_id: number;
             address: string;
             company_name: string;

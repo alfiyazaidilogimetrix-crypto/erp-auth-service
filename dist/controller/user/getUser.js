@@ -77,8 +77,16 @@ var getUserProfile = function (userId) { return __awaiter(void 0, void 0, void 0
                             },
                         },
                         company: true,
-                        headOffice: true,
-                        branchOffice: true,
+                        userHeadOffices: {
+                            include: {
+                                headOffice: true,
+                                userbranchoffice: {
+                                    include: {
+                                        branchOffice: true,
+                                    },
+                                },
+                            },
+                        },
                     },
                 })];
             case 1:
@@ -117,8 +125,16 @@ var getAllUsers = function () {
                                     profileImage: true,
                                     role: true,
                                     company: true,
-                                    headOffice: true,
-                                    branchOffice: true,
+                                    userHeadOffices: {
+                                        include: {
+                                            headOffice: true,
+                                            userbranchoffice: {
+                                                include: {
+                                                    branchOffice: true,
+                                                },
+                                            },
+                                        },
+                                    },
                                 },
                                 orderBy: { createdAt: 'desc' },
                             }),
@@ -154,8 +170,16 @@ var getUserById = function (userId) { return __awaiter(void 0, void 0, void 0, f
                         profileImage: true,
                         role: true,
                         company: true,
-                        headOffice: true,
-                        branchOffice: true,
+                        userHeadOffices: {
+                            include: {
+                                headOffice: true,
+                                userbranchoffice: {
+                                    include: {
+                                        branchOffice: true,
+                                    },
+                                },
+                            },
+                        },
                     },
                 })];
             case 1:

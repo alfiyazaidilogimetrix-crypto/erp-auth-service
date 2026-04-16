@@ -7,26 +7,26 @@ export declare const createRole: (body: ICreateRole) => Promise<{
     }[];
     permissions: ({
         modules: {
+            description: string | null;
             id: number;
             createdAt: Date;
             updatedAt: Date;
-            description: string | null;
             Name: string;
         }[];
     } & {
+        description: string | null;
+        title: string | null;
         id: number;
         createdAt: Date;
         updatedAt: Date;
-        description: string | null;
-        title: string | null;
         action: string[];
     })[];
 } & {
+    description: string | null;
     id: number;
     name: string;
     createdAt: Date;
     updatedAt: Date;
-    description: string | null;
 }>;
 export declare const assignRoleToUser: (body: IAssignRoleToUser) => Promise<{
     id: number;

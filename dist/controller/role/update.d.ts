@@ -7,24 +7,24 @@ export declare const updateRole: (id: number, body: IUpdateRole) => Promise<{
     }[];
     permissions: ({
         modules: {
+            description: string | null;
             id: number;
             createdAt: Date;
             updatedAt: Date;
-            description: string | null;
             Name: string;
         }[];
     } & {
+        description: string | null;
+        title: string | null;
         id: number;
         createdAt: Date;
         updatedAt: Date;
-        description: string | null;
-        title: string | null;
         action: string[];
     })[];
 } & {
+    description: string | null;
     id: number;
     name: string;
     createdAt: Date;
     updatedAt: Date;
-    description: string | null;
 }>;

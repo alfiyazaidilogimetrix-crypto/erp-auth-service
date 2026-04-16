@@ -196,31 +196,29 @@ export const permissionResponseSchema = z
 export const createModuleSchema = z
   .object({
     Name: z.string().min(1, 'Name is required').max(100),
-    title: z.string().min(1, 'Title is required').max(100),
     description: z.string().max(500).optional().nullable(),
   })
   .openapi({
     required: ['Name'],
     example: {
       Name: 'users',
-      title: 'Users',
       description: 'User management module',
     },
   });
 
+
 export const updateModuleSchema = z
   .object({
     Name: z.string().min(1).max(100).optional(),
-    title: z.string().min(1).max(100).optional(),
     description: z.string().max(500).optional().nullable(),
   })
   .openapi({
     example: {
       Name: 'user_management',
-      title: 'User Management',
       description: 'Complete user management system',
     },
   });
+
 
 export const moduleResponseSchema = z
   .object({

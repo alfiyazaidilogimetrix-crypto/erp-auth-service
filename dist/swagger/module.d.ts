@@ -11,14 +11,11 @@ export declare const createModuleDoc: {
                 'application/json': {
                     schema: z.ZodObject<{
                         Name: z.ZodString;
-                        title: z.ZodString;
                         description: z.ZodNullable<z.ZodOptional<z.ZodString>>;
                     }, "strip", z.ZodTypeAny, {
-                        title: string;
                         Name: string;
                         description?: string | null | undefined;
                     }, {
-                        title: string;
                         Name: string;
                         description?: string | null | undefined;
                     }>;
@@ -165,15 +162,12 @@ export declare const updateModuleDoc: {
                 'application/json': {
                     schema: z.ZodObject<{
                         Name: z.ZodOptional<z.ZodString>;
-                        title: z.ZodOptional<z.ZodString>;
                         description: z.ZodNullable<z.ZodOptional<z.ZodString>>;
                     }, "strip", z.ZodTypeAny, {
                         description?: string | null | undefined;
-                        title?: string | undefined;
                         Name?: string | undefined;
                     }, {
                         description?: string | null | undefined;
-                        title?: string | undefined;
                         Name?: string | undefined;
                     }>;
                 };

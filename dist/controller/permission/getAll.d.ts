@@ -1,23 +1,23 @@
 export declare const getPermissions: (page?: number, limit?: number, moduleId?: number) => Promise<{
     permissions: ({
         modules: {
+            description: string | null;
             id: number;
             createdAt: Date;
             updatedAt: Date;
-            description: string | null;
             Name: string;
         }[];
         roles: {
+            description: string | null;
             id: number;
             name: string;
-            description: string | null;
         }[];
     } & {
+        description: string | null;
+        title: string | null;
         id: number;
         createdAt: Date;
         updatedAt: Date;
-        description: string | null;
-        title: string | null;
         action: string[];
     })[];
     pagination: {
@@ -29,22 +29,22 @@ export declare const getPermissions: (page?: number, limit?: number, moduleId?: 
 }>;
 export declare const getPermissionById: (id: number) => Promise<{
     modules: {
+        description: string | null;
         id: number;
         createdAt: Date;
         updatedAt: Date;
-        description: string | null;
         Name: string;
     }[];
     roles: {
+        description: string | null;
         id: number;
         name: string;
-        description: string | null;
     }[];
 } & {
+    description: string | null;
+    title: string | null;
     id: number;
     createdAt: Date;
     updatedAt: Date;
-    description: string | null;
-    title: string | null;
     action: string[];
 }>;

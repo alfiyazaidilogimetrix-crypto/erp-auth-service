@@ -12,11 +12,11 @@ export declare const updateUserProfile: (userId: number, body: IUpdateUserProfil
         fileContent: import("erp-shared-models/src/generated/client/runtime/client").Bytes;
     } | null;
     role: {
+        description: string | null;
         id: number;
         name: string;
         createdAt: Date;
         updatedAt: Date;
-        description: string | null;
     } | null;
     id: number;
     name: string;
@@ -27,11 +27,9 @@ export declare const updateUserProfile: (userId: number, body: IUpdateUserProfil
     mobileNumber: string | null;
     roleId: number | null;
     company_id: number | null;
-    head_office_id: number | null;
-    branch_office_id: number | null;
-    provider: import("erp-shared-models/src/generated/client").$Enums.Provider;
     createdAt: Date;
     updatedAt: Date;
+    provider: import("erp-shared-models/src/generated/client").$Enums.Provider;
 }>;
 export declare const updateUserPassword: (userId: number, body: IUpdateUserPassword) => Promise<{
     message: string;
@@ -49,11 +47,11 @@ export declare const updateUserById: (userId: number, body: IUpdateUserProfile) 
         fileContent: import("erp-shared-models/src/generated/client/runtime/client").Bytes;
     } | null;
     role: {
+        description: string | null;
         id: number;
         name: string;
         createdAt: Date;
         updatedAt: Date;
-        description: string | null;
     } | null;
     id: number;
     name: string;
@@ -64,11 +62,9 @@ export declare const updateUserById: (userId: number, body: IUpdateUserProfile) 
     mobileNumber: string | null;
     roleId: number | null;
     company_id: number | null;
-    head_office_id: number | null;
-    branch_office_id: number | null;
-    provider: import("erp-shared-models/src/generated/client").$Enums.Provider;
     createdAt: Date;
     updatedAt: Date;
+    provider: import("erp-shared-models/src/generated/client").$Enums.Provider;
 }>;
 export declare const uploadProfileImage: (userId: number, fileId: number) => Promise<{
     user: {
@@ -84,11 +80,11 @@ export declare const uploadProfileImage: (userId: number, fileId: number) => Pro
             fileContent: import("erp-shared-models/src/generated/client/runtime/client").Bytes;
         } | null;
         role: {
+            description: string | null;
             id: number;
             name: string;
             createdAt: Date;
             updatedAt: Date;
-            description: string | null;
         } | null;
         id: number;
         name: string;
@@ -99,11 +95,9 @@ export declare const uploadProfileImage: (userId: number, fileId: number) => Pro
         mobileNumber: string | null;
         roleId: number | null;
         company_id: number | null;
-        head_office_id: number | null;
-        branch_office_id: number | null;
-        provider: import("erp-shared-models/src/generated/client").$Enums.Provider;
         createdAt: Date;
         updatedAt: Date;
+        provider: import("erp-shared-models/src/generated/client").$Enums.Provider;
     };
     file: {
         id: number;

@@ -2,22 +2,22 @@ import { ICreateModule } from '@schema/role';
 export declare const createModule: (body: ICreateModule) => Promise<{
     permissions: ({
         roles: {
+            description: string | null;
             id: number;
             name: string;
-            description: string | null;
         }[];
     } & {
+        description: string | null;
+        title: string | null;
         id: number;
         createdAt: Date;
         updatedAt: Date;
-        description: string | null;
-        title: string | null;
         action: string[];
     })[];
 } & {
+    description: string | null;
     id: number;
     createdAt: Date;
     updatedAt: Date;
-    description: string | null;
     Name: string;
 }>;

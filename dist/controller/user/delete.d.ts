@@ -14,11 +14,11 @@ export declare const removeProfileImage: (userId: number) => Promise<{
         fileContent: import("erp-shared-models/src/generated/client/runtime/client").Bytes;
     } | null;
     role: {
+        description: string | null;
         id: number;
         name: string;
         createdAt: Date;
         updatedAt: Date;
-        description: string | null;
     } | null;
     id: number;
     name: string;
@@ -29,9 +29,7 @@ export declare const removeProfileImage: (userId: number) => Promise<{
     mobileNumber: string | null;
     roleId: number | null;
     company_id: number | null;
-    head_office_id: number | null;
-    branch_office_id: number | null;
-    provider: import("erp-shared-models/src/generated/client").$Enums.Provider;
     createdAt: Date;
     updatedAt: Date;
+    provider: import("erp-shared-models/src/generated/client").$Enums.Provider;
 }>;

@@ -83,10 +83,25 @@ var login = function (body) { return __awaiter(void 0, void 0, void 0, function 
                                 },
                             },
                         },
+                        userHeadOffices: {
+                            include: {
+                                headOffice: true,
+                                userbranchoffice: {
+                                    include: {
+                                        branchOffice: true,
+                                    },
+                                },
+                            },
+                        },
+                        company: {
+                            include: {
+                                company_logo: true,
+                            },
+                        },
                     },
                 })];
             case 1:
-                user = (_b.sent());
+                user = _b.sent();
                 if (!user) {
                     throw new http_exception_1.HTTPException(404, {
                         message: 'User with this email does not exist',

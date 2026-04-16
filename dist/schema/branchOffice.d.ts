@@ -15,9 +15,9 @@ export declare const createBranchOfficeSchema: z.ZodObject<{
     office_incharge_mail_id: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 }, "strip", z.ZodTypeAny, {
     company_id: number;
-    head_office_id: number;
     state: string;
     pincode: string;
+    head_office_id: number;
     address: string;
     office_name: string;
     office_id: string;
@@ -29,9 +29,9 @@ export declare const createBranchOfficeSchema: z.ZodObject<{
     office_incharge_mail_id?: string | null | undefined;
 }, {
     company_id: number;
-    head_office_id: number;
     state: string;
     pincode: string;
+    head_office_id: number;
     address: string;
     office_name: string;
     office_id: string;
@@ -58,9 +58,9 @@ export declare const updateBranchOfficeSchema: z.ZodObject<{
     office_incharge_mail_id: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 }, "strip", z.ZodTypeAny, {
     company_id?: number | undefined;
-    head_office_id?: number | undefined;
     state?: string | undefined;
     pincode?: string | undefined;
+    head_office_id?: number | undefined;
     address?: string | undefined;
     office_name?: string | undefined;
     office_id?: string | undefined;
@@ -72,9 +72,9 @@ export declare const updateBranchOfficeSchema: z.ZodObject<{
     office_incharge_mail_id?: string | null | undefined;
 }, {
     company_id?: number | undefined;
-    head_office_id?: number | undefined;
     state?: string | undefined;
     pincode?: string | undefined;
+    head_office_id?: number | undefined;
     address?: string | undefined;
     office_name?: string | undefined;
     office_id?: string | undefined;
@@ -105,9 +105,9 @@ export declare const branchOfficeResponseSchema: z.ZodObject<{
 }, "strip", z.ZodTypeAny, {
     id: number;
     company_id: number;
-    head_office_id: number;
     state: string;
     pincode: string;
+    head_office_id: number;
     created_at: string;
     updated_at: string;
     address: string;
@@ -122,9 +122,9 @@ export declare const branchOfficeResponseSchema: z.ZodObject<{
 }, {
     id: number;
     company_id: number;
-    head_office_id: number;
     state: string;
     pincode: string;
+    head_office_id: number;
     created_at: string;
     updated_at: string;
     address: string;

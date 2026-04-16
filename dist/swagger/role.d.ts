@@ -174,12 +174,12 @@ export declare const updateRoleDoc: {
                         description: z.ZodNullable<z.ZodOptional<z.ZodString>>;
                         permissionIds: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
                     }, "strip", z.ZodTypeAny, {
-                        name?: string | undefined;
                         description?: string | null | undefined;
+                        name?: string | undefined;
                         permissionIds?: number[] | undefined;
                     }, {
-                        name?: string | undefined;
                         description?: string | null | undefined;
+                        name?: string | undefined;
                         permissionIds?: number[] | undefined;
                     }>;
                 };

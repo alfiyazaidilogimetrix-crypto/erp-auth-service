@@ -19,10 +19,19 @@ export const getUserProfile = async (userId: number) => {
         },
       },
       company: true,
-      headOffice: true,
-      branchOffice: true,
+      userHeadOffices: {
+        include: {
+          headOffice: true,
+          userbranchoffice: {
+            include: {
+              branchOffice: true,
+            },
+          },
+        },
+      },
     },
   });
+
 
   if (!user) {
     throw new HTTPException(404, {
@@ -52,10 +61,19 @@ export const getAllUsers = async (
         profileImage: true,
         role: true,
         company: true,
-        headOffice: true,
-        branchOffice: true,
+        userHeadOffices: {
+          include: {
+            headOffice: true,
+            userbranchoffice: {
+              include: {
+                branchOffice: true,
+              },
+            },
+          },
+        },
       },
       orderBy: { createdAt: 'desc' },
+
     }),
     prisma.user.count({ where }),
   ]);
@@ -80,10 +98,19 @@ export const getUserById = async (userId: number) => {
       profileImage: true,
       role: true,
       company: true,
-      headOffice: true,
-      branchOffice: true,
+      userHeadOffices: {
+        include: {
+          headOffice: true,
+          userbranchoffice: {
+            include: {
+              branchOffice: true,
+            },
+          },
+        },
+      },
     },
   });
+
 
   if (!user) {
     throw new HTTPException(404, {

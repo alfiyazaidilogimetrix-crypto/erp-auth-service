@@ -46,6 +46,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.register = void 0;
 // import prisma from '@config/prisma';
@@ -53,14 +64,16 @@ var tools_1 = require("@lib/tools");
 var http_exception_1 = require("hono/http-exception");
 var erp_shared_models_1 = require("erp-shared-models");
 var register = function (body) { return __awaiter(void 0, void 0, void 0, function () {
-    var user, hashedPass, data;
+    var office, userData, user, hashedPass, data, _loop_1, _i, office_1, off;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, erp_shared_models_1.prisma.user.findUnique({
-                    where: {
-                        email: body.email,
-                    },
-                })];
+            case 0:
+                office = body.office, userData = __rest(body, ["office"]);
+                return [4 /*yield*/, erp_shared_models_1.prisma.user.findUnique({
+                        where: {
+                            email: userData.email,
+                        },
+                    })];
             case 1:
                 user = _a.sent();
                 if (user !== null) {
@@ -68,11 +81,11 @@ var register = function (body) { return __awaiter(void 0, void 0, void 0, functi
                         message: 'User with this account already registered',
                     });
                 }
-                return [4 /*yield*/, (0, tools_1.hashedPassword)(body.password)];
+                return [4 /*yield*/, (0, tools_1.hashedPassword)(userData.password)];
             case 2:
                 hashedPass = _a.sent();
                 return [4 /*yield*/, erp_shared_models_1.prisma.user.create({
-                        data: __assign(__assign({}, body), { emailVerified: true, password: hashedPass, original_password: body.password }),
+                        data: __assign(__assign({}, userData), { emailVerified: true, password: hashedPass, original_password: userData.password }),
                         include: {
                             profileImage: true,
                             role: true,
@@ -80,13 +93,53 @@ var register = function (body) { return __awaiter(void 0, void 0, void 0, functi
                     })];
             case 3:
                 data = _a.sent();
-                // const verify = await generateOTPToken({
-                //   email: data.email,
-                // });
-                return [2 /*return*/, {
-                        // ...verify,
-                        user: data,
-                    }];
+                if (!(office && office.length > 0)) return [3 /*break*/, 7];
+                _loop_1 = function (off) {
+                    var userHO;
+                    return __generator(this, function (_b) {
+                        switch (_b.label) {
+                            case 0: return [4 /*yield*/, erp_shared_models_1.prisma.userHeadOffice.create({
+                                    data: {
+                                        userId: data.id,
+                                        headOfficeId: off.head_office,
+                                    },
+                                })];
+                            case 1:
+                                userHO = _b.sent();
+                                if (!(off.branch_offices && off.branch_offices.length > 0)) return [3 /*break*/, 3];
+                                return [4 /*yield*/, erp_shared_models_1.prisma.userBranchOffice.createMany({
+                                        data: off.branch_offices.map(function (boId) { return ({
+                                            userHeadOfficeId: userHO.id,
+                                            branchOfficeId: boId,
+                                        }); }),
+                                    })];
+                            case 2:
+                                _b.sent();
+                                _b.label = 3;
+                            case 3: return [2 /*return*/];
+                        }
+                    });
+                };
+                _i = 0, office_1 = office;
+                _a.label = 4;
+            case 4:
+                if (!(_i < office_1.length)) return [3 /*break*/, 7];
+                off = office_1[_i];
+                return [5 /*yield**/, _loop_1(off)];
+            case 5:
+                _a.sent();
+                _a.label = 6;
+            case 6:
+                _i++;
+                return [3 /*break*/, 4];
+            case 7: 
+            // const verify = await generateOTPToken({
+            //   email: data.email,
+            // });
+            return [2 /*return*/, {
+                    // ...verify,
+                    user: data,
+                }];
         }
     });
 }); };

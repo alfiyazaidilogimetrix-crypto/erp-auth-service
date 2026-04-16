@@ -43,10 +43,9 @@ interface IUserWithRelations {
   mobileNumber: string | null;
   roleId: number | null;
   company_id: number | null;
-  head_office_id: number | null;
-  branch_office_id: number | null;
   createdAt: Date;
   updatedAt: Date;
+
   provider: string;
   profileImage: any | null;
   role: IRole | null;
@@ -54,7 +53,7 @@ interface IUserWithRelations {
 
 export const login = async (body: IUserLogin) => {
   // Then cast your user result
-  const user = (await prisma.user.findUnique({
+  const user = await prisma.user.findUnique({
     where: { email: body.email },
     include: {
       profileImage: true,
@@ -67,8 +66,25 @@ export const login = async (body: IUserLogin) => {
           },
         },
       },
+      userHeadOffices: {
+        include: {
+          headOffice: true,
+          userbranchoffice: {
+            include: {
+              branchOffice: true,
+            },
+          },
+        },
+      },
+      company: {
+        include: {
+          company_logo: true,
+        },
+      },
     },
-  })) as IUserWithRelations;
+
+
+  })
 
   if (!user) {
     throw new HTTPException(404, {

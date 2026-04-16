@@ -24,30 +24,30 @@ export declare const bulkCreateUserDoc: {
                             'Mobile Number': z.ZodNullable<z.ZodOptional<z.ZodString>>;
                             Role: z.ZodNullable<z.ZodOptional<z.ZodString>>;
                         }, "strip", z.ZodTypeAny, {
-                            email: string;
                             password: string;
+                            email: string;
                             username: string;
                             'Mobile Number'?: string | null | undefined;
                             Role?: string | null | undefined;
                         }, {
-                            email: string;
                             password: string;
+                            email: string;
                             username: string;
                             'Mobile Number'?: string | null | undefined;
                             Role?: string | null | undefined;
                         }>, "many">;
                     }, "strip", z.ZodTypeAny, {
                         users: {
-                            email: string;
                             password: string;
+                            email: string;
                             username: string;
                             'Mobile Number'?: string | null | undefined;
                             Role?: string | null | undefined;
                         }[];
                     }, {
                         users: {
-                            email: string;
                             password: string;
+                            email: string;
                             username: string;
                             'Mobile Number'?: string | null | undefined;
                             Role?: string | null | undefined;
@@ -146,28 +146,40 @@ export declare const userRegisterDoc: {
                         mobileNumber: z.ZodNullable<z.ZodOptional<z.ZodString>>;
                         roleId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
                         company_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
-                        head_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
-                        branch_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+                        office: z.ZodOptional<z.ZodArray<z.ZodObject<{
+                            head_office: z.ZodNumber;
+                            branch_offices: z.ZodArray<z.ZodNumber, "many">;
+                        }, "strip", z.ZodTypeAny, {
+                            head_office: number;
+                            branch_offices: number[];
+                        }, {
+                            head_office: number;
+                            branch_offices: number[];
+                        }>, "many">>;
                     }, "strip", z.ZodTypeAny, {
+                        password: string;
                         name: string;
                         email: string;
-                        password: string;
                         fileId?: number | null | undefined;
                         mobileNumber?: string | null | undefined;
                         roleId?: number | null | undefined;
                         company_id?: number | null | undefined;
-                        head_office_id?: number | null | undefined;
-                        branch_office_id?: number | null | undefined;
+                        office?: {
+                            head_office: number;
+                            branch_offices: number[];
+                        }[] | undefined;
                     }, {
+                        password: string;
                         name: string;
                         email: string;
-                        password: string;
                         fileId?: number | null | undefined;
                         mobileNumber?: string | null | undefined;
                         roleId?: number | null | undefined;
                         company_id?: number | null | undefined;
-                        head_office_id?: number | null | undefined;
-                        branch_office_id?: number | null | undefined;
+                        office?: {
+                            head_office: number;
+                            branch_offices: number[];
+                        }[] | undefined;
                     }>;
                 };
             };
@@ -216,11 +228,11 @@ export declare const userLoginDoc: {
                         email: z.ZodString;
                         password: z.ZodString;
                     }, "strip", z.ZodTypeAny, {
-                        email: string;
                         password: string;
+                        email: string;
                     }, {
-                        email: string;
                         password: string;
+                        email: string;
                     }>;
                 };
             };
@@ -314,24 +326,36 @@ export declare const updateUserProfileDoc: {
                         mobileNumber: z.ZodNullable<z.ZodOptional<z.ZodString>>;
                         roleId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
                         company_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
-                        head_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
-                        branch_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+                        office: z.ZodOptional<z.ZodArray<z.ZodObject<{
+                            head_office: z.ZodNumber;
+                            branch_offices: z.ZodArray<z.ZodNumber, "many">;
+                        }, "strip", z.ZodTypeAny, {
+                            head_office: number;
+                            branch_offices: number[];
+                        }, {
+                            head_office: number;
+                            branch_offices: number[];
+                        }>, "many">>;
                     }, "strip", z.ZodTypeAny, {
                         name?: string | undefined;
                         fileId?: number | null | undefined;
                         mobileNumber?: string | null | undefined;
                         roleId?: number | null | undefined;
                         company_id?: number | null | undefined;
-                        head_office_id?: number | null | undefined;
-                        branch_office_id?: number | null | undefined;
+                        office?: {
+                            head_office: number;
+                            branch_offices: number[];
+                        }[] | undefined;
                     }, {
                         name?: string | undefined;
                         fileId?: number | null | undefined;
                         mobileNumber?: string | null | undefined;
                         roleId?: number | null | undefined;
                         company_id?: number | null | undefined;
-                        head_office_id?: number | null | undefined;
-                        branch_office_id?: number | null | undefined;
+                        office?: {
+                            head_office: number;
+                            branch_offices: number[];
+                        }[] | undefined;
                     }>;
                 };
             };
@@ -658,24 +682,36 @@ export declare const updateUserByIdDoc: {
                         mobileNumber: z.ZodNullable<z.ZodOptional<z.ZodString>>;
                         roleId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
                         company_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
-                        head_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
-                        branch_office_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+                        office: z.ZodOptional<z.ZodArray<z.ZodObject<{
+                            head_office: z.ZodNumber;
+                            branch_offices: z.ZodArray<z.ZodNumber, "many">;
+                        }, "strip", z.ZodTypeAny, {
+                            head_office: number;
+                            branch_offices: number[];
+                        }, {
+                            head_office: number;
+                            branch_offices: number[];
+                        }>, "many">>;
                     }, "strip", z.ZodTypeAny, {
                         name?: string | undefined;
                         fileId?: number | null | undefined;
                         mobileNumber?: string | null | undefined;
                         roleId?: number | null | undefined;
                         company_id?: number | null | undefined;
-                        head_office_id?: number | null | undefined;
-                        branch_office_id?: number | null | undefined;
+                        office?: {
+                            head_office: number;
+                            branch_offices: number[];
+                        }[] | undefined;
                     }, {
                         name?: string | undefined;
                         fileId?: number | null | undefined;
                         mobileNumber?: string | null | undefined;
                         roleId?: number | null | undefined;
                         company_id?: number | null | undefined;
-                        head_office_id?: number | null | undefined;
-                        branch_office_id?: number | null | undefined;
+                        office?: {
+                            head_office: number;
+                            branch_offices: number[];
+                        }[] | undefined;
                     }>;
                 };
             };
