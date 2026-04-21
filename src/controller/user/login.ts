@@ -66,16 +66,6 @@ export const login = async (body: IUserLogin) => {
           },
         },
       },
-      userHeadOffices: {
-        include: {
-          headOffice: true,
-          userbranchoffice: {
-            include: {
-              branchOffice: true,
-            },
-          },
-        },
-      },
       company: {
         include: {
           company_logo: true,

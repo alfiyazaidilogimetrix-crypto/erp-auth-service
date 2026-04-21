@@ -64,11 +64,11 @@ var tools_1 = require("@lib/tools");
 var http_exception_1 = require("hono/http-exception");
 var erp_shared_models_1 = require("erp-shared-models");
 var register = function (body) { return __awaiter(void 0, void 0, void 0, function () {
-    var office, userData, user, hashedPass, data, _loop_1, _i, office_1, off;
+    var userData, user, hashedPass, data;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                office = body.office, userData = __rest(body, ["office"]);
+                userData = __rest(body, []);
                 return [4 /*yield*/, erp_shared_models_1.prisma.user.findUnique({
                         where: {
                             email: userData.email,
@@ -93,53 +93,13 @@ var register = function (body) { return __awaiter(void 0, void 0, void 0, functi
                     })];
             case 3:
                 data = _a.sent();
-                if (!(office && office.length > 0)) return [3 /*break*/, 7];
-                _loop_1 = function (off) {
-                    var userHO;
-                    return __generator(this, function (_b) {
-                        switch (_b.label) {
-                            case 0: return [4 /*yield*/, erp_shared_models_1.prisma.userHeadOffice.create({
-                                    data: {
-                                        userId: data.id,
-                                        headOfficeId: off.head_office,
-                                    },
-                                })];
-                            case 1:
-                                userHO = _b.sent();
-                                if (!(off.branch_offices && off.branch_offices.length > 0)) return [3 /*break*/, 3];
-                                return [4 /*yield*/, erp_shared_models_1.prisma.userBranchOffice.createMany({
-                                        data: off.branch_offices.map(function (boId) { return ({
-                                            userHeadOfficeId: userHO.id,
-                                            branchOfficeId: boId,
-                                        }); }),
-                                    })];
-                            case 2:
-                                _b.sent();
-                                _b.label = 3;
-                            case 3: return [2 /*return*/];
-                        }
-                    });
-                };
-                _i = 0, office_1 = office;
-                _a.label = 4;
-            case 4:
-                if (!(_i < office_1.length)) return [3 /*break*/, 7];
-                off = office_1[_i];
-                return [5 /*yield**/, _loop_1(off)];
-            case 5:
-                _a.sent();
-                _a.label = 6;
-            case 6:
-                _i++;
-                return [3 /*break*/, 4];
-            case 7: 
-            // const verify = await generateOTPToken({
-            //   email: data.email,
-            // });
-            return [2 /*return*/, {
-                    // ...verify,
-                    user: data,
-                }];
+                // const verify = await generateOTPToken({
+                //   email: data.email,
+                // });
+                return [2 /*return*/, {
+                        // ...verify,
+                        user: data,
+                    }];
         }
     });
 }); };

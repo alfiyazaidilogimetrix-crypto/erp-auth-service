@@ -19,16 +19,6 @@ export const getUserProfile = async (userId: number) => {
         },
       },
       company: true,
-      userHeadOffices: {
-        include: {
-          headOffice: true,
-          userbranchoffice: {
-            include: {
-              branchOffice: true,
-            },
-          },
-        },
-      },
     },
   });
 
@@ -61,16 +51,6 @@ export const getAllUsers = async (
         profileImage: true,
         role: true,
         company: true,
-        userHeadOffices: {
-          include: {
-            headOffice: true,
-            userbranchoffice: {
-              include: {
-                branchOffice: true,
-              },
-            },
-          },
-        },
       },
       orderBy: { createdAt: 'desc' },
 
@@ -98,16 +78,6 @@ export const getUserById = async (userId: number) => {
       profileImage: true,
       role: true,
       company: true,
-      userHeadOffices: {
-        include: {
-          headOffice: true,
-          userbranchoffice: {
-            include: {
-              branchOffice: true,
-            },
-          },
-        },
-      },
     },
   });
 

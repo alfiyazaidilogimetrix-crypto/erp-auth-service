@@ -53,11 +53,11 @@ var http_exception_1 = require("hono/http-exception");
 var tools_1 = require("@lib/tools");
 var erp_shared_models_1 = require("erp-shared-models");
 var updateUserProfile = function (userId, body) { return __awaiter(void 0, void 0, void 0, function () {
-    var office, userData, user, updatedUser, _loop_1, _i, office_1, off, password, userWithoutPassword;
+    var userData, user, updatedUser, password, userWithoutPassword;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                office = body.office, userData = __rest(body, ["office"]);
+                userData = __rest(body, []);
                 return [4 /*yield*/, erp_shared_models_1.prisma.user.findUnique({
                         where: { id: userId },
                     })];
@@ -78,53 +78,6 @@ var updateUserProfile = function (userId, body) { return __awaiter(void 0, void 
                     })];
             case 2:
                 updatedUser = _a.sent();
-                if (!office) return [3 /*break*/, 7];
-                // Delete existing assignments (cascades to userBranchOffice)
-                return [4 /*yield*/, erp_shared_models_1.prisma.userHeadOffice.deleteMany({
-                        where: { userId: userId },
-                    })];
-            case 3:
-                // Delete existing assignments (cascades to userBranchOffice)
-                _a.sent();
-                _loop_1 = function (off) {
-                    var userHO;
-                    return __generator(this, function (_b) {
-                        switch (_b.label) {
-                            case 0: return [4 /*yield*/, erp_shared_models_1.prisma.userHeadOffice.create({
-                                    data: {
-                                        userId: userId,
-                                        headOfficeId: off.head_office,
-                                    },
-                                })];
-                            case 1:
-                                userHO = _b.sent();
-                                if (!(off.branch_offices && off.branch_offices.length > 0)) return [3 /*break*/, 3];
-                                return [4 /*yield*/, erp_shared_models_1.prisma.userBranchOffice.createMany({
-                                        data: off.branch_offices.map(function (boId) { return ({
-                                            userHeadOfficeId: userHO.id,
-                                            branchOfficeId: boId,
-                                        }); }),
-                                    })];
-                            case 2:
-                                _b.sent();
-                                _b.label = 3;
-                            case 3: return [2 /*return*/];
-                        }
-                    });
-                };
-                _i = 0, office_1 = office;
-                _a.label = 4;
-            case 4:
-                if (!(_i < office_1.length)) return [3 /*break*/, 7];
-                off = office_1[_i];
-                return [5 /*yield**/, _loop_1(off)];
-            case 5:
-                _a.sent();
-                _a.label = 6;
-            case 6:
-                _i++;
-                return [3 /*break*/, 4];
-            case 7:
                 password = updatedUser.password, userWithoutPassword = __rest(updatedUser, ["password"]);
                 return [2 /*return*/, userWithoutPassword];
         }
@@ -170,11 +123,11 @@ var updateUserPassword = function (userId, body) { return __awaiter(void 0, void
 }); };
 exports.updateUserPassword = updateUserPassword;
 var updateUserById = function (userId, body) { return __awaiter(void 0, void 0, void 0, function () {
-    var office, userData, user, updatedUser, _loop_2, _i, office_2, off, password, userWithoutPassword;
+    var userData, user, updatedUser, password, userWithoutPassword;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                office = body.office, userData = __rest(body, ["office"]);
+                userData = __rest(body, []);
                 return [4 /*yield*/, erp_shared_models_1.prisma.user.findUnique({
                         where: { id: userId },
                     })];
@@ -195,53 +148,6 @@ var updateUserById = function (userId, body) { return __awaiter(void 0, void 0, 
                     })];
             case 2:
                 updatedUser = _a.sent();
-                if (!office) return [3 /*break*/, 7];
-                // Delete existing assignments (cascades to userBranchOffice)
-                return [4 /*yield*/, erp_shared_models_1.prisma.userHeadOffice.deleteMany({
-                        where: { userId: userId },
-                    })];
-            case 3:
-                // Delete existing assignments (cascades to userBranchOffice)
-                _a.sent();
-                _loop_2 = function (off) {
-                    var userHO;
-                    return __generator(this, function (_b) {
-                        switch (_b.label) {
-                            case 0: return [4 /*yield*/, erp_shared_models_1.prisma.userHeadOffice.create({
-                                    data: {
-                                        userId: userId,
-                                        headOfficeId: off.head_office,
-                                    },
-                                })];
-                            case 1:
-                                userHO = _b.sent();
-                                if (!(off.branch_offices && off.branch_offices.length > 0)) return [3 /*break*/, 3];
-                                return [4 /*yield*/, erp_shared_models_1.prisma.userBranchOffice.createMany({
-                                        data: off.branch_offices.map(function (boId) { return ({
-                                            userHeadOfficeId: userHO.id,
-                                            branchOfficeId: boId,
-                                        }); }),
-                                    })];
-                            case 2:
-                                _b.sent();
-                                _b.label = 3;
-                            case 3: return [2 /*return*/];
-                        }
-                    });
-                };
-                _i = 0, office_2 = office;
-                _a.label = 4;
-            case 4:
-                if (!(_i < office_2.length)) return [3 /*break*/, 7];
-                off = office_2[_i];
-                return [5 /*yield**/, _loop_2(off)];
-            case 5:
-                _a.sent();
-                _a.label = 6;
-            case 6:
-                _i++;
-                return [3 /*break*/, 4];
-            case 7:
                 password = updatedUser.password, userWithoutPassword = __rest(updatedUser, ["password"]);
                 return [2 /*return*/, userWithoutPassword];
         }

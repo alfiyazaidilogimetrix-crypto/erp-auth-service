@@ -8,7 +8,7 @@ export const updateUserProfile = async (
   userId: number,
   body: IUpdateUserProfile,
 ) => {
-  const { office, ...userData } = body;
+  const { ...userData } = body;
   const user = await prisma.user.findUnique({
     where: { id: userId },
   });
@@ -28,31 +28,6 @@ export const updateUserProfile = async (
     },
   });
 
-  if (office) {
-    // Delete existing assignments (cascades to userBranchOffice)
-    await prisma.userHeadOffice.deleteMany({
-      where: { userId },
-    });
-
-    // Create new assignments
-    for (const off of office) {
-      const userHO = await prisma.userHeadOffice.create({
-        data: {
-          userId,
-          headOfficeId: off.head_office,
-        },
-      });
-
-      if (off.branch_offices && off.branch_offices.length > 0) {
-        await prisma.userBranchOffice.createMany({
-          data: off.branch_offices.map((boId) => ({
-            userHeadOfficeId: userHO.id,
-            branchOfficeId: boId,
-          })),
-        });
-      }
-    }
-  }
 
   const { password, ...userWithoutPassword } = updatedUser;
   return userWithoutPassword;
@@ -99,7 +74,7 @@ export const updateUserById = async (
   userId: number,
   body: IUpdateUserProfile,
 ) => {
-  const { office, ...userData } = body;
+  const { ...userData } = body;
   const user = await prisma.user.findUnique({
     where: { id: userId },
   });
@@ -119,31 +94,6 @@ export const updateUserById = async (
     },
   });
 
-  if (office) {
-    // Delete existing assignments (cascades to userBranchOffice)
-    await prisma.userHeadOffice.deleteMany({
-      where: { userId },
-    });
-
-    // Create new assignments
-    for (const off of office) {
-      const userHO = await prisma.userHeadOffice.create({
-        data: {
-          userId,
-          headOfficeId: off.head_office,
-        },
-      });
-
-      if (off.branch_offices && off.branch_offices.length > 0) {
-        await prisma.userBranchOffice.createMany({
-          data: off.branch_offices.map((boId) => ({
-            userHeadOfficeId: userHO.id,
-            branchOfficeId: boId,
-          })),
-        });
-      }
-    }
-  }
 
   const { password, ...userWithoutPassword } = updatedUser;
   return userWithoutPassword;

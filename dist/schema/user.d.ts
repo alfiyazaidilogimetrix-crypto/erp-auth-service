@@ -1,14 +1,4 @@
 import { z } from '@hono/zod-openapi';
-export declare const officeAssignmentSchema: z.ZodObject<{
-    head_office: z.ZodNumber;
-    branch_offices: z.ZodArray<z.ZodNumber, "many">;
-}, "strip", z.ZodTypeAny, {
-    head_office: number;
-    branch_offices: number[];
-}, {
-    head_office: number;
-    branch_offices: number[];
-}>;
 export declare const userRegisterSchema: z.ZodObject<{
     name: z.ZodString;
     email: z.ZodString;
@@ -17,16 +7,6 @@ export declare const userRegisterSchema: z.ZodObject<{
     mobileNumber: z.ZodNullable<z.ZodOptional<z.ZodString>>;
     roleId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
     company_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
-    office: z.ZodOptional<z.ZodArray<z.ZodObject<{
-        head_office: z.ZodNumber;
-        branch_offices: z.ZodArray<z.ZodNumber, "many">;
-    }, "strip", z.ZodTypeAny, {
-        head_office: number;
-        branch_offices: number[];
-    }, {
-        head_office: number;
-        branch_offices: number[];
-    }>, "many">>;
 }, "strip", z.ZodTypeAny, {
     password: string;
     name: string;
@@ -35,10 +15,6 @@ export declare const userRegisterSchema: z.ZodObject<{
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
     company_id?: number | null | undefined;
-    office?: {
-        head_office: number;
-        branch_offices: number[];
-    }[] | undefined;
 }, {
     password: string;
     name: string;
@@ -47,10 +23,6 @@ export declare const userRegisterSchema: z.ZodObject<{
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
     company_id?: number | null | undefined;
-    office?: {
-        head_office: number;
-        branch_offices: number[];
-    }[] | undefined;
 }>;
 export declare const userLoginSchema: z.ZodObject<{
     email: z.ZodString;
@@ -68,36 +40,18 @@ export declare const updateUserProfileSchema: z.ZodObject<{
     mobileNumber: z.ZodNullable<z.ZodOptional<z.ZodString>>;
     roleId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
     company_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
-    office: z.ZodOptional<z.ZodArray<z.ZodObject<{
-        head_office: z.ZodNumber;
-        branch_offices: z.ZodArray<z.ZodNumber, "many">;
-    }, "strip", z.ZodTypeAny, {
-        head_office: number;
-        branch_offices: number[];
-    }, {
-        head_office: number;
-        branch_offices: number[];
-    }>, "many">>;
 }, "strip", z.ZodTypeAny, {
     name?: string | undefined;
     fileId?: number | null | undefined;
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
     company_id?: number | null | undefined;
-    office?: {
-        head_office: number;
-        branch_offices: number[];
-    }[] | undefined;
 }, {
     name?: string | undefined;
     fileId?: number | null | undefined;
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
     company_id?: number | null | undefined;
-    office?: {
-        head_office: number;
-        branch_offices: number[];
-    }[] | undefined;
 }>;
 export declare const updateUserPasswordSchema: z.ZodObject<{
     currentPassword: z.ZodString;
@@ -231,16 +185,6 @@ export declare const createUserByAdminSchema: z.ZodObject<{
     mobileNumber: z.ZodNullable<z.ZodOptional<z.ZodString>>;
     roleId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
     company_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
-    office: z.ZodOptional<z.ZodArray<z.ZodObject<{
-        head_office: z.ZodNumber;
-        branch_offices: z.ZodArray<z.ZodNumber, "many">;
-    }, "strip", z.ZodTypeAny, {
-        head_office: number;
-        branch_offices: number[];
-    }, {
-        head_office: number;
-        branch_offices: number[];
-    }>, "many">>;
 }, "strip", z.ZodTypeAny, {
     name: string;
     email: string;
@@ -248,10 +192,6 @@ export declare const createUserByAdminSchema: z.ZodObject<{
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
     company_id?: number | null | undefined;
-    office?: {
-        head_office: number;
-        branch_offices: number[];
-    }[] | undefined;
 }, {
     name: string;
     email: string;
@@ -259,10 +199,6 @@ export declare const createUserByAdminSchema: z.ZodObject<{
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
     company_id?: number | null | undefined;
-    office?: {
-        head_office: number;
-        branch_offices: number[];
-    }[] | undefined;
 }>;
 export declare const updateUserByAdminSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
@@ -272,16 +208,6 @@ export declare const updateUserByAdminSchema: z.ZodObject<{
     roleId: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
     emailVerified: z.ZodOptional<z.ZodBoolean>;
     company_id: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
-    office: z.ZodOptional<z.ZodArray<z.ZodObject<{
-        head_office: z.ZodNumber;
-        branch_offices: z.ZodArray<z.ZodNumber, "many">;
-    }, "strip", z.ZodTypeAny, {
-        head_office: number;
-        branch_offices: number[];
-    }, {
-        head_office: number;
-        branch_offices: number[];
-    }>, "many">>;
 }, "strip", z.ZodTypeAny, {
     name?: string | undefined;
     email?: string | undefined;
@@ -290,10 +216,6 @@ export declare const updateUserByAdminSchema: z.ZodObject<{
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
     company_id?: number | null | undefined;
-    office?: {
-        head_office: number;
-        branch_offices: number[];
-    }[] | undefined;
 }, {
     name?: string | undefined;
     email?: string | undefined;
@@ -302,10 +224,6 @@ export declare const updateUserByAdminSchema: z.ZodObject<{
     mobileNumber?: string | null | undefined;
     roleId?: number | null | undefined;
     company_id?: number | null | undefined;
-    office?: {
-        head_office: number;
-        branch_offices: number[];
-    }[] | undefined;
 }>;
 export declare const forgotPasswordSchema: z.ZodObject<{
     email: z.ZodString;

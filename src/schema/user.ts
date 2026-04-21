@@ -1,9 +1,5 @@
 import { z } from '@hono/zod-openapi';
 
-export const officeAssignmentSchema = z.object({
-  head_office: z.number().int().positive(),
-  branch_offices: z.array(z.number().int().positive()),
-});
 
 export const userRegisterSchema = z
   .object({
@@ -17,7 +13,6 @@ export const userRegisterSchema = z
     mobileNumber: z.string().max(20).optional().nullable(),
     roleId: z.number().optional().nullable(),
     company_id: z.number().int().positive().optional().nullable(),
-    office: z.array(officeAssignmentSchema).optional(),
   })
   .openapi({
     required: ['name', 'email', 'password'],
@@ -28,12 +23,6 @@ export const userRegisterSchema = z
       fileId: 1,
       mobileNumber: '+1234567890',
       roleId: 1,
-      office: [
-        {
-          head_office: 1,
-          branch_offices: [1, 2, 3],
-        },
-      ],
     },
   });
 
@@ -56,7 +45,6 @@ export const updateUserProfileSchema = z
     mobileNumber: z.string().max(20).optional().nullable(),
     roleId: z.number().optional().nullable(),
     company_id: z.number().int().positive().optional().nullable(),
-    office: z.array(officeAssignmentSchema).optional(),
   })
   .openapi({
     example: {
@@ -64,12 +52,6 @@ export const updateUserProfileSchema = z
       fileId: 2,
       mobileNumber: '+1987654321',
       roleId: 2,
-      office: [
-        {
-          head_office: 1,
-          branch_offices: [1, 2],
-        },
-      ],
     },
   });
 
@@ -184,7 +166,6 @@ export const createUserByAdminSchema = z
     mobileNumber: z.string().max(20).optional().nullable(),
     roleId: z.number().optional().nullable(),
     company_id: z.number().int().positive().optional().nullable(),
-    office: z.array(officeAssignmentSchema).optional(),
   })
   .openapi({
     required: ['name', 'email'],
@@ -194,12 +175,6 @@ export const createUserByAdminSchema = z
       fileId: 3,
       mobileNumber: '+1234567891',
       roleId: 1,
-      office: [
-        {
-          head_office: 1,
-          branch_offices: [1, 2],
-        },
-      ],
     },
   });
 
@@ -212,7 +187,6 @@ export const updateUserByAdminSchema = z
     roleId: z.number().optional().nullable(),
     emailVerified: z.boolean().optional(),
     company_id: z.number().int().positive().optional().nullable(),
-    office: z.array(officeAssignmentSchema).optional(),
   })
   .openapi({
     example: {
@@ -222,12 +196,6 @@ export const updateUserByAdminSchema = z
       mobileNumber: '+1234567892',
       roleId: 2,
       emailVerified: true,
-      office: [
-        {
-          head_office: 2,
-          branch_offices: [4, 5],
-        },
-      ],
     },
   });
 

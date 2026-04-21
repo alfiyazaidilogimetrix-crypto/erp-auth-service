@@ -68,53 +68,6 @@ export declare const login: (body: IUserLogin) => Promise<{
             business_type: string;
             owner_id: number | null;
         }) | null;
-        userHeadOffices: ({
-            userbranchoffice: ({
-                branchOffice: {
-                    id: number;
-                    company_id: number;
-                    state: string;
-                    pincode: string;
-                    head_office_id: number;
-                    created_at: Date;
-                    updated_at: Date;
-                    address: string;
-                    office_name: string;
-                    office_id: string;
-                    city: string;
-                    phone_number: string;
-                    mail_id: string;
-                    office_incharge_name: string | null;
-                    office_incharge_phone_number: string | null;
-                    office_incharge_mail_id: string | null;
-                };
-            } & {
-                id: number;
-                userHeadOfficeId: number;
-                branchOfficeId: number;
-            })[];
-            headOffice: {
-                id: number;
-                company_id: number;
-                state: string;
-                pincode: string;
-                created_at: Date;
-                updated_at: Date;
-                address: string;
-                office_name: string;
-                office_id: string;
-                city: string;
-                phone_number: string;
-                mail_id: string;
-                office_incharge_name: string | null;
-                office_incharge_phone_number: string | null;
-                office_incharge_mail_id: string | null;
-            };
-        } & {
-            id: number;
-            userId: number;
-            headOfficeId: number;
-        })[];
         id: number;
         name: string;
         email: string;
@@ -176,53 +129,6 @@ export declare const login: (body: IUserLogin) => Promise<{
             business_type: string;
             owner_id: number | null;
         }) | null;
-        userHeadOffices: ({
-            userbranchoffice: ({
-                branchOffice: {
-                    id: number;
-                    company_id: number;
-                    state: string;
-                    pincode: string;
-                    head_office_id: number;
-                    created_at: Date;
-                    updated_at: Date;
-                    address: string;
-                    office_name: string;
-                    office_id: string;
-                    city: string;
-                    phone_number: string;
-                    mail_id: string;
-                    office_incharge_name: string | null;
-                    office_incharge_phone_number: string | null;
-                    office_incharge_mail_id: string | null;
-                };
-            } & {
-                id: number;
-                userHeadOfficeId: number;
-                branchOfficeId: number;
-            })[];
-            headOffice: {
-                id: number;
-                company_id: number;
-                state: string;
-                pincode: string;
-                created_at: Date;
-                updated_at: Date;
-                address: string;
-                office_name: string;
-                office_id: string;
-                city: string;
-                phone_number: string;
-                mail_id: string;
-                office_incharge_name: string | null;
-                office_incharge_phone_number: string | null;
-                office_incharge_mail_id: string | null;
-            };
-        } & {
-            id: number;
-            userId: number;
-            headOfficeId: number;
-        })[];
         id: number;
         name: string;
         email: string;

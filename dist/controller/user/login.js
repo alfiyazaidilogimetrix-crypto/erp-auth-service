@@ -83,16 +83,6 @@ var login = function (body) { return __awaiter(void 0, void 0, void 0, function 
                                 },
                             },
                         },
-                        userHeadOffices: {
-                            include: {
-                                headOffice: true,
-                                userbranchoffice: {
-                                    include: {
-                                        branchOffice: true,
-                                    },
-                                },
-                            },
-                        },
                         company: {
                             include: {
                                 company_logo: true,

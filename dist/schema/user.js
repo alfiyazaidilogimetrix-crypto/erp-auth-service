@@ -1,11 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.bulkCreateUserSchema = exports.resetPasswordSchema = exports.forgotPasswordSchema = exports.updateUserByAdminSchema = exports.createUserByAdminSchema = exports.resendOtpSchema = exports.verifyOtpSchema = exports.userResponseSchema = exports.updateUserPasswordSchema = exports.updateUserProfileSchema = exports.userLoginSchema = exports.userRegisterSchema = exports.officeAssignmentSchema = void 0;
+exports.bulkCreateUserSchema = exports.resetPasswordSchema = exports.forgotPasswordSchema = exports.updateUserByAdminSchema = exports.createUserByAdminSchema = exports.resendOtpSchema = exports.verifyOtpSchema = exports.userResponseSchema = exports.updateUserPasswordSchema = exports.updateUserProfileSchema = exports.userLoginSchema = exports.userRegisterSchema = void 0;
 var zod_openapi_1 = require("@hono/zod-openapi");
-exports.officeAssignmentSchema = zod_openapi_1.z.object({
-    head_office: zod_openapi_1.z.number().int().positive(),
-    branch_offices: zod_openapi_1.z.array(zod_openapi_1.z.number().int().positive()),
-});
 exports.userRegisterSchema = zod_openapi_1.z
     .object({
     name: zod_openapi_1.z.string().min(1, 'Name is required').max(100),
@@ -18,7 +14,6 @@ exports.userRegisterSchema = zod_openapi_1.z
     mobileNumber: zod_openapi_1.z.string().max(20).optional().nullable(),
     roleId: zod_openapi_1.z.number().optional().nullable(),
     company_id: zod_openapi_1.z.number().int().positive().optional().nullable(),
-    office: zod_openapi_1.z.array(exports.officeAssignmentSchema).optional(),
 })
     .openapi({
     required: ['name', 'email', 'password'],
@@ -29,12 +24,6 @@ exports.userRegisterSchema = zod_openapi_1.z
         fileId: 1,
         mobileNumber: '+1234567890',
         roleId: 1,
-        office: [
-            {
-                head_office: 1,
-                branch_offices: [1, 2, 3],
-            },
-        ],
     },
 });
 exports.userLoginSchema = zod_openapi_1.z
@@ -55,7 +44,6 @@ exports.updateUserProfileSchema = zod_openapi_1.z
     mobileNumber: zod_openapi_1.z.string().max(20).optional().nullable(),
     roleId: zod_openapi_1.z.number().optional().nullable(),
     company_id: zod_openapi_1.z.number().int().positive().optional().nullable(),
-    office: zod_openapi_1.z.array(exports.officeAssignmentSchema).optional(),
 })
     .openapi({
     example: {
@@ -63,12 +51,6 @@ exports.updateUserProfileSchema = zod_openapi_1.z
         fileId: 2,
         mobileNumber: '+1987654321',
         roleId: 2,
-        office: [
-            {
-                head_office: 1,
-                branch_offices: [1, 2],
-            },
-        ],
     },
 });
 exports.updateUserPasswordSchema = zod_openapi_1.z
@@ -178,7 +160,6 @@ exports.createUserByAdminSchema = zod_openapi_1.z
     mobileNumber: zod_openapi_1.z.string().max(20).optional().nullable(),
     roleId: zod_openapi_1.z.number().optional().nullable(),
     company_id: zod_openapi_1.z.number().int().positive().optional().nullable(),
-    office: zod_openapi_1.z.array(exports.officeAssignmentSchema).optional(),
 })
     .openapi({
     required: ['name', 'email'],
@@ -188,12 +169,6 @@ exports.createUserByAdminSchema = zod_openapi_1.z
         fileId: 3,
         mobileNumber: '+1234567891',
         roleId: 1,
-        office: [
-            {
-                head_office: 1,
-                branch_offices: [1, 2],
-            },
-        ],
     },
 });
 exports.updateUserByAdminSchema = zod_openapi_1.z
@@ -205,7 +180,6 @@ exports.updateUserByAdminSchema = zod_openapi_1.z
     roleId: zod_openapi_1.z.number().optional().nullable(),
     emailVerified: zod_openapi_1.z.boolean().optional(),
     company_id: zod_openapi_1.z.number().int().positive().optional().nullable(),
-    office: zod_openapi_1.z.array(exports.officeAssignmentSchema).optional(),
 })
     .openapi({
     example: {
@@ -215,12 +189,6 @@ exports.updateUserByAdminSchema = zod_openapi_1.z
         mobileNumber: '+1234567892',
         roleId: 2,
         emailVerified: true,
-        office: [
-            {
-                head_office: 2,
-                branch_offices: [4, 5],
-            },
-        ],
     },
 });
 // Password reset schemas
