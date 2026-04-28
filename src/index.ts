@@ -51,21 +51,33 @@ app.get('/', (c) => {
 
 app.route('/api', routes);
 
+import { HTTPException } from 'hono/http-exception';
+
 app.onError((err, c) => {
   // Determine status code
-  const statusCode = c.res?.status || 400;
+  let statusCode = 500;
+  if ('status' in err && typeof (err as any).status === 'number') {
+    statusCode = (err as any).status;
+  } else if (err instanceof HTTPException) {
+    statusCode = err.status;
+  } else if (c.res?.status && c.res.status !== 200) {
+    statusCode = c.res.status;
+  } else {
+    statusCode = 400;
+  }
 
   // Create error response object
   const errorResponse = {
     success: false,
+    status: statusCode,
     message: err.message || 'An error occurred',
     ...(process.env.NODE_ENV === 'development' && {
-      stack: err.stack,
+      // stack: err.stack,
       details: err.cause,
     }),
   };
 
-  return c.json(errorResponse, statusCode as 400);
+  return c.json(errorResponse, statusCode as any);
 });
 
 app.doc('/doc', {
